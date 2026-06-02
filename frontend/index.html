@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Hospitalar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Sistema Hospitalar</h2>
+
+        <input id="usuario" placeholder="Usuário">
+        <input id="senha" type="password" placeholder="Senha">
+
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <script>
+        function login() {
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+
+            fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuario: usuario,
+                    senha: senha
+                })
+            })
+            .then(r => r.json())
+            .then(data => {
+
+                // erro de login
+                if (data.erro) {
+                    alert("Usuário ou senha inválidos");
+                    return;
+                }
+
+                // redirecionamento por tipo
+                if (data.tipo === "triagem") {
+                    location.href = "triagem.html";
+                } 
+                else if (data.tipo === "medico") {
+                    location.href = "medico.html";
+                } 
+                else if (data.tipo === "atendimento") {
+                    location.href = "atendimento.html";
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Erro ao conectar com o servidor");
+            });
+        }
+    </script>
+</body>
+</html>

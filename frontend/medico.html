@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>🩺Painel Médico</h2>
+
+        <div id="triagens"></div>
+
+        <hr>
+        <h3>Consulta</h3>
+
+        <input id="paciente" placeholder="Paciente">
+        <input id="diagnostico" placeholder="Diagnóstico">
+        <input id="medicacao" placeholder="Medicação">
+        <textarea id="obs" placeholder="Observação"></textarea>
+        <button onclick="salvar()">
+        Salvar
+    </button>
+    </div>
+
+    <script>
+
+        function carregar() {
+            fetch("/triagens")
+            .then(r => r.json())
+            .then(data => {
+                const div = 
+                document.getElementById("triagens");
+
+                div.innerHTML= "";
+
+            data.foreach(t => {
+
+                div.innerHTML += `
+                
+                <div class=card>
+                    <h3>${t.nome}<h3>
+                        <p>
+                            <b>Sintoma:</b>
+                            ${t.sintoma || t.sintoma}
+                        </p>
+                        <p>
+                            <b>Temperatura:</b>
+                            ${t.temperatura || t.temp}C°
+                            </p>
+                            
+                            <p>
+                                
+                                <span class="${t.risco}">
+                                ${t.risco}
+                                
+                                </span>
+                                
+                                </p>
+                                
+                                <p>
+                                    
+                                    
+                                    <b>Alergia:</b>
+                                    
+                                    ${t.alergia || 'nenhuma'}
+                                    </p>
+                                    
+                                    <p>
+                                        <b>Observação:</b>
+                                        ${t.observacao || "Nenhuma"}
+                                        </p>
+                                        
+                                        <button
+                                        onclick=>`
+
+                
+
+            })
+            } 
+                
+                });
+            });
+        }
+    </script>
+</body>
+</html>

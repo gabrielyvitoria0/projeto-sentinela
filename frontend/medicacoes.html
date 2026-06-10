@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container"> 
+        <h2>🩺 painel médico</h2>
+
+        <div id="triagens"></div>
+
+         <hr>
+
+         <h3>Consulta</h3>
+         <input id="paciente" placeholder="Paciente">
+         <input id="diagnostico" placeholder="Diagnóstico">
+         <input id="medicacao" placeholder="Medicação">
+         <textarea id="obs" placeholder="obsevações"></textarea>
+            <button onclick="salvar()">salvar</button>
+    </div>
+    
+    <script>
+    function carregar() {
+    fetch("/triagens")
+    .then(r => r.json())
+    .then(data => {
+        const div = document.getElementById("triagens");
+        data.innerHTML = "";
+
+        data.forEach(t => {
+            div.innerHTML += ` 
+            `
+             div.innerHTML += ` 
+             div class="card">
+
+             <h3>${t.nome}</h3>
+             <p>
+                <b>Sintomas:</b>
+            sintomas: ${t.sintomas} 
+            </p>
+
+            <p>
+                <b> Temperatura:</b>
+           ${t.temperatura || t.temp}°C 
+           </p>
+
+           <p>
+
+            <span class="${t.risco}">
+                 ${t.risco}
+            </span>
+
+            </p>
+            
+            alergia:${t.alergia} || "nenhuma"} <br>
+            button onclick='selecionar(${t.nome})"," ${t.alergia}"" '</button>
+            </div>  
+             `
+        });
+    });
+};
+
+function selecionar(nome, alergia) {
+    paciente.value = nome;
+    if(alergia) {
+        alert("Paciente possui alergia a " + alergia);
+    }
+}
+
+function salvar() {
+    fetch("/consulta", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+body: JSON.stringify({
+    paciente: paciente.value,
+    diagnostico: diagnostico.value,
+    medicacao: medicacao.value,
+    obs:obs.value
+})
+    });
+
+    alert("Consulta cadastrada com sucesso!");
+}
+
+carregar();
+    </script>
+
+
+</body>
+</html>

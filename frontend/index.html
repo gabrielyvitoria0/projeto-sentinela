@@ -1,61 +1,372 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sistema Hospitalar</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hello Centro de Atendimento Pediátrico</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Arial, sans-serif;
+
+      background:
+        radial-gradient(circle at 10% 15%, #ffc1dc 0 18px, transparent 19px),
+        radial-gradient(circle at 90% 15%, #ffd5e6 0 25px, transparent 26px),
+        radial-gradient(circle at 8% 85%, #ffd0e5 0 25px, transparent 26px),
+        radial-gradient(circle at 92% 85%, #ffc1dc 0 18px, transparent 19px),
+        linear-gradient(135deg, #fff0f7, #ffdce9);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* DECORAÇÕES */
+
+    body::before {
+      content: "🌸  💗  ⭐  🎀  🌸  💗  ⭐";
+
+      position: absolute;
+      top: 25px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 22px;
+      white-space: nowrap;
+    }
+
+    body::after {
+      content: "💗  🌈  🌸  ⭐  🎀  🌸  💗";
+
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+
+    /* CAIXA */
+
+    .container {
+      width: 90%;
+      max-width: 430px;
+
+      background: white;
+
+      padding: 35px;
+
+      border-radius: 30px;
+
+      border: 4px solid #ffc1dc;
+
+      text-align: center;
+
+      position: relative;
+
+      box-shadow:
+        0 12px 30px rgba(214, 51, 132, 0.18),
+        0 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+
+
+    /* FLOR NO TOPO */
+
+    .flor {
+      position: absolute;
+
+      width: 55px;
+      height: 55px;
+
+      top: -30px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      border-radius: 50%;
+
+      background: #ffb2d2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 28px;
+
+      box-shadow: 0 5px 12px rgba(214, 51, 132, 0.2);
+    }
+
+
+    /* LOGO */
+
+    .logo {
+      width: 150px;
+      height: 150px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      display: block;
+
+      margin: 5px auto 18px;
+
+      border: 5px solid #f28bb7;
+
+      box-shadow:
+        0 5px 15px rgba(214, 51, 132, 0.25);
+    }
+
+
+    /* TÍTULO */
+
+    h2 {
+      margin: 5px 0 8px;
+
+      color: #d63384;
+
+      font-size: 27px;
+
+      font-weight: bold;
+    }
+
+
+    /* SUBTÍTULO */
+
+    .subtitulo {
+      margin: 0 0 20px;
+
+      color: #e681a9;
+
+      font-size: 14px;
+    }
+
+
+    /* CAMPOS */
+
+    input {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-top: 12px;
+
+      border-radius: 13px;
+
+      border: 2px solid #f5bfd6;
+
+      background: #fff8fb;
+
+      font-size: 16px;
+
+      color: #555;
+
+      outline: none;
+    }
+
+
+    input::placeholder {
+      color: #d696b2;
+    }
+
+
+    input:focus {
+      border-color: #e96c9f;
+
+      background: white;
+
+      box-shadow:
+        0 0 8px rgba(233, 108, 159, 0.25);
+    }
+
+
+    /* BOTÃO */
+
+    button {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-top: 18px;
+
+      border: none;
+
+      border-radius: 13px;
+
+      background: linear-gradient(
+        135deg,
+        #f27aae,
+        #d63384
+      );
+
+      color: white;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 12px rgba(214, 51, 132, 0.25);
+
+      transition: 0.3s;
+    }
+
+
+    button:hover {
+      transform: translateY(-2px);
+
+      background: linear-gradient(
+        135deg,
+        #d63384,
+        #bd286e
+      );
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape {
+      margin-top: 20px;
+
+      color: #dc82a8;
+
+      font-size: 12px;
+    }
+
+  </style>
+
 </head>
 
+
 <body>
-    <div class="container">
-        <h2>Sistema Hospitalar</h2>
 
-        <input id="usuario" placeholder="Usuário">
-        <input id="senha" type="password" placeholder="Senha">
+  <div class="container">
 
-        <button onclick="login()">Entrar</button>
+    <!-- FLOR -->
+    <div class="flor">
+      🌸
     </div>
 
-    <script>
-        function login() {
-            const usuario = document.getElementById("usuario").value;
-            const senha = document.getElementById("senha").value;
 
-            fetch("http://localhost:3000/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    usuario: usuario,
-                    senha: senha
-                })
-            })
-            .then(r => r.json())
-            .then(data => {
+    <!-- SUA LOGO -->
+    <img
+      src="logo.jpg"
+      alt="HELLO Centro de Atendimento Pediátrico"
+      class="logo"
+    >
 
-                // erro de login
-                if (data.erro) {
-                    alert("Usuário ou senha inválidos");
-                    return;
-                }
 
-                // redirecionamento por tipo
-                if (data.tipo === "triagem") {
-                    location.href = "triagem.html";
-                } 
-                else if (data.tipo === "medico") {
-                    location.href = "medico.html";
-                } 
-                else if (data.tipo === "atendimento") {
-                    location.href = "atendimento.html";
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                alert("Erro ao conectar com o servidor");
-            });
+    <!-- TÍTULO -->
+    <h2>
+      🌸 Hello Centro Pediátrico 🌸
+    </h2>
+
+
+    <!-- SUBTÍTULO -->
+    <p class="subtitulo">
+      💗 Cuidando dos pequenos com carinho 💗
+    </p>
+
+
+    <!-- USUÁRIO -->
+    <input
+      id="usuario"
+      placeholder="👧 Usuário"
+    >
+
+
+    <!-- SENHA -->
+    <input
+      id="senha"
+      type="password"
+      placeholder="🔒 Senha"
+    >
+
+
+    <!-- BOTÃO -->
+    <button onclick="login()">
+      Entrar 💗
+    </button>
+
+
+    <!-- RODAPÉ -->
+    <p class="rodape">
+      🌈 Um lugar especial para cuidar e acolher 🌈
+    </p>
+
+  </div>
+
+
+  <script>
+
+    function login() {
+
+      fetch("http://localhost:3000/login", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          usuario: usuario.value,
+          senha: senha.value
+
+        })
+
+      })
+
+      .then(r => r.json())
+
+      .then(data => {
+
+        if (data.tipo === "triagem") {
+          location.href = "triagem.html";
         }
-    </script>
+
+        if (data.tipo === "medico") {
+          location.href = "medico.html";
+        }
+
+        if (data.tipo === "atendimento") {
+          location.href = "atendimento.html";
+        }
+
+      })
+
+      .catch(error => {
+
+        console.error(error);
+
+        alert("Não foi possível conectar ao servidor.");
+
+      });
+
+    }
+
+  </script>
+
 </body>
+
 </html>

@@ -316,48 +316,76 @@
   </div>
 
 
-  <script>
+ <script>
 
-    function login() {
+  async function login() {
 
-      fetch("/login", {
+    const usuario = document.getElementById("usuario").value.trim();
+    const senha = document.getElementById("senha").value;
 
+    if (!usuario) {
+      alert("Digite o usuário.");
+      return;
+    }
+
+    if (!senha) {
+      alert("Digite a senha.");
+      return;
+    }
+
+    try {
+
+      const resposta = await fetch("/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
         body: JSON.stringify({
-          usuario: usuario.value,
-          senha: senha.value
+          usuario: usuario,
+          senha: senha
         })
-      })
-
-      .then(r => r.json())
-      .then(data => {
-
-        if (data.tipo === "triagem") {
-          location.href = "triagem.html";
-        }
-
-        if (data.tipo === "medico") {
-          location.href = "medico.html";
-        }
-
-        if (data.tipo === "atendimento") {
-          location.href = "atendimento.html";
-        }
-
-      })
-
-      .catch(error => {
-
-        console.error(error);
-
-        alert("Não foi possível conectar ao servidor.");
-
       });
+
+      const data = await resposta.json();
+
+      console.log("Resposta:", data);
+
+      if (!resposta.ok) {
+        alert(data.erro || "Usuário ou senha inválidos.");
+        return;
+      }
+
+      if (data.tipo === "triagem") {
+        window.location.href = "/triagem.html";
+        return;
+      }
+
+      if (data.tipo === "medico") {
+        window.location.href = "/medico.html";
+        return;
+      }
+
+      if (data.tipo === "atendimento") {
+        window.location.href = "/atendimento.html";
+        return;
+      }
+
+      alert("Tipo de usuário não reconhecido: " + data.tipo);
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("Não foi possível conectar ao servidor.");
 
     }
 
-  </script>
+  }
+
+</script>
+
 
 </body>
 

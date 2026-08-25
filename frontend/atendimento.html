@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🌸 Atendimento | Hello Centro Pediátrico</title>
+    <title>Atendimento | Sentinela</title>
 
     <style>
 
@@ -22,14 +22,11 @@
 
             font-family: Arial, sans-serif;
 
-            background:
-                radial-gradient(circle at 8% 12%, #ffc1dc 0 18px, transparent 19px),
-                radial-gradient(circle at 92% 12%, #ffd5e6 0 25px, transparent 26px),
-                radial-gradient(circle at 7% 88%, #ffd0e5 0 25px, transparent 26px),
-                radial-gradient(circle at 93% 88%, #ffc1dc 0 18px, transparent 19px),
-                linear-gradient(135deg, #fff0f7, #ffdce9);
-
-            position: relative;
+            background: linear-gradient(
+                135deg,
+                #fff0f7,
+                #ffdce9
+            );
 
             padding: 45px 20px;
 
@@ -37,48 +34,9 @@
         }
 
 
-        /* DECORAÇÕES */
-
-        body::before {
-            content: "🌸  💗  ⭐  🎀  🌸  💗  ⭐";
-
-            position: fixed;
-
-            top: 18px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            font-size: 20px;
-
-            white-space: nowrap;
-
-            z-index: 0;
-        }
-
-
-        body::after {
-            content: "💗  🌈  🌸  ⭐  🎀  🌸  💗";
-
-            position: fixed;
-
-            bottom: 15px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            font-size: 19px;
-
-            white-space: nowrap;
-
-            z-index: 0;
-        }
-
-
-        /* CONTAINER PRINCIPAL */
+        /* CONTAINER */
 
         .container {
-
             width: 94%;
             max-width: 900px;
 
@@ -92,59 +50,21 @@
 
             border: 4px solid #ffc1dc;
 
-            position: relative;
-
-            z-index: 1;
-
             box-shadow:
                 0 12px 30px rgba(214, 51, 132, 0.18),
                 0 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
 
-        /* FLOR */
-
-        .flor {
-
-            position: absolute;
-
-            width: 58px;
-            height: 58px;
-
-            top: -30px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            border-radius: 50%;
-
-            background: #ffb2d2;
-
-            display: flex;
-
-            justify-content: center;
-            align-items: center;
-
-            font-size: 29px;
-
-            box-shadow:
-                0 5px 12px rgba(214, 51, 132, 0.2);
-        }
-
-
         /* CABEÇALHO */
 
         .cabecalho {
-
             text-align: center;
-
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
-
         .cabecalho h1 {
-
-            margin: 15px 0 7px;
+            margin: 0 0 8px;
 
             color: #d63384;
 
@@ -153,9 +73,7 @@
             font-weight: bold;
         }
 
-
         .cabecalho p {
-
             margin: 0;
 
             color: #e681a9;
@@ -167,7 +85,6 @@
         /* IDENTIFICAÇÃO */
 
         .identificacao {
-
             display: flex;
 
             align-items: center;
@@ -185,9 +102,7 @@
             margin-bottom: 22px;
         }
 
-
         .identificacao-icone {
-
             width: 43px;
             height: 43px;
 
@@ -200,12 +115,10 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 21px;
+            font-size: 20px;
         }
 
-
         .identificacao h2 {
-
             margin: 0;
 
             color: #d63384;
@@ -213,9 +126,7 @@
             font-size: 17px;
         }
 
-
         .identificacao p {
-
             margin: 4px 0 0;
 
             color: #dc82a8;
@@ -227,7 +138,6 @@
         /* FORMULÁRIO */
 
         .formulario {
-
             display: grid;
 
             grid-template-columns: 1fr 1fr;
@@ -239,7 +149,6 @@
         /* SEÇÕES */
 
         .secao {
-
             grid-column: 1 / -1;
 
             margin-top: 5px;
@@ -260,7 +169,6 @@
         /* CAMPOS */
 
         .campo {
-
             display: flex;
 
             flex-direction: column;
@@ -268,15 +176,11 @@
             gap: 6px;
         }
 
-
         .campo-grande {
-
             grid-column: 1 / -1;
         }
 
-
         .campo label {
-
             color: #a95878;
 
             font-size: 12px;
@@ -284,10 +188,8 @@
             font-weight: bold;
         }
 
-
         .campo input,
         .campo select {
-
             width: 100%;
 
             padding: 13px;
@@ -307,16 +209,12 @@
             transition: 0.25s;
         }
 
-
         .campo input::placeholder {
-
             color: #d696b2;
         }
 
-
         .campo input:focus,
         .campo select:focus {
-
             border-color: #e96c9f;
 
             background: white;
@@ -325,21 +223,13 @@
                 0 0 8px rgba(233, 108, 159, 0.25);
         }
 
-
-        /* DATA */
-
         .campo input[type="date"] {
-
             color: #777;
 
             cursor: pointer;
         }
 
-
-        /* ARQUIVO */
-
         .campo input[type="file"] {
-
             padding: 10px;
 
             cursor: pointer;
@@ -349,7 +239,6 @@
         /* AVISO */
 
         .aviso {
-
             grid-column: 1 / -1;
 
             display: flex;
@@ -373,9 +262,7 @@
             line-height: 1.4;
         }
 
-
         .aviso span {
-
             font-size: 20px;
         }
 
@@ -383,15 +270,12 @@
         /* BOTÃO */
 
         .acoes {
-
             grid-column: 1 / -1;
 
             margin-top: 4px;
         }
 
-
         button {
-
             width: 100%;
 
             padding: 14px;
@@ -400,12 +284,11 @@
 
             border-radius: 13px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f27aae,
-                    #d63384
-                );
+            background: linear-gradient(
+                135deg,
+                #f27aae,
+                #d63384
+            );
 
             color: white;
 
@@ -421,24 +304,20 @@
             transition: 0.3s;
         }
 
-
         button:hover {
-
             transform: translateY(-2px);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #d63384,
-                    #bd286e
-                );
+            background: linear-gradient(
+                135deg,
+                #d63384,
+                #bd286e
+            );
         }
 
 
         /* RODAPÉ */
 
         .rodape {
-
             text-align: center;
 
             margin-top: 20px;
@@ -454,13 +333,10 @@
         @media (max-width: 650px) {
 
             body {
-
-                padding: 35px 10px;
+                padding: 30px 10px;
             }
 
-
             .container {
-
                 width: 96%;
 
                 padding: 25px 18px;
@@ -468,32 +344,19 @@
                 border-radius: 25px;
             }
 
-
             .formulario {
-
                 grid-template-columns: 1fr;
             }
-
 
             .campo-grande,
             .secao,
             .aviso,
             .acoes {
-
                 grid-column: auto;
             }
 
-
             .cabecalho h1 {
-
                 font-size: 23px;
-            }
-
-
-            body::before,
-            body::after {
-
-                font-size: 16px;
             }
         }
 
@@ -504,15 +367,7 @@
 
 <body>
 
-
     <div class="container">
-
-
-        <!-- FLOR -->
-
-        <div class="flor">
-            🌸
-        </div>
 
 
         <!-- CABEÇALHO -->
@@ -520,7 +375,7 @@
         <div class="cabecalho">
 
             <h1>
-                🌸 Atendimento Pediátrico 🌸
+                Atendimento Pediátrico
             </h1>
 
             <p>
@@ -535,7 +390,7 @@
         <div class="identificacao">
 
             <div class="identificacao-icone">
-                👧
+                💗
             </div>
 
             <div>
@@ -577,7 +432,7 @@
                 <input
                     id="nome"
                     type="text"
-                    placeholder="👧 Nome completo do paciente"
+                    placeholder="Nome completo do paciente"
                     required
                 >
 
@@ -653,7 +508,7 @@
                 <input
                     id="nomeMae"
                     type="text"
-                    placeholder="👩 Nome da mãe"
+                    placeholder="Nome da mãe"
                 >
 
             </div>
@@ -690,7 +545,7 @@
                 <input
                     id="endereco"
                     type="text"
-                    placeholder="🏠 Rua, número, bairro e cidade"
+                    placeholder="Rua, número, bairro e cidade"
                 >
 
             </div>
@@ -705,7 +560,7 @@
                 <input
                     id="telefone"
                     type="text"
-                    placeholder="📱 (00) 00000-0000"
+                    placeholder="(00) 00000-0000"
                 >
 
             </div>
@@ -720,7 +575,7 @@
                 <input
                     id="email"
                     type="email"
-                    placeholder="✉️ paciente@email.com"
+                    placeholder="paciente@email.com"
                 >
 
             </div>
@@ -735,7 +590,7 @@
                 <input
                     id="contatoEmergencia"
                     type="text"
-                    placeholder="🚨 Nome e telefone"
+                    placeholder="Nome e telefone"
                 >
 
             </div>
@@ -754,11 +609,11 @@
                     </option>
 
                     <option value="Convenio">
-                        🏥 Convênio
+                        Convênio
                     </option>
 
                     <option value="Particular">
-                        💗 Particular
+                        Particular
                     </option>
 
                 </select>
@@ -839,7 +694,6 @@
 
             event.preventDefault();
 
-
             fetch("http://localhost:3000/atendimento", {
 
                 method: "POST",
@@ -887,7 +741,6 @@
 
             })
 
-
             .then(response => {
 
                 if (!response.ok) {
@@ -898,7 +751,6 @@
 
             })
 
-
             .then(data => {
 
                 console.log(data);
@@ -906,7 +758,6 @@
                 alert("💗 Paciente enviado para triagem!");
 
             })
-
 
             .catch(error => {
 
@@ -921,7 +772,6 @@
         }
 
     </script>
-
 
 </body>
 

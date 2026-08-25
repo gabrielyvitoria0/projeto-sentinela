@@ -1,3 +1,6 @@
+# atendimento.html
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,449 +8,829 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sentinela - Atendimento</title>
+    <title>🌸 Atendimento | Hello Centro Pediátrico</title>
 
     <style>
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #eef1f5;
+            margin: 0;
             min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at 8% 12%, #ffc1dc 0 18px, transparent 19px),
+                radial-gradient(circle at 92% 12%, #ffd5e6 0 25px, transparent 26px),
+                radial-gradient(circle at 7% 88%, #ffd0e5 0 25px, transparent 26px),
+                radial-gradient(circle at 93% 88%, #ffc1dc 0 18px, transparent 19px),
+                linear-gradient(135deg, #fff0f7, #ffdce9);
+
+            position: relative;
+
+            padding: 45px 20px;
+
+            overflow-x: hidden;
         }
 
-        /* TOPO */
 
-        .topo {
-            height: 70px;
-            background: #17202a;
+        /* DECORAÇÕES */
+
+        body::before {
+            content: "🌸  💗  ⭐  🎀  🌸  💗  ⭐";
+
+            position: fixed;
+
+            top: 18px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 20px;
+
+            white-space: nowrap;
+
+            z-index: 0;
+        }
+
+
+        body::after {
+            content: "💗  🌈  🌸  ⭐  🎀  🌸  💗";
+
+            position: fixed;
+
+            bottom: 15px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 19px;
+
+            white-space: nowrap;
+
+            z-index: 0;
+        }
+
+
+        /* CONTAINER PRINCIPAL */
+
+        .container {
+
+            width: 94%;
+            max-width: 900px;
+
+            margin: 30px auto;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 30px;
+
+            border: 4px solid #ffc1dc;
+
+            position: relative;
+
+            z-index: 1;
+
+            box-shadow:
+                0 12px 30px rgba(214, 51, 132, 0.18),
+                0 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+
+        /* FLOR */
+
+        .flor {
+
+            position: absolute;
+
+            width: 58px;
+            height: 58px;
+
+            top: -30px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+
+            background: #ffb2d2;
+
             display: flex;
+
+            justify-content: center;
             align-items: center;
-            padding: 0 45px;
-            color: white;
+
+            font-size: 29px;
+
+            box-shadow:
+                0 5px 12px rgba(214, 51, 132, 0.2);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
 
-        .logo span {
-            color: #e63946;
-        }
-
-        .topo-texto {
-            margin-left: 30px;
-            color: #aeb6bf;
-            font-size: 14px;
-        }
-
-        /* CONTEÚDO */
-
-        .conteudo {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 25px;
-        }
+        /* CABEÇALHO */
 
         .cabecalho {
+
+            text-align: center;
+
             margin-bottom: 25px;
         }
 
+
         .cabecalho h1 {
-            font-size: 30px;
-            color: #17202a;
-            margin-bottom: 7px;
+
+            margin: 15px 0 7px;
+
+            color: #d63384;
+
+            font-size: 28px;
+
+            font-weight: bold;
         }
 
+
         .cabecalho p {
-            color: #6b7280;
+
+            margin: 0;
+
+            color: #e681a9;
+
             font-size: 14px;
         }
 
-        /* CARD */
 
-        .card {
-            background: white;
-            border-radius: 14px;
-            padding: 35px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
+        /* IDENTIFICAÇÃO */
 
-        .titulo-card {
+        .identificacao {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
-            margin-bottom: 30px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #e5e7eb;
+
+            background: #fff5fa;
+
+            border: 2px solid #f5bfd6;
+
+            border-radius: 15px;
+
+            padding: 14px 17px;
+
+            margin-bottom: 22px;
         }
 
-        .icone {
-            width: 42px;
-            height: 42px;
-            background: #fee2e2;
-            color: #dc2626;
-            border-radius: 10px;
+
+        .identificacao-icone {
+
+            width: 43px;
+            height: 43px;
+
+            border-radius: 50%;
+
+            background: #ffb2d2;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+
+            font-size: 21px;
         }
 
-        .titulo-card h2 {
-            color: #17202a;
-            font-size: 19px;
+
+        .identificacao h2 {
+
+            margin: 0;
+
+            color: #d63384;
+
+            font-size: 17px;
         }
 
-        .titulo-card p {
-            color: #9ca3af;
+
+        .identificacao p {
+
+            margin: 4px 0 0;
+
+            color: #dc82a8;
+
             font-size: 12px;
-            margin-top: 3px;
         }
+
 
         /* FORMULÁRIO */
 
         .formulario {
+
             display: grid;
+
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+
+            gap: 16px;
         }
+
+
+        /* SEÇÕES */
+
+        .secao {
+
+            grid-column: 1 / -1;
+
+            margin-top: 5px;
+            margin-bottom: 1px;
+
+            color: #d63384;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            padding-bottom: 7px;
+
+            border-bottom: 2px solid #f8d4e3;
+        }
+
+
+        /* CAMPOS */
 
         .campo {
+
             display: flex;
+
             flex-direction: column;
-            gap: 7px;
+
+            gap: 6px;
         }
 
-        .campo label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #374151;
+
+        .campo-grande {
+
+            grid-column: 1 / -1;
         }
+
+
+        .campo label {
+
+            color: #a95878;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
 
         .campo input,
         .campo select {
+
             width: 100%;
-            height: 45px;
-            padding: 0 13px;
-            border: 1px solid #d1d5db;
-            border-radius: 7px;
-            background: #f9fafb;
-            outline: none;
+
+            padding: 13px;
+
+            border-radius: 13px;
+
+            border: 2px solid #f5bfd6;
+
+            background: #fff8fb;
+
             font-size: 14px;
-            color: #374151;
-            transition: 0.2s;
+
+            color: #555;
+
+            outline: none;
+
+            transition: 0.25s;
         }
+
+
+        .campo input::placeholder {
+
+            color: #d696b2;
+        }
+
 
         .campo input:focus,
         .campo select:focus {
+
+            border-color: #e96c9f;
+
             background: white;
-            border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+
+            box-shadow:
+                0 0 8px rgba(233, 108, 159, 0.25);
         }
+
+
+        /* DATA */
+
+        .campo input[type="date"] {
+
+            color: #777;
+
+            cursor: pointer;
+        }
+
+
+        /* ARQUIVO */
 
         .campo input[type="file"] {
+
             padding: 10px;
+
+            cursor: pointer;
         }
 
-        /* CAMPO GRANDE */
 
-        .campo-grande {
+        /* AVISO */
+
+        .aviso {
+
             grid-column: 1 / -1;
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: center;
+
+            background: #fff5fa;
+
+            border: 2px solid #f5bfd6;
+
+            border-radius: 13px;
+
+            padding: 13px;
+
+            color: #b45b7f;
+
+            font-size: 12px;
+
+            line-height: 1.4;
         }
+
+
+        .aviso span {
+
+            font-size: 20px;
+        }
+
 
         /* BOTÃO */
 
         .acoes {
+
             grid-column: 1 / -1;
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 10px;
-            padding-top: 25px;
-            border-top: 1px solid #e5e7eb;
+
+            margin-top: 4px;
         }
+
 
         button {
-            background: #dc2626;
-            color: white;
+
+            width: 100%;
+
+            padding: 14px;
+
             border: none;
-            border-radius: 7px;
-            padding: 13px 28px;
-            font-size: 14px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f27aae,
+                    #d63384
+                );
+
+            color: white;
+
+            font-size: 16px;
+
             font-weight: bold;
+
             cursor: pointer;
-            transition: 0.2s;
+
+            box-shadow:
+                0 5px 12px rgba(214, 51, 132, 0.25);
+
+            transition: 0.3s;
         }
 
+
         button:hover {
-            background: #b91c1c;
-            transform: translateY(-1px);
+
+            transform: translateY(-2px);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d63384,
+                    #bd286e
+                );
         }
+
+
+        /* RODAPÉ */
+
+        .rodape {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #dc82a8;
+
+            font-size: 12px;
+        }
+
 
         /* RESPONSIVO */
 
-        @media (max-width: 700px) {
+        @media (max-width: 650px) {
 
-            .topo {
-                padding: 0 20px;
+            body {
+
+                padding: 35px 10px;
             }
 
-            .topo-texto {
-                display: none;
+
+            .container {
+
+                width: 96%;
+
+                padding: 25px 18px;
+
+                border-radius: 25px;
             }
 
-            .conteudo {
-                margin: 25px auto;
-            }
-
-            .card {
-                padding: 25px;
-            }
 
             .formulario {
+
                 grid-template-columns: 1fr;
             }
 
-            .campo-grande {
+
+            .campo-grande,
+            .secao,
+            .aviso,
+            .acoes {
+
                 grid-column: auto;
             }
 
-            .acoes {
-                grid-column: auto;
+
+            .cabecalho h1 {
+
+                font-size: 23px;
+            }
+
+
+            body::before,
+            body::after {
+
+                font-size: 16px;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- TOPO -->
 
-    <header class="topo">
+    <div class="container">
 
-        <div class="logo">
-            Senti<span>nela</span>
+
+        <!-- FLOR -->
+
+        <div class="flor">
+            🌸
         </div>
 
-        <div class="topo-texto">
-            Sistema de prevenção e segurança hospitalar
-        </div>
 
-    </header>
-
-
-    <!-- CONTEÚDO -->
-
-    <main class="conteudo">
+        <!-- CABEÇALHO -->
 
         <div class="cabecalho">
 
-            <h1>Atendimento</h1>
+            <h1>
+                🌸 Atendimento Pediátrico 🌸
+            </h1>
 
             <p>
-                Cadastre as informações do paciente para iniciar o atendimento.
+                💗 Vamos cuidar de cada detalhe com carinho 💗
             </p>
 
         </div>
 
 
-        <!-- CARD DO FORMULÁRIO -->
+        <!-- IDENTIFICAÇÃO -->
 
-        <section class="card">
+        <div class="identificacao">
 
-            <div class="titulo-card">
+            <div class="identificacao-icone">
+                👧
+            </div>
 
-                <div class="icone">
-                    +
-                </div>
+            <div>
+
+                <h2>
+                    Dados do paciente
+                </h2>
+
+                <p>
+                    Preencha as informações para iniciar o atendimento.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <form
+            class="formulario"
+            onsubmit="cadastrar(event)"
+        >
+
+
+            <!-- DADOS PESSOAIS -->
+
+            <div class="secao">
+                🌸 Informações pessoais
+            </div>
+
+
+            <div class="campo campo-grande">
+
+                <label>
+                    Nome completo
+                </label>
+
+                <input
+                    id="nome"
+                    type="text"
+                    placeholder="👧 Nome completo do paciente"
+                    required
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    CPF
+                </label>
+
+                <input
+                    id="cpf"
+                    type="text"
+                    placeholder="000.000.000-00"
+                    required
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Data de nascimento
+                </label>
+
+                <input
+                    id="dataNascimento"
+                    type="date"
+                    required
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Sexo
+                </label>
+
+                <select id="sexo">
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="Feminino">
+                        Feminino
+                    </option>
+
+                    <option value="Masculino">
+                        Masculino
+                    </option>
+
+                    <option value="Outro">
+                        Outro
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Nome da mãe
+                </label>
+
+                <input
+                    id="nomeMae"
+                    type="text"
+                    placeholder="👩 Nome da mãe"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Estado civil
+                </label>
+
+                <input
+                    id="estadoCivil"
+                    type="text"
+                    placeholder="Estado civil"
+                >
+
+            </div>
+
+
+            <!-- CONTATO -->
+
+            <div class="secao">
+                💗 Contato e endereço
+            </div>
+
+
+            <div class="campo campo-grande">
+
+                <label>
+                    Endereço
+                </label>
+
+                <input
+                    id="endereco"
+                    type="text"
+                    placeholder="🏠 Rua, número, bairro e cidade"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Telefone
+                </label>
+
+                <input
+                    id="telefone"
+                    type="text"
+                    placeholder="📱 (00) 00000-0000"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    E-mail
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="✉️ paciente@email.com"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Contato de emergência
+                </label>
+
+                <input
+                    id="contatoEmergencia"
+                    type="text"
+                    placeholder="🚨 Nome e telefone"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Tipo de atendimento
+                </label>
+
+                <select id="tipo">
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="Convenio">
+                        🏥 Convênio
+                    </option>
+
+                    <option value="Particular">
+                        💗 Particular
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- COMPLEMENTARES -->
+
+            <div class="secao">
+                ⭐ Informações complementares
+            </div>
+
+
+            <div class="campo campo-grande">
+
+                <label>
+                    Foto do paciente
+                </label>
+
+                <input
+                    type="file"
+                    id="foto"
+                >
+
+            </div>
+
+
+            <!-- AVISO -->
+
+            <div class="aviso">
+
+                <span>
+                    💗
+                </span>
 
                 <div>
-                    <h2>Dados do paciente</h2>
 
-                    <p>
-                        Preencha todas as informações necessárias
-                    </p>
+                    <strong>
+                        Confira os dados antes de continuar.
+                    </strong>
+
+                    As informações preenchidas serão encaminhadas
+                    para a próxima etapa do atendimento e triagem.
+
                 </div>
 
             </div>
 
 
-            <form class="formulario" onsubmit="cadastrar(event)">
+            <!-- BOTÃO -->
 
-                <div class="campo campo-grande">
-                    <label>Nome completo</label>
-                    <input
-                        id="nome"
-                        type="text"
-                        placeholder="Digite o nome completo"
-                    >
-                </div>
+            <div class="acoes">
 
+                <button type="submit">
+                    Enviar para triagem 💗
+                </button>
 
-                <div class="campo">
-                    <label>CPF</label>
-
-                    <input
-                        id="cpf"
-                        type="text"
-                        placeholder="000.000.000-00"
-                    >
-                </div>
+            </div>
 
 
-                <div class="campo">
-                    <label>Data de nascimento</label>
-
-                    <input
-                        id="dataNascimento"
-                        type="date"
-                    >
-                </div>
+        </form>
 
 
-                <div class="campo">
-                    <label>Sexo</label>
+        <!-- RODAPÉ -->
 
-                    <select id="sexo">
-
-                        <option value="">
-                            Selecione
-                        </option>
-
-                        <option value="Feminino">
-                            Feminino
-                        </option>
-
-                        <option value="Masculino">
-                            Masculino
-                        </option>
-
-                        <option value="Outro">
-                            Outro
-                        </option>
-
-                    </select>
-
-                </div>
+        <p class="rodape">
+            🌈 Cuidando dos pequenos com carinho e segurança 🌈
+        </p>
 
 
-                <div class="campo">
-                    <label>Nome da mãe</label>
-
-                    <input
-                        id="nomeMae"
-                        type="text"
-                        placeholder="Digite o nome da mãe"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>Estado civil</label>
-
-                    <input
-                        id="estadoCivil"
-                        type="text"
-                        placeholder="Estado civil"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>Endereço</label>
-
-                    <input
-                        id="endereco"
-                        type="text"
-                        placeholder="Digite o endereço"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>Telefone</label>
-
-                    <input
-                        id="telefone"
-                        type="text"
-                        placeholder="(00) 00000-0000"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>E-mail</label>
-
-                    <input
-                        id="email"
-                        type="email"
-                        placeholder="paciente@email.com"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>Contato de emergência</label>
-
-                    <input
-                        id="contatoEmergencia"
-                        type="text"
-                        placeholder="Nome e telefone"
-                    >
-                </div>
-
-
-                <div class="campo">
-                    <label>Tipo de atendimento</label>
-
-                    <select id="tipo">
-
-                        <option value="">
-                            Selecione
-                        </option>
-
-                        <option value="Convenio">
-                            Convênio
-                        </option>
-
-                        <option value="Particular">
-                            Particular
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="campo">
-                    <label>Foto do paciente</label>
-
-                    <input
-                        type="file"
-                        id="foto"
-                    >
-                </div>
-
-
-                <div class="acoes">
-
-                    <button type="submit">
-                        Enviar para triagem
-                    </button>
-
-                </div>
-
-            </form>
-
-        </section>
-
-    </main>
+    </div>
 
 
     <script>
@@ -455,6 +838,7 @@
         function cadastrar(event) {
 
             event.preventDefault();
+
 
             fetch("http://localhost:3000/atendimento", {
 
@@ -466,9 +850,11 @@
 
                 body: JSON.stringify({
 
-                    nome: document.getElementById("nome").value,
+                    nome:
+                        document.getElementById("nome").value,
 
-                    cpf: document.getElementById("cpf").value,
+                    cpf:
+                        document.getElementById("cpf").value,
 
                     dataNascimento:
                         document.getElementById("dataNascimento").value,
@@ -501,21 +887,34 @@
 
             })
 
-            .then(response => response.json())
 
-            .then(data => {
+            .then(response => {
 
-                alert("Paciente enviado para triagem!");
+                if (!response.ok) {
+                    throw new Error("Erro no servidor");
+                }
 
-                console.log(data);
+                return response.json();
 
             })
 
+
+            .then(data => {
+
+                console.log(data);
+
+                alert("💗 Paciente enviado para triagem!");
+
+            })
+
+
             .catch(error => {
 
-                console.error(error);
+                console.error("Erro:", error);
 
-                alert("Erro ao cadastrar paciente.");
+                alert(
+                    "🌸 Não foi possível enviar o paciente. Verifique o servidor."
+                );
 
             });
 
@@ -523,6 +922,8 @@
 
     </script>
 
+
 </body>
 
 </html>
+```

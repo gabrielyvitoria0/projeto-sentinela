@@ -3,18 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Atendimento</title>
+
+    <title>Sentinela | Atendimento</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .container h2 {
+            grid-column: 1 / -1;
+            color: #1f2937;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .container h2::after {
+            content: "Cadastro e identificação do paciente";
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 48px;
+            padding: 0 15px;
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+            font-size: 14px;
+            color: #374151;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input::placeholder {
+            color: #9ca3af;
+        }
+
+        input:focus,
+        select:focus {
+            background: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        input[type="file"] {
+            height: auto;
+            padding: 13px;
+            cursor: pointer;
+        }
+
+        button {
+            grid-column: 1 / -1;
+            height: 50px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 9px;
+            background: #dc2626;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
     <div class="container">
         <h2>Atendimento</h2>
 
-        <input id="nome" placeholder="Nome">
+        <input id="nome" placeholder="Nome completo">
+
         <input id="cpf" placeholder="CPF">
-        <input id="dataNascimento" type="date">
-        
+
+        <input 
+            id="dataNascimento"
+            type="date"
+        >
+
         <select id="sexo">
             <option value="">Sexo</option>
             <option value="Feminino">Feminino</option>
@@ -23,53 +138,87 @@
         </select>
 
         <input id="nomeMae" placeholder="Nome da mãe">
+
         <input id="estadoCivil" placeholder="Estado civil">
+
         <input id="endereco" placeholder="Endereço">
+
         <input id="telefone" placeholder="Telefone">
-        <input id="email" type="email" placeholder="E-mail">
-        <input id="contatoEmergencia" placeholder="Contato de emergência">
+
+        <input 
+            id="email"
+            type="email"
+            placeholder="E-mail"
+        >
+
+        <input 
+            id="contatoEmergencia"
+            placeholder="Contato de emergência"
+        >
 
         <select id="tipo">
+            <option value="">Tipo de atendimento</option>
             <option value="Convenio">Convênio</option>
             <option value="Particular">Particular</option>
         </select>
 
         <input type="file" id="foto">
 
-        <button onclick="cadastrar()">Cadastrar</button>
+        <button onclick="cadastrar()">
+            Enviar para triagem
+        </button>
     </div>
-    
+
     <script>
         function cadastrar() {
+
             fetch("http://localhost:3000/atendimento", {
+
                 method: "POST",
+
                 headers: {
                     "Content-Type": "application/json"
                 },
+
                 body: JSON.stringify({
+
                     nome: document.getElementById("nome").value,
+
                     cpf: document.getElementById("cpf").value,
+
                     dataNascimento: document.getElementById("dataNascimento").value,
+
                     sexo: document.getElementById("sexo").value,
+
                     nomeMae: document.getElementById("nomeMae").value,
+
                     estadoCivil: document.getElementById("estadoCivil").value,
+
                     endereco: document.getElementById("endereco").value,
+
                     telefone: document.getElementById("telefone").value,
+
                     email: document.getElementById("email").value,
+
                     contatoEmergencia: document.getElementById("contatoEmergencia").value,
+
                     tipo: document.getElementById("tipo").value
                 })
             })
+
             .then(response => response.json())
+
             .then(data => {
                 alert("Paciente enviado para triagem!");
                 console.log(data);
             })
+
             .catch(error => {
                 console.error("Erro:", error);
                 alert("Erro ao cadastrar paciente.");
             });
         }
     </script>
+
 </body>
 </html>

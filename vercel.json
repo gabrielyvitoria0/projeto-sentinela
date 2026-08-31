@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "rewrites": [
     {
       "source": "/login",
@@ -10,11 +9,23 @@
       "destination": "/api/index.js"
     },
     {
+      "source": "/pacientes",
+      "destination": "/api/index.js"
+    },
+    {
       "source": "/triagem",
       "destination": "/api/index.js"
     },
     {
       "source": "/triagens",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/tv/chamar",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/tv/chamada",
       "destination": "/api/index.js"
     },
     {
@@ -27,6 +38,10 @@
     },
     {
       "source": "/lista-medicacoes",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/api/health",
       "destination": "/api/index.js"
     },
     {

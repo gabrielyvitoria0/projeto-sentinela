@@ -1,1021 +1,617 @@
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Atendimento Pediátrico | Sentinela</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        :root {
-            --azul-principal: #167d9a;
-            --azul-escuro: #0f5268;
-            --azul-claro: #e8f6fa;
-            --azul-suave: #cfeaf2;
-            --texto-principal: #263238;
-            --texto-secundario: #64748b;
-            --borda: #d9e7ec;
-            --fundo: #f4f8fa;
-            --branco: #ffffff;
-            --erro: #dc3545;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: "Segoe UI", Arial, sans-serif;
-
-            background: linear-gradient(
-                135deg,
-                #eef7fa,
-                #f7fbfc
-            );
-
-            padding: 45px 20px;
-            overflow-x: hidden;
-            color: var(--texto-principal);
-        }
-
-        .container {
-            width: 94%;
-            max-width: 1000px;
-            margin: 30px auto;
-            background: var(--branco);
-            padding: 38px;
-            border-radius: 20px;
-            border: 1px solid var(--borda);
-
-            box-shadow:
-                0 15px 40px
-                rgba(15, 82, 104, 0.10);
-        }
-
-        .cabecalho {
-            text-align: left;
-            margin-bottom: 28px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid var(--borda);
-        }
-
-        .cabecalho h1 {
-            margin: 0 0 7px;
-            color: var(--azul-escuro);
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .cabecalho p {
-            margin: 0;
-            color: var(--texto-secundario);
-            font-size: 14px;
-        }
-
-        .identificacao {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-
-            background: linear-gradient(
-                135deg,
-                var(--azul-claro),
-                #f3fbfd
-            );
-
-            border: 1px solid var(--azul-suave);
-            border-radius: 16px;
-            padding: 17px 20px;
-            margin-bottom: 28px;
-        }
-
-        .identificacao-icone {
-            width: 46px;
-            height: 46px;
-            flex-shrink: 0;
-            border-radius: 14px;
-            background: var(--azul-principal);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 20px;
-            color: white;
-
-            box-shadow:
-                0 5px 12px
-                rgba(22, 125, 154, 0.18);
-        }
-
-        .identificacao h2 {
-            margin: 0;
-            color: var(--azul-escuro);
-            font-size: 17px;
-            font-weight: 700;
-        }
-
-        .identificacao p {
-            margin: 5px 0 0;
-            color: var(--texto-secundario);
-            font-size: 13px;
-        }
-
-        .formulario {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .secao {
-            grid-column: 1 / -1;
-            margin-top: 15px;
-            color: var(--azul-escuro);
-            font-size: 15px;
-            font-weight: 700;
-            padding: 12px 0;
-            border-bottom: 2px solid var(--azul-suave);
-        }
-
-        .campo {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .campo-grande {
-            grid-column: 1 / -1;
-        }
-
-        .campo label {
-            color: #455a64;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .campo input,
-        .campo select,
-        .campo textarea {
-            width: 100%;
-            padding: 13px 14px;
-            border-radius: 10px;
-            border: 1px solid var(--borda);
-            background: #fbfdfe;
-            font-size: 14px;
-            color: var(--texto-principal);
-            outline: none;
-            transition: 0.2s ease;
-        }
-
-        .campo input::placeholder,
-        .campo textarea::placeholder {
-            color: #9aa9b0;
-        }
-
-        .campo input:focus,
-        .campo select:focus,
-        .campo textarea:focus {
-            border-color: var(--azul-principal);
-            background: var(--branco);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(22, 125, 154, 0.10);
-        }
-
-        .campo textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .campo select {
-            cursor: pointer;
-        }
-
-        .telefone-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .telefone-container select {
-            width: 145px;
-            flex-shrink: 0;
-        }
-
-        .telefone-container input {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .codigo-pais {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            min-width: 55px;
-            height: 46px;
-            padding: 0 10px;
-
-            border-radius: 10px;
-
-            background: var(--azul-claro);
-            border: 1px solid var(--azul-suave);
-
-            color: var(--azul-escuro);
-            font-weight: 700;
-        }
-
-        .ajuda {
-            color: var(--texto-secundario);
-            font-size: 11px;
-            margin-top: 2px;
-        }
-
-        .campo-erro {
-            border-color: var(--erro) !important;
-            background: #fff8f8 !important;
-        }
-
-        .mensagem-erro {
-            display: none;
-            color: var(--erro);
-            font-size: 11px;
-            margin-top: -2px;
-        }
-
-        .mensagem-erro.ativo {
-            display: block;
-        }
-
-        input[type="file"] {
-            padding: 11px !important;
-            cursor: pointer;
-            background: #f8fbfc !important;
-        }
-
-        .aviso {
-            grid-column: 1 / -1;
-
-            display: flex;
-            gap: 13px;
-            align-items: flex-start;
-
-            background: #fff9e8;
-
-            border: 1px solid #f2df9a;
-            border-left: 4px solid #e7b93e;
-
-            border-radius: 12px;
-            padding: 16px;
-
-            color: #665326;
-            font-size: 13px;
-            line-height: 1.5;
-
-            margin-top: 10px;
-        }
-
-        .aviso span {
-            font-size: 20px;
-        }
-
-        .acoes {
-            grid-column: 1 / -1;
-            margin-top: 8px;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 11px;
-
-            background: linear-gradient(
-                135deg,
-                var(--azul-principal),
-                var(--azul-escuro)
-            );
-
-            color: white;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            letter-spacing: 0.2px;
-
-            box-shadow:
-                0 6px 15px
-                rgba(15, 82, 104, 0.18);
-
-            transition: 0.2s ease;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 10px 20px
-                rgba(15, 82, 104, 0.22);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .rodape {
-            text-align: center;
-            margin-top: 24px;
-            padding-top: 18px;
-            border-top: 1px solid var(--borda);
-            color: var(--texto-secundario);
-            font-size: 12px;
-        }
-
-        @media (max-width: 700px) {
-
-            body {
-                padding: 20px 10px;
-            }
-
-            .container {
-                width: 96%;
-                margin: 15px auto;
-                padding: 25px 18px;
-                border-radius: 16px;
-            }
-
-            .formulario {
-                grid-template-columns: 1fr;
-            }
-
-            .campo-grande,
-            .secao,
-            .aviso,
-            .acoes {
-                grid-column: auto;
-            }
-
-            .cabecalho h1 {
-                font-size: 23px;
-            }
-
-            .telefone-container {
-                flex-wrap: wrap;
-            }
-
-            .telefone-container input {
-                min-width: 150px;
-            }
-
-            .identificacao {
-                align-items: flex-start;
-            }
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-
-        <div class="cabecalho">
-
-            <h1>
-                Atendimento Pediátrico
-            </h1>
-
-            <p>
-                Cadastro e informações para atendimento e triagem do paciente.
-            </p>
-
-        </div>
-
-        <div class="identificacao">
-
-            <div class="identificacao-icone">
-                🧸
-            </div>
-
-            <div>
-
-                <h2>
-                    Dados do paciente
-                </h2>
-
-                <p>
-                    Preencha as informações necessárias para iniciar o atendimento.
-                </p>
-
-            </div>
-
-        </div>
-
-        <form
-            class="formulario"
-            id="formulario"
-            onsubmit="cadastrar(event)"
-        >
-
-            <div class="secao">
-                Informações pessoais
-            </div>
-
-            <div class="campo campo-grande">
-
-                <label>
-                    Nome completo *
-                </label>
-
-                <input
-                    id="nome"
-                    type="text"
-                    placeholder="Nome completo do paciente"
-                    required
-                >
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    CPF *
-                </label>
-
-                <input
-                    id="cpf"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="14"
-                    placeholder="000.000.000-00"
-                    required
-                >
-
-                <span id="erroCpf" class="mensagem-erro">
-                    O CPF deve possuir 11 números.
-                </span>
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    RG
-                </label>
-
-                <input
-                    id="rg"
-                    type="text"
-                    maxlength="14"
-                    placeholder="Digite o RG"
-                >
-
-                <span class="ajuda">
-                    Máximo de 14 caracteres.
-                </span>
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Data de nascimento *
-                </label>
-
-                <input
-                    id="dataNascimento"
-                    type="date"
-                    required
-                >
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Sexo *
-                </label>
-
-                <select id="sexo" required>
-
-                    <option value="">
-                        Selecione
-                    </option>
-
-                    <option value="Feminino">
-                        Feminino
-                    </option>
-
-                    <option value="Masculino">
-                        Masculino
-                    </option>
-
-                    <option value="Outro">
-                        Outro
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="secao">
-                Responsável e vínculo familiar
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Nome da mãe
-                </label>
-
-                <input
-                    id="nomeMae"
-                    type="text"
-                    placeholder="Nome completo da mãe"
-                >
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Nome do responsável legal
-                </label>
-
-                <input
-                    id="responsavel"
-                    type="text"
-                    placeholder="Nome do responsável"
-                >
-
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Grau de parentesco
-                </label>
-
-                <select id="parentesco">
-
-                    <option value="">
-                        Selecione
-                    </option>
-
-                    <option value="Mae">
-                        Mãe
-                    </option>
-
-                    <option value="Pai">
-                        Pai
-                    </option>
-
-                    <option value="Avo">
-                        Avó / Avô
-                    </option>
-
-                    <option value="Tutor">
-                        Tutor legal
-                    </option>
-
-                    <option value="Outro">
-                        Outro
-                    </option>
-
-                </select>
-
-            </div>
-
-            <div class="secao">
-                Informações pediátricas
-            </div>
-
-            <div class="campo">
-
-                <label>
-                    Peso (kg)
-                </label>
-
-                <input
-                    id="peso"
-                    type="number"
-                    min="0"
-                    max="300"
-                    step="0.1"
-                    placeholder="Ex.: 25,5"
-                >
-
-            </div>
-
-            <div class="campo">
+/* =========================
+   RESET E CONFIGURAÇÕES
+========================= */
 
-                <label>
-                    Altura (cm)
-                </label>
+* {
+    box-sizing: border-box;
+}
 
-                <input
-                    id="altura"
-                    type="number"
-                    min="0"
-                    max="250"
-                    step="0.1"
-                    placeholder="Ex.: 125"
-                >
+:root {
+    --azul-principal: #167d9a;
+    --azul-escuro: #0f5268;
+    --azul-claro: #e8f6fa;
+    --azul-suave: #cfeaf2;
+    --verde-suave: #dff3ed;
 
-            </div>
+    --texto-principal: #263238;
+    --texto-secundario: #64748b;
 
-            <div class="campo">
+    --borda: #d9e7ec;
+    --fundo: #f4f8fa;
+    --branco: #ffffff;
 
-                <label>
-                    Tipo sanguíneo
-                </label>
+    --erro: #dc3545;
+}
 
-                <select id="tipoSanguineo">
 
-                    <option value="">
-                        Selecione
-                    </option>
+/* =========================
+   BODY
+========================= */
 
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
+body {
+    margin: 0;
+    min-height: 100vh;
 
-                    <option value="Desconhecido">
-                        Desconhecido
-                    </option>
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-                </select>
+    background:
+        linear-gradient(
+            135deg,
+            #eef7fa,
+            #f7fbfc
+        );
 
-            </div>
+    padding: 45px 20px;
 
-            <div class="campo">
+    overflow-x: hidden;
 
-                <label>
-                    Situação vacinal
-                </label>
+    color: var(--texto-principal);
+}
 
-                <select id="vacinacao">
 
-                    <option value="">
-                        Selecione
-                    </option>
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
 
-                    <option value="Atualizada">
-                        Vacinação atualizada
-                    </option>
+.container {
+    width: 94%;
+    max-width: 1000px;
 
-                    <option value="Incompleta">
-                        Vacinação incompleta
-                    </option>
+    margin: 30px auto;
 
-                    <option value="Desconhecida">
-                        Não informado
-                    </option>
+    background: var(--branco);
 
-                </select>
+    padding: 38px;
 
-            </div>
+    border-radius: 20px;
 
-            <div class="campo campo-grande">
+    border: 1px solid var(--borda);
 
-                <label>
-                    Alergias
-                </label>
+    box-shadow:
+        0 15px 40px
+        rgba(15, 82, 104, 0.10);
+}
 
-                <textarea
-                    id="alergias"
-                    placeholder="Informe alergias conhecidas ou escreva 'Nenhuma conhecida'."
-                ></textarea>
 
-            </div>
+/* =========================
+   CABEÇALHO
+========================= */
 
-            <div class="campo campo-grande">
+.cabecalho {
+    text-align: left;
 
-                <label>
-                    Medicamentos em uso
-                </label>
+    margin-bottom: 28px;
 
-                <textarea
-                    id="medicamentos"
-                    placeholder="Informe medicamentos utilizados atualmente, se houver."
-                ></textarea>
+    padding-bottom: 22px;
 
-            </div>
+    border-bottom:
+        1px solid var(--borda);
+}
 
-            <div class="campo campo-grande">
+.cabecalho h1 {
+    margin: 0 0 7px;
 
-                <label>
-                    Doenças ou condições prévias
-                </label>
+    color: var(--azul-escuro);
 
-                <textarea
-                    id="condicoes"
-                    placeholder="Informe doenças, condições, cirurgias ou outros antecedentes relevantes."
-                ></textarea>
+    font-size: 28px;
 
-            </div>
+    font-weight: 700;
 
-            <div class="secao">
-                Contato e endereço
-            </div>
+    letter-spacing: -0.5px;
+}
 
-            <div class="campo campo-grande">
+.cabecalho p {
+    margin: 0;
 
-                <label>
-                    Endereço
-                </label>
+    color: var(--texto-secundario);
 
-                <input
-                    id="endereco"
-                    type="text"
-                    placeholder="Rua, número, bairro e cidade"
-                >
+    font-size: 14px;
+}
 
-            </div>
 
-            <div class="campo">
+/* =========================
+   IDENTIFICAÇÃO
+========================= */
 
-                <label>
-                    País do telefone *
-                </label>
+.identificacao {
+    display: flex;
 
-                <select id="paisTelefone">
+    align-items: center;
 
-                    <option value="55" data-digitos="11">
-                        Brasil (+55)
-                    </option>
+    gap: 15px;
 
-                    <option value="1" data-digitos="10">
-                        Estados Unidos (+1)
-                    </option>
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul-claro),
+            #f3fbfd
+        );
 
-                    <option value="1" data-digitos="10">
-                        Canadá (+1)
-                    </option>
+    border:
+        1px solid var(--azul-suave);
 
-                    <option value="351" data-digitos="9">
-                        Portugal (+351)
-                    </option>
+    border-radius: 16px;
 
-                    <option value="34" data-digitos="9">
-                        Espanha (+34)
-                    </option>
+    padding: 17px 20px;
 
-                    <option value="33" data-digitos="9">
-                        França (+33)
-                    </option>
+    margin-bottom: 28px;
+}
 
-                    <option value="44" data-digitos="10">
-                        Reino Unido (+44)
-                    </option>
+.identificacao-icone {
+    width: 46px;
+    height: 46px;
 
-                    <option value="49" data-digitos="10">
-                        Alemanha (+49)
-                    </option>
+    flex-shrink: 0;
 
-                    <option value="39" data-digitos="10">
-                        Itália (+39)
-                    </option>
+    border-radius: 14px;
 
-                    <option value="81" data-digitos="10">
-                        Japão (+81)
-                    </option>
+    background: var(--azul-principal);
 
-                    <option value="82" data-digitos="10">
-                        Coreia do Sul (+82)
-                    </option>
+    color: white;
 
-                    <option value="86" data-digitos="11">
-                        China (+86)
-                    </option>
+    display: flex;
 
-                    <option value="91" data-digitos="10">
-                        Índia (+91)
-                    </option>
+    align-items: center;
+    justify-content: center;
 
-                </select>
+    font-size: 20px;
 
-            </div>
+    box-shadow:
+        0 5px 12px
+        rgba(22, 125, 154, 0.18);
+}
 
-            <div class="campo">
+.identificacao h2 {
+    margin: 0;
 
-                <label>
-                    Telefone *
-                </label>
+    color: var(--azul-escuro);
 
-                <div class="telefone-container">
+    font-size: 17px;
 
-                    <div
-                        class="codigo-pais"
-                        id="codigoPais"
-                    >
-                        +55
-                    </div>
+    font-weight: 700;
+}
 
-                    <input
-                        id="telefone"
-                        type="tel"
-                        inputmode="numeric"
-                        placeholder="(00) 00000-0000"
-                        required
-                    >
+.identificacao p {
+    margin: 5px 0 0;
 
-                </div>
+    color: var(--texto-secundario);
 
-                <span
-                    id="ajudaTelefone"
-                    class="ajuda"
-                >
-                    Digite 11 números.
-                </span>
+    font-size: 13px;
+}
 
-                <span
-                    id="erroTelefone"
-                    class="mensagem-erro"
-                >
-                    Número de telefone incompleto.
-                </span>
 
-            </div>
+/* =========================
+   FORMULÁRIO
+========================= */
 
-            <div class="campo">
+.formulario {
+    display: grid;
 
-                <label>
-                    E-mail
-                </label>
+    grid-template-columns:
+        1fr 1fr;
 
-                <input
-                    id="email"
-                    type="email"
-                    placeholder="paciente@email.com"
-                >
+    gap: 18px;
+}
 
-            </div>
 
-            <div class="campo">
+/* =========================
+   TÍTULOS DAS SEÇÕES
+========================= */
 
-                <label>
-                    Contato de emergência *
-                </label>
+.secao {
+    grid-column: 1 / -1;
 
-                <input
-                    id="contatoEmergencia"
-                    type="text"
-                    placeholder="Nome do contato"
-                    required
-                >
+    margin-top: 15px;
 
-            </div>
+    color: var(--azul-escuro);
 
-            <div class="campo">
+    font-size: 15px;
 
-                <label>
-                    Tipo de atendimento *
-                </label>
+    font-weight: 700;
 
-                <select id="tipo" required>
+    padding:
+        12px 0;
 
-                    <option value="">
-                        Selecione
-                    </option>
+    border-bottom:
+        2px solid var(--azul-suave);
 
-                    <option value="Convenio">
-                        Convênio
-                    </option>
+    display: flex;
 
-                    <option value="Particular">
-                        Particular
-                    </option>
+    align-items: center;
 
-                </select>
+    gap: 8px;
+}
 
-            </div>
 
-            <div class="secao">
-                Informações complementares
-            </div>
+/* =========================
+   CAMPOS
+========================= */
 
-            <div class="campo campo-grande">
+.campo {
+    display: flex;
 
-                <label>
-                    Foto do paciente
-                </label>
+    flex-direction: column;
 
-                <input
-                    type="file"
-                    id="foto"
-                    accept="image/*"
-                >
+    gap: 7px;
+}
 
-            </div>
+.campo-grande {
+    grid-column: 1 / -1;
+}
 
-            <div class="aviso">
 
-                <span>⚠</span>
+/* =========================
+   LABELS
+========================= */
 
-                <div>
+.campo label {
+    color: #455a64;
 
-                    <strong>
-                        Confira os dados antes de continuar.
-                    </strong>
+    font-size: 13px;
 
-                    <br>
+    font-weight: 600;
+}
 
-                    As informações preenchidas serão encaminhadas
-                    para a próxima etapa do atendimento e triagem.
 
-                </div>
+/* =========================
+   INPUTS
+========================= */
 
-            </div>
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
 
-            <div class="acoes">
+    padding: 13px 14px;
 
-                <button type="submit" id="btnEnviar">
-                    Enviar para triagem
-                </button>
+    border-radius: 10px;
 
-            </div>
+    border:
+        1px solid var(--borda);
 
-        </form>
+    background: #fbfdfe;
 
-        <p class="rodape">
-            Atendimento pediátrico com segurança e cuidado.
-        </p>
+    font-size: 14px;
 
-    </div>
+    color: var(--texto-principal);
 
-    <script>
+    outline: none;
 
-        /* =========================
-           CPF
-        ========================= */
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
 
-        const cpf = document.getElementById("cpf");
-        const erroCpf = document.getElementById("erroCpf");
 
-        cpf.addEventListener("input", function () {
+/* PLACEHOLDER */
 
-            let numeros = this.value.replace(/\D/g, "");
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #9aa9b0;
+}
 
-            numeros = numeros.substring(0, 11);
 
-            if (numeros.length > 9) {
+/* FOCUS */
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d{3})(\d{1})/,
-                    "$1.$2.$3-$4"
-                );
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color:
+        var(--azul-principal);
 
-            } else if (numeros.length > 6) {
+    background:
+        var(--branco);
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d+)/,
-                    "$1.$2.$3"
-                );
+    box-shadow:
+        0 0 0 3px
+        rgba(22, 125, 154, 0.10);
+}
 
-            } else if (numeros.length > 3) {
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d+)/,
-                    "$1.$2"
-                );
+/* TEXTAREA */
 
-            } else {
+.campo textarea {
+    min-height: 100px;
 
-                this.value = numeros;
-            }
+    resize: vertical;
+}
 
-            if (
-                numeros.length > 0 &&
-                numeros.length !== 11
-            ) {
 
-                cpf.classList.add("campo-erro");
-                erroCpf.classList.add("ativo");
+/* =========================
+   SELECT
+========================= */
 
-            } else {
+.campo select {
+    cursor: pointer;
+}
 
-                cpf.classList.remove("campo-erro");
-                erroCpf.classList.remove("ativo");
-            }
 
-        });
+/* =========================
+   TELEFONE
+========================= */
 
+.telefone-container {
+    display: flex;
 
-        /* =========================
-           RG
-        ========================= */
+    align-items: center;
 
-        const rg = document.getElementById("
-```
+    gap: 10px;
+}
+
+.telefone-container select {
+    width: 145px;
+
+    flex-shrink: 0;
+}
+
+.telefone-container input {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.codigo-pais {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 55px;
+
+    height: 46px;
+
+    padding:
+        0 10px;
+
+    border-radius: 10px;
+
+    background:
+        var(--azul-claro);
+
+    border:
+        1px solid var(--azul-suave);
+
+    color:
+        var(--azul-escuro);
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   TEXTOS DE AJUDA
+========================= */
+
+.ajuda {
+    color: var(--texto-secundario);
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================
+   ERROS
+========================= */
+
+.campo-erro {
+    border-color:
+        var(--erro) !important;
+
+    background:
+        #fff8f8 !important;
+}
+
+.mensagem-erro {
+    display: none;
+
+    color:
+        var(--erro);
+
+    font-size: 11px;
+
+    margin-top: -2px;
+}
+
+.mensagem-erro.ativo {
+    display: block;
+}
+
+
+/* =========================
+   INPUT FILE
+========================= */
+
+input[type="file"] {
+    padding: 11px !important;
+
+    cursor: pointer;
+
+    background:
+        #f8fbfc !important;
+}
+
+
+/* =========================
+   AVISO
+========================= */
+
+.aviso {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    gap: 13px;
+
+    align-items: flex-start;
+
+    background:
+        #fff9e8;
+
+    border:
+        1px solid #f2df9a;
+
+    border-left:
+        4px solid #e7b93e;
+
+    border-radius: 12px;
+
+    padding: 16px;
+
+    color: #665326;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-top: 10px;
+}
+
+.aviso span {
+    font-size: 20px;
+}
+
+
+/* =========================
+   AÇÕES
+========================= */
+
+.acoes {
+    grid-column: 1 / -1;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul-principal),
+            var(--azul-escuro)
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 6px 15px
+        rgba(15, 82, 104, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 20px
+        rgba(15, 82, 104, 0.22);
+}
+
+button:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+    text-align: center;
+
+    margin-top: 24px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid var(--borda);
+
+    color:
+        var(--texto-secundario);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding:
+            20px 10px;
+    }
+
+    .container {
+        width: 96%;
+
+        margin: 15px auto;
+
+        padding:
+            25px 18px;
+
+        border-radius: 16px;
+    }
+
+    .formulario {
+        grid-template-columns:
+            1fr;
+    }
+
+    .campo-grande,
+    .secao,
+    .aviso,
+    .acoes {
+        grid-column: auto;
+    }
+
+    .cabecalho h1 {
+        font-size: 23px;
+    }
+
+    .telefone-container {
+        flex-wrap: wrap;
+    }
+
+    .telefone-container input {
+        min-width: 150px;
+    }
+
+    .identificacao {
+        align-items: flex-start;
+    }
+
+}

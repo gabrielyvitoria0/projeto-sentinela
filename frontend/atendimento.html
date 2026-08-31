@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,1562 +6,646 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Atendimento Pediátrico | Sentinela</title>
-
-    <!-- FONTES -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-
+    <title>Sentinela - Atendimento</title>
 
     <style>
-
-        /* =========================
-           RESET E CONFIGURAÇÕES
-        ========================= */
-
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --rosa-principal: #d987a6;
-            --rosa-escuro: #b85f82;
-            --rosa-medio: #efc9d8;
-            --rosa-claro: #fff1f5;
-            --rosa-fundo: #fff8fa;
-
-            --texto-principal: #40343a;
-            --texto-secundario: #89737c;
-
-            --borda: #f0dce4;
-            --branco: #ffffff;
-
-            --erro: #dc5268;
-        }
-
-
-        /* =========================
-           BODY
-        ========================= */
-
         body {
-            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef1f5;
             min-height: 100vh;
-
-            font-family: "Nunito Sans", sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at top left,
-                    #ffeaf1,
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #fff7f9,
-                    #fffafb
-                );
-
-            padding: 45px 20px;
-
-            overflow-x: hidden;
-
-            color: var(--texto-principal);
         }
 
-
-        /* =========================
-           CONTAINER
-        ========================= */
-
-        .container {
-            width: 94%;
-            max-width: 1000px;
-
-            margin: 30px auto;
-
-            background: rgba(255, 255, 255, 0.92);
-
-            padding: 40px;
-
-            border-radius: 24px;
-
-            border: 1px solid var(--borda);
-
-            box-shadow:
-                0 20px 50px
-                rgba(180, 100, 130, 0.12);
+        .topo {
+            height: 70px;
+            background: #17202a;
+            display: flex;
+            align-items: center;
+            padding: 0 45px;
+            color: white;
         }
 
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
 
-        /* =========================
-           CABEÇALHO
-        ========================= */
+        .logo span {
+            color: #e63946;
+        }
+
+        .topo-texto {
+            margin-left: 30px;
+            color: #aeb6bf;
+            font-size: 14px;
+        }
+
+        .conteudo {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 25px;
+        }
 
         .cabecalho {
-            text-align: left;
-
-            margin-bottom: 30px;
-
-            padding-bottom: 22px;
-
-            border-bottom: 1px solid var(--borda);
+            margin-bottom: 25px;
         }
 
         .cabecalho h1 {
-            margin: 0 0 6px;
-
-            font-family: "Quicksand", sans-serif;
-
-            color: var(--rosa-escuro);
-
             font-size: 30px;
-
-            font-weight: 700;
-
-            letter-spacing: -0.8px;
+            color: #17202a;
+            margin-bottom: 7px;
         }
 
         .cabecalho p {
-            margin: 0;
-
-            color: var(--texto-secundario);
-
+            color: #6b7280;
             font-size: 14px;
-
-            font-weight: 500;
         }
 
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
 
-        /* =========================
-           IDENTIFICAÇÃO
-        ========================= */
-
-        .identificacao {
+        .titulo-card {
             display: flex;
-
             align-items: center;
-
-            gap: 16px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #fff1f5,
-                    #fff9fb
-                );
-
-            border: 1px solid var(--rosa-medio);
-
-            border-radius: 18px;
-
-            padding: 18px 20px;
-
+            gap: 12px;
             margin-bottom: 30px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .identificacao-icone {
-            width: 48px;
-            height: 48px;
-
-            flex-shrink: 0;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #e6a0b8,
-                    #cf7899
-                );
-
+        .icone {
+            width: 42px;
+            height: 42px;
+            background: #fee2e2;
+            color: #dc2626;
+            border-radius: 10px;
             display: flex;
-
             align-items: center;
             justify-content: center;
-
-            font-size: 21px;
-
-            box-shadow:
-                0 7px 15px
-                rgba(207, 120, 153, 0.18);
+            font-size: 20px;
         }
 
-        .identificacao h2 {
-            margin: 0;
-
-            font-family: "Quicksand", sans-serif;
-
-            color: var(--rosa-escuro);
-
-            font-size: 18px;
-
-            font-weight: 700;
+        .titulo-card h2 {
+            color: #17202a;
+            font-size: 19px;
         }
 
-        .identificacao p {
-            margin: 5px 0 0;
-
-            color: var(--texto-secundario);
-
-            font-size: 13px;
+        .titulo-card p {
+            color: #9ca3af;
+            font-size: 12px;
+            margin-top: 3px;
         }
-
-
-        /* =========================
-           FORMULÁRIO
-        ========================= */
 
         .formulario {
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
-            gap: 19px;
+            gap: 20px;
         }
-
-
-        /* =========================
-           SEÇÕES
-        ========================= */
-
-        .secao {
-            grid-column: 1 / -1;
-
-            margin-top: 16px;
-
-            color: var(--rosa-escuro);
-
-            font-family: "Quicksand", sans-serif;
-
-            font-size: 15px;
-
-            font-weight: 700;
-
-            padding: 13px 0;
-
-            border-bottom:
-                2px solid var(--rosa-medio);
-
-            letter-spacing: 0.1px;
-        }
-
-
-        /* =========================
-           CAMPOS
-        ========================= */
 
         .campo {
             display: flex;
-
             flex-direction: column;
-
             gap: 7px;
+        }
+
+        .campo label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .campo input,
+        .campo select {
+            width: 100%;
+            height: 45px;
+            padding: 0 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            background: #f9fafb;
+            outline: none;
+            font-size: 14px;
+            color: #374151;
+            transition: 0.2s;
+        }
+
+        .campo input:focus,
+        .campo select:focus {
+            background: white;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .campo input[type="file"] {
+            padding: 10px;
         }
 
         .campo-grande {
             grid-column: 1 / -1;
         }
 
-
-        /* =========================
-           LABELS
-        ========================= */
-
-        .campo label {
-            color: #6f5962;
-
-            font-size: 13px;
-
-            font-weight: 700;
-        }
-
-
-        /* =========================
-           INPUTS
-        ========================= */
-
-        .campo input,
-        .campo select,
-        .campo textarea {
-            width: 100%;
-
-            padding: 14px 15px;
-
-            border-radius: 12px;
-
-            border: 1px solid var(--borda);
-
-            background: #fffafb;
-
-            font-family: "Nunito Sans", sans-serif;
-
-            font-size: 14px;
-
-            color: var(--texto-principal);
-
-            outline: none;
-
-            transition:
-                border 0.25s ease,
-                box-shadow 0.25s ease,
-                transform 0.25s ease;
-        }
-
-        .campo input::placeholder,
-        .campo textarea::placeholder {
-            color: #bda7b0;
-        }
-
-        .campo input:focus,
-        .campo select:focus,
-        .campo textarea:focus {
-            border-color: var(--rosa-principal);
-
-            background: white;
-
-            box-shadow:
-                0 0 0 4px
-                rgba(217, 135, 166, 0.12);
-        }
-
-        .campo textarea {
-            min-height: 105px;
-
-            resize: vertical;
-        }
-
-        .campo select {
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           TELEFONE
-        ========================= */
-
-        .telefone-container {
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-        }
-
-        .telefone-container input {
-            flex: 1;
-
-            min-width: 0;
-        }
-
-        .codigo-pais {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-width: 58px;
-
-            height: 48px;
-
-            padding: 0 12px;
-
-            border-radius: 12px;
-
-            background: var(--rosa-claro);
-
-            border: 1px solid var(--rosa-medio);
-
-            color: var(--rosa-escuro);
-
-            font-weight: 800;
-        }
-
-
-        /* =========================
-           AJUDA E ERROS
-        ========================= */
-
-        .ajuda {
-            color: var(--texto-secundario);
-
-            font-size: 11px;
-
-            margin-top: 2px;
-        }
-
-        .campo-erro {
-            border-color: var(--erro) !important;
-
-            background: #fff7f8 !important;
-        }
-
-        .mensagem-erro {
-            display: none;
-
-            color: var(--erro);
-
-            font-size: 11px;
-
-            font-weight: 600;
-
-            margin-top: -2px;
-        }
-
-        .mensagem-erro.ativo {
-            display: block;
-        }
-
-
-        /* =========================
-           FOTO
-        ========================= */
-
-        input[type="file"] {
-            padding: 12px !important;
-
-            cursor: pointer;
-
-            background: var(--rosa-fundo) !important;
-        }
-
-
-        /* =========================
-           AVISO
-        ========================= */
-
-        .aviso {
-            grid-column: 1 / -1;
-
-            display: flex;
-
-            gap: 13px;
-
-            align-items: flex-start;
-
-            background: #fff7e8;
-
-            border: 1px solid #f1dba0;
-
-            border-left: 4px solid #d5a73d;
-
-            border-radius: 14px;
-
-            padding: 17px;
-
-            color: #715b2c;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-
-            margin-top: 12px;
-        }
-
-        .aviso span {
-            font-size: 20px;
-        }
-
-
-        /* =========================
-           BOTÃO
-        ========================= */
-
         .acoes {
             grid-column: 1 / -1;
-
+            display: flex;
+            justify-content: flex-end;
             margin-top: 10px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e7eb;
         }
 
         button {
-            width: 100%;
-
-            padding: 16px;
-
-            border: none;
-
-            border-radius: 13px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #df91ae,
-                    #bd6688
-                );
-
+            background: #dc2626;
             color: white;
-
-            font-family: "Nunito Sans", sans-serif;
-
-            font-size: 15px;
-
-            font-weight: 800;
-
+            border: none;
+            border-radius: 7px;
+            padding: 13px 28px;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
-
-            letter-spacing: 0.2px;
-
-            box-shadow:
-                0 8px 18px
-                rgba(190, 102, 136, 0.20);
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
+            transition: 0.2s;
         }
 
         button:hover {
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 12px 25px
-                rgba(190, 102, 136, 0.28);
+            background: #b91c1c;
+            transform: translateY(-1px);
         }
 
-        button:active {
-            transform: translateY(0);
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
         }
-
-
-        /* =========================
-           RODAPÉ
-        ========================= */
-
-        .rodape {
-            text-align: center;
-
-            margin-top: 25px;
-
-            padding-top: 20px;
-
-            border-top: 1px solid var(--borda);
-
-            color: var(--texto-secundario);
-
-            font-size: 12px;
-
-            font-weight: 500;
-        }
-
-
-        /* =========================
-           RESPONSIVIDADE
-        ========================= */
 
         @media (max-width: 700px) {
 
-            body {
-                padding: 20px 10px;
+            .topo {
+                padding: 0 20px;
             }
 
-            .container {
-                width: 96%;
+            .topo-texto {
+                display: none;
+            }
 
-                margin: 15px auto;
+            .conteudo {
+                margin: 25px auto;
+            }
 
-                padding: 25px 18px;
-
-                border-radius: 18px;
+            .card {
+                padding: 25px;
             }
 
             .formulario {
                 grid-template-columns: 1fr;
             }
 
-            .campo-grande,
-            .secao,
-            .aviso,
-            .acoes {
+            .campo-grande {
                 grid-column: auto;
             }
 
-            .cabecalho h1 {
-                font-size: 24px;
-            }
-
-            .telefone-container {
-                flex-wrap: wrap;
-            }
-
-            .telefone-container input {
-                min-width: 150px;
-            }
-
-            .identificacao {
-                align-items: flex-start;
+            .acoes {
+                grid-column: auto;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-    <div class="container">
+    <header class="topo">
+        <div class="logo">
+            Senti<span>nela</span>
+        </div>
 
-        <!-- CABEÇALHO -->
+        <div class="topo-texto">
+            Sistema de prevenção e segurança hospitalar
+        </div>
+    </header>
+
+
+    <main class="conteudo">
 
         <div class="cabecalho">
-
-            <h1>Atendimento Pediátrico</h1>
+            <h1>Atendimento</h1>
 
             <p>
-                Cadastro e informações para atendimento e triagem do paciente.
+                Cadastre as informações do paciente para iniciar o atendimento.
             </p>
-
         </div>
 
 
-        <!-- IDENTIFICAÇÃO -->
+        <section class="card">
 
-        <div class="identificacao">
+            <div class="titulo-card">
 
-            <div class="identificacao-icone">
-                🧸
-            </div>
+                <div class="icone">
+                    +
+                </div>
 
-            <div>
+                <div>
+                    <h2>Dados do paciente</h2>
 
-                <h2>Dados do paciente</h2>
-
-                <p>
-                    Preencha as informações necessárias para iniciar o atendimento.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <form
-            class="formulario"
-            id="formulario"
-            onsubmit="cadastrar(event)"
-        >
-
-
-            <!-- DADOS PESSOAIS -->
-
-            <div class="secao">
-                Informações pessoais
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Nome completo *</label>
-
-                <input
-                    id="nome"
-                    type="text"
-                    placeholder="Nome completo do paciente"
-                    required
-                >
+                    <p>
+                        Preencha todas as informações necessárias
+                    </p>
+                </div>
 
             </div>
 
 
-            <div class="campo">
+            <form class="formulario" onsubmit="cadastrar(event)">
 
-                <label>CPF *</label>
+                <div class="campo campo-grande">
 
-                <input
-                    id="cpf"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="14"
-                    placeholder="000.000.000-00"
-                    required
-                >
-
-                <span
-                    id="erroCpf"
-                    class="mensagem-erro"
-                >
-                    O CPF deve possuir 11 números.
-                </span>
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>RG</label>
-
-                <input
-                    id="rg"
-                    type="text"
-                    maxlength="14"
-                    placeholder="Digite o RG"
-                >
-
-                <span class="ajuda">
-                    Máximo de 14 caracteres.
-                </span>
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Data de nascimento *</label>
-
-                <input
-                    id="dataNascimento"
-                    type="date"
-                    required
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Sexo *</label>
-
-                <select id="sexo" required>
-
-                    <option value="">Selecione</option>
-
-                    <option value="Feminino">
-                        Feminino
-                    </option>
-
-                    <option value="Masculino">
-                        Masculino
-                    </option>
-
-                    <option value="Outro">
-                        Outro
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- RESPONSÁVEL -->
-
-            <div class="secao">
-                Responsável e vínculo familiar
-            </div>
-
-
-            <div class="campo">
-
-                <label>Nome da mãe</label>
-
-                <input
-                    id="nomeMae"
-                    type="text"
-                    placeholder="Nome completo da mãe"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Nome do responsável legal</label>
-
-                <input
-                    id="responsavel"
-                    type="text"
-                    placeholder="Nome do responsável"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Grau de parentesco</label>
-
-                <select id="parentesco">
-
-                    <option value="">Selecione</option>
-
-                    <option value="Mae">Mãe</option>
-
-                    <option value="Pai">Pai</option>
-
-                    <option value="Avo">Avó / Avô</option>
-
-                    <option value="Tutor">Tutor legal</option>
-
-                    <option value="Outro">Outro</option>
-
-                </select>
-
-            </div>
-
-
-            <!-- DADOS PEDIÁTRICOS -->
-
-            <div class="secao">
-                Informações pediátricas
-            </div>
-
-
-            <div class="campo">
-
-                <label>Peso (kg)</label>
-
-                <input
-                    id="peso"
-                    type="number"
-                    min="0"
-                    max="300"
-                    step="0.1"
-                    placeholder="Ex.: 25,5"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Altura (cm)</label>
-
-                <input
-                    id="altura"
-                    type="number"
-                    min="0"
-                    max="250"
-                    step="0.1"
-                    placeholder="Ex.: 125"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Tipo sanguíneo</label>
-
-                <select id="tipoSanguineo">
-
-                    <option value="">Selecione</option>
-
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-
-                    <option value="Desconhecido">
-                        Desconhecido
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Situação vacinal</label>
-
-                <select id="vacinacao">
-
-                    <option value="">Selecione</option>
-
-                    <option value="Atualizada">
-                        Vacinação atualizada
-                    </option>
-
-                    <option value="Incompleta">
-                        Vacinação incompleta
-                    </option>
-
-                    <option value="Desconhecida">
-                        Não informado
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Alergias</label>
-
-                <textarea
-                    id="alergias"
-                    placeholder="Informe alergias conhecidas ou escreva 'Nenhuma conhecida'."
-                ></textarea>
-
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Medicamentos em uso</label>
-
-                <textarea
-                    id="medicamentos"
-                    placeholder="Informe medicamentos utilizados atualmente, se houver."
-                ></textarea>
-
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Doenças ou condições prévias</label>
-
-                <textarea
-                    id="condicoes"
-                    placeholder="Informe doenças, condições, cirurgias ou outros antecedentes relevantes."
-                ></textarea>
-
-            </div>
-
-
-            <!-- CONTATO -->
-
-            <div class="secao">
-                Contato e endereço
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Endereço</label>
-
-                <input
-                    id="endereco"
-                    type="text"
-                    placeholder="Rua, número, bairro e cidade"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>País do telefone *</label>
-
-                <select id="paisTelefone">
-
-                    <option value="55" data-digitos="11">
-                        Brasil (+55)
-                    </option>
-
-                    <option value="1" data-digitos="10">
-                        Estados Unidos (+1)
-                    </option>
-
-                    <option value="1" data-digitos="10">
-                        Canadá (+1)
-                    </option>
-
-                    <option value="351" data-digitos="9">
-                        Portugal (+351)
-                    </option>
-
-                    <option value="34" data-digitos="9">
-                        Espanha (+34)
-                    </option>
-
-                    <option value="33" data-digitos="9">
-                        França (+33)
-                    </option>
-
-                    <option value="44" data-digitos="10">
-                        Reino Unido (+44)
-                    </option>
-
-                    <option value="49" data-digitos="10">
-                        Alemanha (+49)
-                    </option>
-
-                    <option value="39" data-digitos="10">
-                        Itália (+39)
-                    </option>
-
-                    <option value="81" data-digitos="10">
-                        Japão (+81)
-                    </option>
-
-                    <option value="82" data-digitos="10">
-                        Coreia do Sul (+82)
-                    </option>
-
-                    <option value="86" data-digitos="11">
-                        China (+86)
-                    </option>
-
-                    <option value="91" data-digitos="10">
-                        Índia (+91)
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Telefone *</label>
-
-                <div class="telefone-container">
-
-                    <div
-                        class="codigo-pais"
-                        id="codigoPais"
-                    >
-                        +55
-                    </div>
+                    <label>Nome completo</label>
 
                     <input
-                        id="telefone"
-                        type="tel"
-                        inputmode="numeric"
-                        placeholder="(00) 00000-0000"
+                        id="nome"
+                        type="text"
+                        placeholder="Digite o nome completo"
                         required
                     >
 
                 </div>
 
-                <span
-                    id="ajudaTelefone"
-                    class="ajuda"
-                >
-                    Digite 11 números.
-                </span>
 
-                <span
-                    id="erroTelefone"
-                    class="mensagem-erro"
-                >
-                    Número de telefone incompleto.
-                </span>
+                <div class="campo">
 
-            </div>
+                    <label>CPF</label>
 
-
-            <div class="campo">
-
-                <label>E-mail</label>
-
-                <input
-                    id="email"
-                    type="email"
-                    placeholder="paciente@email.com"
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Contato de emergência *</label>
-
-                <input
-                    id="contatoEmergencia"
-                    type="text"
-                    placeholder="Nome do contato"
-                    required
-                >
-
-            </div>
-
-
-            <div class="campo">
-
-                <label>Tipo de atendimento *</label>
-
-                <select id="tipo" required>
-
-                    <option value="">Selecione</option>
-
-                    <option value="Convenio">
-                        Convênio
-                    </option>
-
-                    <option value="Particular">
-                        Particular
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- COMPLEMENTARES -->
-
-            <div class="secao">
-                Informações complementares
-            </div>
-
-
-            <div class="campo campo-grande">
-
-                <label>Foto do paciente</label>
-
-                <input
-                    type="file"
-                    id="foto"
-                    accept="image/*"
-                >
-
-            </div>
-
-
-            <!-- AVISO -->
-
-            <div class="aviso">
-
-                <span>⚠</span>
-
-                <div>
-
-                    <strong>
-                        Confira os dados antes de continuar.
-                    </strong>
-
-                    <br>
-
-                    As informações preenchidas serão encaminhadas
-                    para a próxima etapa do atendimento e triagem.
+                    <input
+                        id="cpf"
+                        type="text"
+                        placeholder="000.000.000-00"
+                        maxlength="14"
+                        required
+                    >
 
                 </div>
 
-            </div>
+
+                <div class="campo">
+
+                    <label>Data de nascimento</label>
+
+                    <input
+                        id="dataNascimento"
+                        type="date"
+                    >
+
+                </div>
 
 
-            <!-- BOTÃO -->
+                <div class="campo">
 
-            <div class="acoes">
+                    <label>Sexo</label>
 
-                <button type="submit">
-                    Enviar para triagem
-                </button>
+                    <select id="sexo">
 
-            </div>
+                        <option value="">
+                            Selecione
+                        </option>
 
-        </form>
+                        <option value="Feminino">
+                            Feminino
+                        </option>
+
+                        <option value="Masculino">
+                            Masculino
+                        </option>
+
+                        <option value="Outro">
+                            Outro
+                        </option>
+
+                    </select>
+
+                </div>
 
 
-        <p class="rodape">
-            Atendimento pediátrico com segurança e cuidado.
-        </p>
+                <div class="campo">
 
-    </div>
+                    <label>Nome da mãe</label>
+
+                    <input
+                        id="nomeMae"
+                        type="text"
+                        placeholder="Digite o nome da mãe"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Estado civil</label>
+
+                    <input
+                        id="estadoCivil"
+                        type="text"
+                        placeholder="Estado civil"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Endereço</label>
+
+                    <input
+                        id="endereco"
+                        type="text"
+                        placeholder="Digite o endereço"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Telefone</label>
+
+                    <input
+                        id="telefone"
+                        type="text"
+                        placeholder="(00) 00000-0000"
+                        maxlength="15"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>E-mail</label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="paciente@email.com"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Contato de emergência</label>
+
+                    <input
+                        id="contatoEmergencia"
+                        type="text"
+                        placeholder="Nome e telefone"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Tipo de atendimento</label>
+
+                    <select id="tipo" required>
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Convenio">
+                            Convênio
+                        </option>
+
+                        <option value="Particular">
+                            Particular
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>Foto do paciente</label>
+
+                    <input
+                        type="file"
+                        id="foto"
+                        accept="image/*"
+                    >
+
+                </div>
+
+
+                <div class="acoes">
+
+                    <button
+                        id="btnEnviar"
+                        type="submit"
+                    >
+                        Enviar para triagem
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
 
 
     <script>
 
-        /* =========================
-           CPF
-        ========================= */
+        // MÁSCARA CPF
+        document.getElementById("cpf").addEventListener("input", function () {
 
-        const cpf = document.getElementById("cpf");
-        const erroCpf = document.getElementById("erroCpf");
+            let valor = this.value.replace(/\D/g, "");
 
-        cpf.addEventListener("input", function () {
+            valor = valor.substring(0, 11);
 
-            let numeros = this.value.replace(/\D/g, "");
+            if (valor.length > 9) {
 
-            numeros = numeros.substring(0, 11);
-
-            if (numeros.length > 9) {
-
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d{3})(\d{1})/,
+                valor = valor.replace(
+                    /(\d{3})(\d{3})(\d{3})(\d{0,2})/,
                     "$1.$2.$3-$4"
                 );
 
-            } else if (numeros.length > 6) {
+            } else if (valor.length > 6) {
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d+)/,
+                valor = valor.replace(
+                    /(\d{3})(\d{3})(\d{0,3})/,
                     "$1.$2.$3"
                 );
 
-            } else if (numeros.length > 3) {
+            } else if (valor.length > 3) {
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d+)/,
+                valor = valor.replace(
+                    /(\d{3})(\d{0,3})/,
                     "$1.$2"
                 );
 
-            } else {
-
-                this.value = numeros;
             }
 
-
-            if (
-                numeros.length > 0 &&
-                numeros.length !== 11
-            ) {
-
-                cpf.classList.add("campo-erro");
-                erroCpf.classList.add("ativo");
-
-            } else {
-
-                cpf.classList.remove("campo-erro");
-                erroCpf.classList.remove("ativo");
-            }
+            this.value = valor;
 
         });
 
 
-        /* =========================
-           RG
-        ========================= */
+        // MÁSCARA TELEFONE
+        document.getElementById("telefone").addEventListener("input", function () {
 
-        const rg = document.getElementById("rg");
+            let valor = this.value.replace(/\D/g, "");
 
-        rg.addEventListener("input", function () {
+            valor = valor.substring(0, 11);
 
-            this.value = this.value
-                .replace(/[^a-zA-Z0-9.-]/g, "")
-                .substring(0, 14);
+            if (valor.length > 10) {
+
+                valor = valor.replace(
+                    /(\d{2})(\d{5})(\d{4})/,
+                    "($1) $2-$3"
+                );
+
+            } else if (valor.length > 6) {
+
+                valor = valor.replace(
+                    /(\d{2})(\d{4})(\d{0,4})/,
+                    "($1) $2-$3"
+                );
+
+            } else if (valor.length > 2) {
+
+                valor = valor.replace(
+                    /(\d{2})(\d{0,5})/,
+                    "($1) $2"
+                );
+
+            }
+
+            this.value = valor;
 
         });
 
 
-        /* =========================
-           TELEFONE
-        ========================= */
-
-        const paisTelefone =
-            document.getElementById("paisTelefone");
-
-        const telefone =
-            document.getElementById("telefone");
-
-        const codigoPais =
-            document.getElementById("codigoPais");
-
-        const ajudaTelefone =
-            document.getElementById("ajudaTelefone");
-
-        const erroTelefone =
-            document.getElementById("erroTelefone");
-
-
-        function atualizarPais() {
-
-            const opcao =
-                paisTelefone.options[
-                    paisTelefone.selectedIndex
-                ];
-
-            const codigo = opcao.value;
-
-            const digitos =
-                Number(opcao.dataset.digitos);
-
-            codigoPais.textContent =
-                "+" + codigo;
-
-            ajudaTelefone.textContent =
-                "Digite " +
-                digitos +
-                " números.";
-
-            telefone.value = "";
-
-            telefone.maxLength =
-                digitos + 6;
-
-            telefone.classList.remove(
-                "campo-erro"
-            );
-
-            erroTelefone.classList.remove(
-                "ativo"
-            );
-        }
-
-
-        paisTelefone.addEventListener(
-            "change",
-            atualizarPais
-        );
-
-
-        telefone.addEventListener(
-            "input",
-            function () {
-
-                let numeros =
-                    this.value.replace(/\D/g, "");
-
-                const opcao =
-                    paisTelefone.options[
-                        paisTelefone.selectedIndex
-                    ];
-
-                const limite =
-                    Number(opcao.dataset.digitos);
-
-                numeros =
-                    numeros.substring(
-                        0,
-                        limite
-                    );
-
-                this.value = numeros;
-
-
-                if (
-                    numeros.length > 0 &&
-                    numeros.length < limite
-                ) {
-
-                    telefone.classList.add(
-                        "campo-erro"
-                    );
-
-                    erroTelefone.classList.add(
-                        "ativo"
-                    );
-
-                } else {
-
-                    telefone.classList.remove(
-                        "campo-erro"
-                    );
-
-                    erroTelefone.classList.remove(
-                        "ativo"
-                    );
-                }
-
-            }
-        );
-
-
-        /* =========================
-           CADASTRO
-        ========================= */
-
-        function cadastrar(event) {
+        async function cadastrar(event) {
 
             event.preventDefault();
 
+            const botao = document.getElementById("btnEnviar");
 
-            const cpfNumeros =
-                cpf.value.replace(/\D/g, "");
+            botao.disabled = true;
 
-
-            const opcaoPais =
-                paisTelefone.options[
-                    paisTelefone.selectedIndex
-                ];
+            botao.textContent = "Enviando...";
 
 
-            const quantidadeTelefone =
-                Number(opcaoPais.dataset.digitos);
+            const paciente = {
+
+                nome: document.getElementById("nome").value.trim(),
+
+                cpf: document.getElementById("cpf").value.trim(),
+
+                dataNascimento:
+                    document.getElementById("dataNascimento").value,
+
+                sexo:
+                    document.getElementById("sexo").value,
+
+                nomeMae:
+                    document.getElementById("nomeMae").value.trim(),
+
+                estadoCivil:
+                    document.getElementById("estadoCivil").value.trim(),
+
+                endereco:
+                    document.getElementById("endereco").value.trim(),
+
+                telefone:
+                    document.getElementById("telefone").value.trim(),
+
+                email:
+                    document.getElementById("email").value.trim(),
+
+                contatoEmergencia:
+                    document.getElementById("contatoEmergencia").value.trim(),
+
+                tipo:
+                    document.getElementById("tipo").value
+
+            };
 
 
-            const telefoneNumeros =
-                telefone.value.replace(
-                    /\D/g,
-                    ""
-                );
+            try {
 
-
-            /* VALIDAR CPF */
-
-            if (cpfNumeros.length !== 11) {
-
-                alert(
-                    "O CPF precisa possuir exatamente 11 números."
-                );
-
-                cpf.focus();
-
-                return;
-            }
-
-
-            /* VALIDAR TELEFONE */
-
-            if (
-                telefoneNumeros.length !==
-                quantidadeTelefone
-            ) {
-
-                alert(
-                    "O telefone precisa possuir " +
-                    quantidadeTelefone +
-                    " números para o país selecionado."
-                );
-
-                telefone.focus();
-
-                return;
-            }
-
-
-            /* ENVIAR */
-
-            fetch(
-                "http://localhost:3000/atendimento",
-                {
+                /*
+                 * IMPORTANTE:
+                 * Antes estava usando:
+                 *
+                 * http://localhost:3000/atendimento
+                 *
+                 * Agora usamos a rota relativa.
+                 */
+                const response = await fetch("/atendimento", {
 
                     method: "POST",
 
                     headers: {
-                        "Content-Type":
-                            "application/json"
+                        "Content-Type": "application/json"
                     },
 
-                    body: JSON.stringify({
+                    body: JSON.stringify(paciente)
 
-                        nome:
-                            document
-                                .getElementById("nome")
-                                .value,
+                });
 
-                        cpf:
-                            cpfNumeros,
 
-                        rg:
-                            document
-                                .getElementById("rg")
-                                .value,
+                const data = await response.json();
 
-                        dataNascimento:
-                            document
-                                .getElementById("dataNascimento")
-                                .value,
-
-                        sexo:
-                            document
-                                .getElementById("sexo")
-                                .value,
-
-                        nomeMae:
-                            document
-                                .getElementById("nomeMae")
-                                .value,
-
-                        responsavel:
-                            document
-                                .getElementById("responsavel")
-                                .value,
-
-                        parentesco:
-                            document
-                                .getElementById("parentesco")
-                                .value,
-
-                        peso:
-                            document
-                                .getElementById("peso")
-                                .value,
-
-                        altura:
-                            document
-                                .getElementById("altura")
-                                .value,
-
-                        tipoSanguineo:
-                            document
-                                .getElementById("tipoSanguineo")
-                                .value,
-
-                        vacinacao:
-                            document
-                                .getElementById("vacinacao")
-                                .value,
-
-                        alergias:
-                            document
-                                .getElementById("alergias")
-                                .value,
-
-                        medicamentos:
-                            document
-                                .getElementById("medicamentos")
-                                .value,
-
-                        condicoes:
-                            document
-                                .getElementById("condicoes")
-                                .value,
-
-                        endereco:
-                            document
-                                .getElementById("endereco")
-                                .value,
-
-                        paisTelefone:
-                            codigoPais.textContent,
-
-                        telefone:
-                            telefoneNumeros,
-
-                        email:
-                            document
-                                .getElementById("email")
-                                .value,
-
-                        contatoEmergencia:
-                            document
-                                .getElementById("contatoEmergencia")
-                                .value,
-
-                        tipo:
-                            document
-                                .getElementById("tipo")
-                                .value
-
-                    })
-
-                }
-            )
-
-            .then(response => {
 
                 if (!response.ok) {
+
                     throw new Error(
-                        "Erro no servidor"
+                        data.erro || "Não foi possível cadastrar o paciente."
                     );
+
                 }
 
-                return response.json();
-
-            })
-
-            .then(data => {
-
-                console.log(data);
 
                 alert(
-                    "Paciente enviado para triagem!"
+                    "Paciente cadastrado com sucesso!\n\n" +
+                    "O paciente foi enviado para a fila da triagem."
                 );
 
-            })
 
-            .catch(error => {
+                document.querySelector("form").reset();
 
-                console.error(
-                    "Erro:",
-                    error
-                );
+
+                console.log("Paciente cadastrado:", data);
+
+
+            } catch (error) {
+
+                console.error("Erro:", error);
 
                 alert(
-                    "Não foi possível enviar o paciente. Verifique se o servidor está funcionando."
+                    "Erro ao enviar o atendimento.\n\n" +
+                    "Verifique se o servidor está funcionando."
                 );
 
-            });
+            } finally {
+
+                botao.disabled = false;
+
+                botao.textContent = "Enviar para triagem";
+
+            }
 
         }
 
@@ -1569,3 +654,4 @@
 </body>
 
 </html>
+```

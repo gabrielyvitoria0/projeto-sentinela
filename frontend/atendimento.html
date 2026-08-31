@@ -7,6 +7,13 @@
 
     <title>Atendimento Pediátrico | Sentinela</title>
 
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+
     <style>
 
         /* =========================
@@ -18,16 +25,19 @@
         }
 
         :root {
-            --azul-principal: #167d9a;
-            --azul-escuro: #0f5268;
-            --azul-claro: #e8f6fa;
-            --azul-suave: #cfeaf2;
-            --texto-principal: #263238;
-            --texto-secundario: #64748b;
-            --borda: #d9e7ec;
-            --fundo: #f4f8fa;
+            --rosa-principal: #d987a6;
+            --rosa-escuro: #b85f82;
+            --rosa-medio: #efc9d8;
+            --rosa-claro: #fff1f5;
+            --rosa-fundo: #fff8fa;
+
+            --texto-principal: #40343a;
+            --texto-secundario: #89737c;
+
+            --borda: #f0dce4;
             --branco: #ffffff;
-            --erro: #dc3545;
+
+            --erro: #dc5268;
         }
 
 
@@ -39,13 +49,19 @@
             margin: 0;
             min-height: 100vh;
 
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: "Nunito Sans", sans-serif;
 
-            background: linear-gradient(
-                135deg,
-                #eef7fa,
-                #f7fbfc
-            );
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #ffeaf1,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fff7f9,
+                    #fffafb
+                );
 
             padding: 45px 20px;
 
@@ -65,17 +81,17 @@
 
             margin: 30px auto;
 
-            background: var(--branco);
+            background: rgba(255, 255, 255, 0.92);
 
-            padding: 38px;
+            padding: 40px;
 
-            border-radius: 20px;
+            border-radius: 24px;
 
             border: 1px solid var(--borda);
 
             box-shadow:
-                0 15px 40px
-                rgba(15, 82, 104, 0.10);
+                0 20px 50px
+                rgba(180, 100, 130, 0.12);
         }
 
 
@@ -86,7 +102,7 @@
         .cabecalho {
             text-align: left;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
 
             padding-bottom: 22px;
 
@@ -94,15 +110,17 @@
         }
 
         .cabecalho h1 {
-            margin: 0 0 7px;
+            margin: 0 0 6px;
 
-            color: var(--azul-escuro);
+            font-family: "Quicksand", sans-serif;
 
-            font-size: 28px;
+            color: var(--rosa-escuro);
+
+            font-size: 30px;
 
             font-weight: 700;
 
-            letter-spacing: -0.5px;
+            letter-spacing: -0.8px;
         }
 
         .cabecalho p {
@@ -111,6 +129,8 @@
             color: var(--texto-secundario);
 
             font-size: 14px;
+
+            font-weight: 500;
         }
 
 
@@ -123,53 +143,59 @@
 
             align-items: center;
 
-            gap: 15px;
+            gap: 16px;
 
-            background: linear-gradient(
-                135deg,
-                var(--azul-claro),
-                #f3fbfd
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff1f5,
+                    #fff9fb
+                );
 
-            border: 1px solid var(--azul-suave);
+            border: 1px solid var(--rosa-medio);
 
-            border-radius: 16px;
+            border-radius: 18px;
 
-            padding: 17px 20px;
+            padding: 18px 20px;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
 
         .identificacao-icone {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
 
             flex-shrink: 0;
 
-            border-radius: 14px;
+            border-radius: 15px;
 
-            background: var(--azul-principal);
+            background:
+                linear-gradient(
+                    135deg,
+                    #e6a0b8,
+                    #cf7899
+                );
 
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            font-size: 20px;
-
-            color: white;
+            font-size: 21px;
 
             box-shadow:
-                0 5px 12px
-                rgba(22, 125, 154, 0.18);
+                0 7px 15px
+                rgba(207, 120, 153, 0.18);
         }
 
         .identificacao h2 {
             margin: 0;
 
-            color: var(--azul-escuro);
+            font-family: "Quicksand", sans-serif;
 
-            font-size: 17px;
+            color: var(--rosa-escuro);
+
+            font-size: 18px;
 
             font-weight: 700;
         }
@@ -192,7 +218,7 @@
 
             grid-template-columns: 1fr 1fr;
 
-            gap: 18px;
+            gap: 19px;
         }
 
 
@@ -203,17 +229,22 @@
         .secao {
             grid-column: 1 / -1;
 
-            margin-top: 15px;
+            margin-top: 16px;
 
-            color: var(--azul-escuro);
+            color: var(--rosa-escuro);
+
+            font-family: "Quicksand", sans-serif;
 
             font-size: 15px;
 
             font-weight: 700;
 
-            padding: 12px 0;
+            padding: 13px 0;
 
-            border-bottom: 2px solid var(--azul-suave);
+            border-bottom:
+                2px solid var(--rosa-medio);
+
+            letter-spacing: 0.1px;
         }
 
 
@@ -239,11 +270,11 @@
         ========================= */
 
         .campo label {
-            color: #455a64;
+            color: #6f5962;
 
             font-size: 13px;
 
-            font-weight: 600;
+            font-weight: 700;
         }
 
 
@@ -256,13 +287,15 @@
         .campo textarea {
             width: 100%;
 
-            padding: 13px 14px;
+            padding: 14px 15px;
 
-            border-radius: 10px;
+            border-radius: 12px;
 
             border: 1px solid var(--borda);
 
-            background: #fbfdfe;
+            background: #fffafb;
+
+            font-family: "Nunito Sans", sans-serif;
 
             font-size: 14px;
 
@@ -270,28 +303,31 @@
 
             outline: none;
 
-            transition: 0.2s ease;
+            transition:
+                border 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
         }
 
         .campo input::placeholder,
         .campo textarea::placeholder {
-            color: #9aa9b0;
+            color: #bda7b0;
         }
 
         .campo input:focus,
         .campo select:focus,
         .campo textarea:focus {
-            border-color: var(--azul-principal);
+            border-color: var(--rosa-principal);
 
-            background: var(--branco);
+            background: white;
 
             box-shadow:
-                0 0 0 3px
-                rgba(22, 125, 154, 0.10);
+                0 0 0 4px
+                rgba(217, 135, 166, 0.12);
         }
 
         .campo textarea {
-            min-height: 100px;
+            min-height: 105px;
 
             resize: vertical;
         }
@@ -313,12 +349,6 @@
             gap: 10px;
         }
 
-        .telefone-container select {
-            width: 145px;
-
-            flex-shrink: 0;
-        }
-
         .telefone-container input {
             flex: 1;
 
@@ -331,21 +361,21 @@
             align-items: center;
             justify-content: center;
 
-            min-width: 55px;
+            min-width: 58px;
 
-            height: 46px;
+            height: 48px;
 
-            padding: 0 10px;
+            padding: 0 12px;
 
-            border-radius: 10px;
+            border-radius: 12px;
 
-            background: var(--azul-claro);
+            background: var(--rosa-claro);
 
-            border: 1px solid var(--azul-suave);
+            border: 1px solid var(--rosa-medio);
 
-            color: var(--azul-escuro);
+            color: var(--rosa-escuro);
 
-            font-weight: 700;
+            font-weight: 800;
         }
 
 
@@ -364,7 +394,7 @@
         .campo-erro {
             border-color: var(--erro) !important;
 
-            background: #fff8f8 !important;
+            background: #fff7f8 !important;
         }
 
         .mensagem-erro {
@@ -373,6 +403,8 @@
             color: var(--erro);
 
             font-size: 11px;
+
+            font-weight: 600;
 
             margin-top: -2px;
         }
@@ -387,11 +419,11 @@
         ========================= */
 
         input[type="file"] {
-            padding: 11px !important;
+            padding: 12px !important;
 
             cursor: pointer;
 
-            background: #f8fbfc !important;
+            background: var(--rosa-fundo) !important;
         }
 
 
@@ -408,23 +440,23 @@
 
             align-items: flex-start;
 
-            background: #fff9e8;
+            background: #fff7e8;
 
-            border: 1px solid #f2df9a;
+            border: 1px solid #f1dba0;
 
-            border-left: 4px solid #e7b93e;
+            border-left: 4px solid #d5a73d;
 
-            border-radius: 12px;
+            border-radius: 14px;
 
-            padding: 16px;
+            padding: 17px;
 
-            color: #665326;
+            color: #715b2c;
 
             font-size: 13px;
 
             line-height: 1.5;
 
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .aviso span {
@@ -439,47 +471,52 @@
         .acoes {
             grid-column: 1 / -1;
 
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         button {
             width: 100%;
 
-            padding: 15px;
+            padding: 16px;
 
             border: none;
 
-            border-radius: 11px;
+            border-radius: 13px;
 
-            background: linear-gradient(
-                135deg,
-                var(--azul-principal),
-                var(--azul-escuro)
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #df91ae,
+                    #bd6688
+                );
 
             color: white;
 
+            font-family: "Nunito Sans", sans-serif;
+
             font-size: 15px;
 
-            font-weight: 700;
+            font-weight: 800;
 
             cursor: pointer;
 
             letter-spacing: 0.2px;
 
             box-shadow:
-                0 6px 15px
-                rgba(15, 82, 104, 0.18);
+                0 8px 18px
+                rgba(190, 102, 136, 0.20);
 
-            transition: 0.2s ease;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
         button:hover {
             transform: translateY(-2px);
 
             box-shadow:
-                0 10px 20px
-                rgba(15, 82, 104, 0.22);
+                0 12px 25px
+                rgba(190, 102, 136, 0.28);
         }
 
         button:active {
@@ -494,15 +531,17 @@
         .rodape {
             text-align: center;
 
-            margin-top: 24px;
+            margin-top: 25px;
 
-            padding-top: 18px;
+            padding-top: 20px;
 
             border-top: 1px solid var(--borda);
 
             color: var(--texto-secundario);
 
             font-size: 12px;
+
+            font-weight: 500;
         }
 
 
@@ -523,7 +562,7 @@
 
                 padding: 25px 18px;
 
-                border-radius: 16px;
+                border-radius: 18px;
             }
 
             .formulario {
@@ -538,7 +577,7 @@
             }
 
             .cabecalho h1 {
-                font-size: 23px;
+                font-size: 24px;
             }
 
             .telefone-container {
@@ -555,6 +594,7 @@
         }
 
     </style>
+
 </head>
 
 
@@ -566,9 +606,7 @@
 
         <div class="cabecalho">
 
-            <h1>
-                Atendimento Pediátrico
-            </h1>
+            <h1>Atendimento Pediátrico</h1>
 
             <p>
                 Cadastro e informações para atendimento e triagem do paciente.
@@ -587,9 +625,7 @@
 
             <div>
 
-                <h2>
-                    Dados do paciente
-                </h2>
+                <h2>Dados do paciente</h2>
 
                 <p>
                     Preencha as informações necessárias para iniciar o atendimento.
@@ -616,9 +652,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Nome completo *
-                </label>
+                <label>Nome completo *</label>
 
                 <input
                     id="nome"
@@ -632,9 +666,7 @@
 
             <div class="campo">
 
-                <label>
-                    CPF *
-                </label>
+                <label>CPF *</label>
 
                 <input
                     id="cpf"
@@ -657,9 +689,7 @@
 
             <div class="campo">
 
-                <label>
-                    RG
-                </label>
+                <label>RG</label>
 
                 <input
                     id="rg"
@@ -677,9 +707,7 @@
 
             <div class="campo">
 
-                <label>
-                    Data de nascimento *
-                </label>
+                <label>Data de nascimento *</label>
 
                 <input
                     id="dataNascimento"
@@ -692,15 +720,11 @@
 
             <div class="campo">
 
-                <label>
-                    Sexo *
-                </label>
+                <label>Sexo *</label>
 
                 <select id="sexo" required>
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <option value="">Selecione</option>
 
                     <option value="Feminino">
                         Feminino
@@ -728,9 +752,7 @@
 
             <div class="campo">
 
-                <label>
-                    Nome da mãe
-                </label>
+                <label>Nome da mãe</label>
 
                 <input
                     id="nomeMae"
@@ -743,9 +765,7 @@
 
             <div class="campo">
 
-                <label>
-                    Nome do responsável legal
-                </label>
+                <label>Nome do responsável legal</label>
 
                 <input
                     id="responsavel"
@@ -758,35 +778,21 @@
 
             <div class="campo">
 
-                <label>
-                    Grau de parentesco
-                </label>
+                <label>Grau de parentesco</label>
 
                 <select id="parentesco">
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <option value="">Selecione</option>
 
-                    <option value="Mae">
-                        Mãe
-                    </option>
+                    <option value="Mae">Mãe</option>
 
-                    <option value="Pai">
-                        Pai
-                    </option>
+                    <option value="Pai">Pai</option>
 
-                    <option value="Avo">
-                        Avó / Avô
-                    </option>
+                    <option value="Avo">Avó / Avô</option>
 
-                    <option value="Tutor">
-                        Tutor legal
-                    </option>
+                    <option value="Tutor">Tutor legal</option>
 
-                    <option value="Outro">
-                        Outro
-                    </option>
+                    <option value="Outro">Outro</option>
 
                 </select>
 
@@ -802,9 +808,7 @@
 
             <div class="campo">
 
-                <label>
-                    Peso (kg)
-                </label>
+                <label>Peso (kg)</label>
 
                 <input
                     id="peso"
@@ -820,9 +824,7 @@
 
             <div class="campo">
 
-                <label>
-                    Altura (cm)
-                </label>
+                <label>Altura (cm)</label>
 
                 <input
                     id="altura"
@@ -838,25 +840,18 @@
 
             <div class="campo">
 
-                <label>
-                    Tipo sanguíneo
-                </label>
+                <label>Tipo sanguíneo</label>
 
                 <select id="tipoSanguineo">
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <option value="">Selecione</option>
 
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
-
                     <option value="B+">B+</option>
                     <option value="B-">B-</option>
-
                     <option value="AB+">AB+</option>
                     <option value="AB-">AB-</option>
-
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
 
@@ -871,15 +866,11 @@
 
             <div class="campo">
 
-                <label>
-                    Situação vacinal
-                </label>
+                <label>Situação vacinal</label>
 
                 <select id="vacinacao">
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <option value="">Selecione</option>
 
                     <option value="Atualizada">
                         Vacinação atualizada
@@ -900,9 +891,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Alergias
-                </label>
+                <label>Alergias</label>
 
                 <textarea
                     id="alergias"
@@ -914,9 +903,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Medicamentos em uso
-                </label>
+                <label>Medicamentos em uso</label>
 
                 <textarea
                     id="medicamentos"
@@ -928,9 +915,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Doenças ou condições prévias
-                </label>
+                <label>Doenças ou condições prévias</label>
 
                 <textarea
                     id="condicoes"
@@ -949,9 +934,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Endereço
-                </label>
+                <label>Endereço</label>
 
                 <input
                     id="endereco"
@@ -964,9 +947,7 @@
 
             <div class="campo">
 
-                <label>
-                    País do telefone *
-                </label>
+                <label>País do telefone *</label>
 
                 <select id="paisTelefone">
 
@@ -1029,9 +1010,7 @@
 
             <div class="campo">
 
-                <label>
-                    Telefone *
-                </label>
+                <label>Telefone *</label>
 
                 <div class="telefone-container">
 
@@ -1071,9 +1050,7 @@
 
             <div class="campo">
 
-                <label>
-                    E-mail
-                </label>
+                <label>E-mail</label>
 
                 <input
                     id="email"
@@ -1086,9 +1063,7 @@
 
             <div class="campo">
 
-                <label>
-                    Contato de emergência *
-                </label>
+                <label>Contato de emergência *</label>
 
                 <input
                     id="contatoEmergencia"
@@ -1102,15 +1077,11 @@
 
             <div class="campo">
 
-                <label>
-                    Tipo de atendimento *
-                </label>
+                <label>Tipo de atendimento *</label>
 
                 <select id="tipo" required>
 
-                    <option value="">
-                        Selecione
-                    </option>
+                    <option value="">Selecione</option>
 
                     <option value="Convenio">
                         Convênio
@@ -1134,9 +1105,7 @@
 
             <div class="campo campo-grande">
 
-                <label>
-                    Foto do paciente
-                </label>
+                <label>Foto do paciente</label>
 
                 <input
                     type="file"
@@ -1561,7 +1530,6 @@
             .then(response => {
 
                 if (!response.ok) {
-
                     throw new Error(
                         "Erro no servidor"
                     );

@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "rewrites": [
     {
       "source": "/login",
@@ -38,10 +39,6 @@
     },
     {
       "source": "/lista-medicacoes",
-      "destination": "/api/index.js"
-    },
-    {
-      "source": "/api/health",
       "destination": "/api/index.js"
     },
     {

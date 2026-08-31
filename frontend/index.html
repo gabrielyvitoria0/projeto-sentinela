@@ -1,392 +1,396 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Hello Centro de Atendimento Pediátrico</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      font-family: Arial, sans-serif;
-
-      background:
-        radial-gradient(circle at 10% 15%, #ffc1dc 0 18px, transparent 19px),
-        radial-gradient(circle at 90% 15%, #ffd5e6 0 25px, transparent 26px),
-        radial-gradient(circle at 8% 85%, #ffd0e5 0 25px, transparent 26px),
-        radial-gradient(circle at 92% 85%, #ffc1dc 0 18px, transparent 19px),
-        linear-gradient(135deg, #fff0f7, #ffdce9);
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* DECORAÇÕES */
-
-    body::before {
-      content: "🌸  💗  ⭐  🎀  🌸  💗  ⭐";
-
-      position: absolute;
-      top: 25px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      font-size: 22px;
-      white-space: nowrap;
-    }
-
-    body::after {
-      content: "💗  🌈  🌸  ⭐  🎀  🌸  💗";
-
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      font-size: 20px;
-      white-space: nowrap;
-    }
-
-
-    /* CAIXA */
-
-    .container {
-      width: 90%;
-      max-width: 430px;
-
-      background: white;
-
-      padding: 35px;
-
-      border-radius: 30px;
-
-      border: 4px solid #ffc1dc;
-
-      text-align: center;
-
-      position: relative;
-
-      box-shadow:
-        0 12px 30px rgba(214, 51, 132, 0.18),
-        0 0 0 8px rgba(255, 255, 255, 0.5);
-    }
-
-
-    /* FLOR NO TOPO */
-
-    .flor {
-      position: absolute;
-
-      width: 55px;
-      height: 55px;
-
-      top: -30px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      border-radius: 50%;
-
-      background: #ffb2d2;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      font-size: 28px;
-
-      box-shadow: 0 5px 12px rgba(214, 51, 132, 0.2);
-    }
-
-
-    /* LOGO */
-
-    .logo {
-      width: 150px;
-      height: 150px;
-
-      object-fit: cover;
-
-      border-radius: 50%;
-
-      display: block;
-
-      margin: 5px auto 18px;
-
-      border: 5px solid #f28bb7;
-
-      box-shadow:
-        0 5px 15px rgba(214, 51, 132, 0.25);
-    }
-
-
-    /* TÍTULO */
-
-    h2 {
-      margin: 5px 0 8px;
-
-      color: #d63384;
-
-      font-size: 27px;
-
-      font-weight: bold;
-    }
-
-
-    /* SUBTÍTULO */
-
-    .subtitulo {
-      margin: 0 0 20px;
-
-      color: #e681a9;
-
-      font-size: 14px;
-    }
-
-
-    /* CAMPOS */
-
-    input {
-      width: 100%;
-
-      padding: 14px;
-
-      margin-top: 12px;
-
-      border-radius: 13px;
-
-      border: 2px solid #f5bfd6;
-
-      background: #fff8fb;
-
-      font-size: 16px;
-
-      color: #555;
-
-      outline: none;
-    }
-
-
-    input::placeholder {
-      color: #d696b2;
-    }
-
-
-    input:focus {
-      border-color: #e96c9f;
-
-      background: white;
-
-      box-shadow:
-        0 0 8px rgba(233, 108, 159, 0.25);
-    }
-
-
-    /* BOTÃO */
-
-    button {
-      width: 100%;
-
-      padding: 14px;
-
-      margin-top: 18px;
-
-      border: none;
-
-      border-radius: 13px;
-
-      background: linear-gradient(
-        135deg,
-        #f27aae,
-        #d63384
-      );
-
-      color: white;
-
-      font-size: 17px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 5px 12px rgba(214, 51, 132, 0.25);
-
-      transition: 0.3s;
-    }
-
-
-    button:hover {
-      transform: translateY(-2px);
-
-      background: linear-gradient(
-        135deg,
-        #d63384,
-        #bd286e
-      );
-    }
-
-
-    /* RODAPÉ */
-
-    .rodape {
-      margin-top: 20px;
-
-      color: #dc82a8;
-
-      font-size: 12px;
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-  <div class="container">
-
-    <!-- FLOR -->
-    <div class="flor">
-      🌸
-    </div>
-
-
-    <!-- SUA LOGO -->
-    <img
-      src="logo.jpg"
-      alt="HELLO Centro de Atendimento Pediátrico"
-      class="logo"
-    >
-
-
-    <!-- TÍTULO -->
-    <h2>
-      🌸 Hello Centro Pediátrico 🌸
-    </h2>
-
-
-    <!-- SUBTÍTULO -->
-    <p class="subtitulo">
-      💗 Cuidando dos pequenos com carinho 💗
-    </p>
-
-
-    <!-- USUÁRIO -->
-    <input
-      id="usuario"
-      placeholder="👧 Usuário"
-    >
-
-
-    <!-- SENHA -->
-    <input
-      id="senha"
-      type="password"
-      placeholder="🔒 Senha"
-    >
-
-
-    <!-- BOTÃO -->
-    <button onclick="login()">
-      Entrar 💗
-    </button>
-
-
-    <!-- RODAPÉ -->
-    <p class="rodape">
-      🌈 Um lugar especial para cuidar e acolher 🌈
-    </p>
-
-  </div>
-
-
- <script>
-
-  async function login() {
-
-    const usuario = document.getElementById("usuario").value.trim();
-    const senha = document.getElementById("senha").value;
-
-    if (!usuario) {
-      alert("Digite o usuário.");
-      return;
-    }
-
-    if (!senha) {
-      alert("Digite a senha.");
-      return;
-    }
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+/*
+ * A Vercel executa esta aplicação como função serverless.
+ * O db.json é usado somente como banco inicial.
+ *
+ * IMPORTANTE:
+ * Os dados novos ficam em memória enquanto a instância estiver ativa.
+ * Para persistência definitiva em produção, depois devemos ligar
+ * o projeto a um banco externo (Postgres/Supabase/Neon etc.).
+ */
+const DB_FILE = path.join(__dirname, "../backend/db.json");
+
+let db;
+
+function criarBancoInicial() {
+    return {
+        usuarios: [],
+        pacientes: [],
+        triagens: [],
+        consultas: [],
+        tv_chamada: null,
+        tv_historico: []
+    };
+}
+
+function carregarBanco() {
+    if (db) return db;
 
     try {
+        delete require.cache[require.resolve(DB_FILE)];
 
-      const resposta = await fetch("/login", {
-        method: "POST",
+        const inicial = require(DB_FILE);
 
-        headers: {
-          "Content-Type": "application/json"
-        },
+        db = {
+            ...criarBancoInicial(),
+            ...inicial
+        };
 
-        body: JSON.stringify({
-          usuario: usuario,
-          senha: senha
-        })
-      });
+        if (!Array.isArray(db.usuarios)) db.usuarios = [];
+        if (!Array.isArray(db.pacientes)) db.pacientes = [];
+        if (!Array.isArray(db.triagens)) db.triagens = [];
+        if (!Array.isArray(db.consultas)) db.consultas = [];
+        if (!Array.isArray(db.tv_historico)) db.tv_historico = [];
+        if (!("tv_chamada" in db)) db.tv_chamada = null;
 
-      const data = await resposta.json();
-
-      console.log("Resposta:", data);
-
-      if (!resposta.ok) {
-        alert(data.erro || "Usuário ou senha inválidos.");
-        return;
-      }
-
-      if (data.tipo === "triagem") {
-        window.location.href = "/triagem.html";
-        return;
-      }
-
-      if (data.tipo === "medico") {
-        window.location.href = "/medico.html";
-        return;
-      }
-
-      if (data.tipo === "atendimento") {
-        window.location.href = "/atendimento.html";
-        return;
-      }
-
-      alert("Tipo de usuário não reconhecido: " + data.tipo);
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert("Não foi possível conectar ao servidor.");
-
+    } catch (erro) {
+        console.error("Erro ao carregar db.json:", erro);
+        db = criarBancoInicial();
     }
 
-  }
+    return db;
+}
 
-</script>
+function salvarBanco(data) {
+    /*
+     * Não usamos fs.writeFileSync aqui.
+     * O filesystem da função serverless não deve ser usado
+     * como banco persistente.
+     */
+    db = data;
+}
 
+/* =========================================================
+   LOGIN
+========================================================= */
 
-</body>
+app.post("/login", (req, res) => {
+    try {
+        const usuario = String(req.body?.usuario || "").trim();
+        const senha = String(req.body?.senha || "");
 
-</html>
+        if (!usuario || !senha) {
+            return res.status(400).json({
+                sucesso: false,
+                erro: "Usuário e senha são obrigatórios."
+            });
+        }
+
+        const banco = carregarBanco();
+
+        const user = banco.usuarios.find(
+            u =>
+                String(u.usuario || "").trim() === usuario &&
+                String(u.senha || "") === senha
+        );
+
+        if (!user) {
+            return res.status(401).json({
+                sucesso: false,
+                erro: "Usuário ou senha inválidos."
+            });
+        }
+
+        return res.json({
+            sucesso: true,
+            usuario: user.usuario,
+            tipo: user.tipo
+        });
+
+    } catch (erro) {
+        console.error("Erro no login:", erro);
+
+        return res.status(500).json({
+            sucesso: false,
+            erro: "Erro interno no servidor."
+        });
+    }
+});
+
+/* =========================================================
+   ATENDIMENTO
+========================================================= */
+
+app.post("/atendimento", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        const paciente = {
+            id: Date.now(),
+            nome: req.body?.nome || "",
+            cpf: req.body?.cpf || "",
+            tipo: req.body?.tipo || "Particular",
+            status: "triagem",
+            createdAt: new Date().toISOString()
+        };
+
+        banco.pacientes.push(paciente);
+
+        salvarBanco(banco);
+
+        return res.status(201).json(paciente);
+
+    } catch (erro) {
+        console.error("Erro no atendimento:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível cadastrar o paciente."
+        });
+    }
+});
+
+/* =========================================================
+   PACIENTES
+========================================================= */
+
+app.get("/pacientes", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        return res.json(banco.pacientes);
+
+    } catch (erro) {
+        console.error("Erro ao listar pacientes:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível carregar os pacientes."
+        });
+    }
+});
+
+/* =========================================================
+   TRIAGEM
+========================================================= */
+
+app.post("/triagem", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        const temperatura =
+            req.body?.temperatura !== undefined &&
+            req.body?.temperatura !== ""
+                ? Number(req.body.temperatura)
+                : null;
+
+        let risco = req.body?.risco;
+
+        if (temperatura !== null && temperatura >= 39) {
+            risco = "vermelho";
+        } else if (temperatura !== null && temperatura >= 38) {
+            risco = "amarelo";
+        } else if (!risco) {
+            risco = "verde";
+        }
+
+        const triagem = {
+            id: Date.now(),
+            nome: req.body?.nome || "",
+            sintoma: req.body?.sintoma || req.body?.sintomas || "",
+            temperatura,
+            alergia: req.body?.alergia || "",
+            observacao: req.body?.observacao || "",
+            risco,
+            status: "aguardando_medico",
+            createdAt: new Date().toISOString()
+        };
+
+        banco.triagens.push(triagem);
+
+        salvarBanco(banco);
+
+        return res.status(201).json(triagem);
+
+    } catch (erro) {
+        console.error("Erro na triagem:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível salvar a triagem."
+        });
+    }
+});
+
+/* =========================================================
+   TRIAGENS
+========================================================= */
+
+app.get("/triagens", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        return res.json(banco.triagens);
+
+    } catch (erro) {
+        console.error("Erro ao listar triagens:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível carregar as triagens."
+        });
+    }
+});
+
+/* =========================================================
+   TV - CHAMAR PACIENTE
+========================================================= */
+
+app.post("/tv/chamar", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        const chamada = {
+            id: Date.now().toString(),
+            localTipo: req.body?.localTipo || "",
+            localNumero: req.body?.localNumero || "",
+            paciente: req.body?.paciente || "",
+            hora: new Date().toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit"
+            })
+        };
+
+        banco.tv_chamada = chamada;
+
+        banco.tv_historico.unshift(chamada);
+
+        if (banco.tv_historico.length > 5) {
+            banco.tv_historico = banco.tv_historico.slice(0, 5);
+        }
+
+        salvarBanco(banco);
+
+        return res.json(chamada);
+
+    } catch (erro) {
+        console.error("Erro ao chamar paciente:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível chamar o paciente."
+        });
+    }
+});
+
+/* =========================================================
+   TV - CONSULTAR CHAMADA
+========================================================= */
+
+app.get("/tv/chamada", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        return res.json({
+            chamada: banco.tv_chamada,
+            historico: banco.tv_historico
+        });
+
+    } catch (erro) {
+        console.error("Erro ao consultar TV:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível carregar a chamada da TV."
+        });
+    }
+});
+
+/* =========================================================
+   LISTA DE MEDICAÇÕES
+========================================================= */
+
+app.get("/lista-medicacoes", (req, res) => {
+    return res.json([
+        "Dipirona",
+        "Paracetamol",
+        "Ibuprofeno",
+        "Amoxicilina",
+        "Azitromicina",
+        "Loratadina",
+        "Omeprazol",
+        "Buscopan",
+        "Dramin",
+        "Soro fisiológico"
+    ]);
+});
+
+/* =========================================================
+   CONSULTA
+========================================================= */
+
+app.post("/consulta", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        const consulta = {
+            id: Date.now(),
+            paciente: req.body?.paciente || "",
+            diagnostico: req.body?.diagnostico || "",
+            medicacao: req.body?.medicacao || "",
+            obs: req.body?.obs || "",
+            createdAt: new Date().toISOString()
+        };
+
+        banco.consultas.push(consulta);
+
+        salvarBanco(banco);
+
+        return res.status(201).json(consulta);
+
+    } catch (erro) {
+        console.error("Erro na consulta:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível salvar a consulta."
+        });
+    }
+});
+
+/* =========================================================
+   MEDICAÇÕES / CONSULTAS
+========================================================= */
+
+app.get("/medicacoes", (req, res) => {
+    try {
+        const banco = carregarBanco();
+
+        return res.json(banco.consultas);
+
+    } catch (erro) {
+        console.error("Erro ao listar consultas:", erro);
+
+        return res.status(500).json({
+            erro: "Não foi possível carregar as consultas."
+        });
+    }
+});
+
+/* =========================================================
+   HEALTH CHECK
+========================================================= */
+
+app.get("/api/health", (req, res) => {
+    return res.json({
+        status: "ok",
+        sistema: "Projeto Sentinela"
+    });
+});
+
+/* =========================================================
+   ERRO 404
+========================================================= */
+
+app.use((req, res) => {
+    res.status(404).json({
+        erro: "Rota não encontrada."
+    });
+});
+
+/* =========================================================
+   EXPORTAÇÃO PARA VERCEL
+========================================================= */
+
+module.exports = app;

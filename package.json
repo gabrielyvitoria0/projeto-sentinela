@@ -1,6 +1,7 @@
 {
-  "name": "hospital-system",
+  "name": "projeto-sentinela",
   "version": "1.0.0",
+  "private": true,
   "main": "api/index.js",
   "scripts": {
     "start": "node backend/server.js"
@@ -9,9 +10,8 @@
     "cors": "^2.8.5",
     "express": "^5.2.1"
   },
-  "description": "",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": "22.x"
+  },
   "type": "commonjs"
 }

@@ -9,146 +9,98 @@
 
     <style>
 
-        /* =========================
-           RESET E CONFIGURAÇÕES
-        ========================= */
-
         * {
             box-sizing: border-box;
         }
-
-        :root {
-            --azul-principal: #167d9a;
-            --azul-escuro: #0f5268;
-            --azul-claro: #e8f6fa;
-            --azul-suave: #cfeaf2;
-            --texto-principal: #263238;
-            --texto-secundario: #64748b;
-            --borda: #d9e7ec;
-            --fundo: #f4f8fa;
-            --branco: #ffffff;
-            --erro: #dc3545;
-        }
-
-
-        /* =========================
-           BODY
-        ========================= */
 
         body {
             margin: 0;
             min-height: 100vh;
 
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: Arial, sans-serif;
 
             background: linear-gradient(
                 135deg,
-                #eef7fa,
-                #f7fbfc
+                #fff0f7,
+                #ffdce9
             );
 
             padding: 45px 20px;
 
             overflow-x: hidden;
-
-            color: var(--texto-principal);
         }
-
-
-        /* =========================
-           CONTAINER
-        ========================= */
 
         .container {
             width: 94%;
-            max-width: 1000px;
+            max-width: 950px;
 
             margin: 30px auto;
 
-            background: var(--branco);
+            background: white;
 
-            padding: 38px;
+            padding: 35px;
 
-            border-radius: 20px;
+            border-radius: 30px;
 
-            border: 1px solid var(--borda);
+            border: 4px solid #ffc1dc;
 
             box-shadow:
-                0 15px 40px
-                rgba(15, 82, 104, 0.10);
+                0 12px 30px rgba(214, 51, 132, 0.18),
+                0 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-
-        /* =========================
-           CABEÇALHO
-        ========================= */
+        /* CABEÇALHO */
 
         .cabecalho {
-            text-align: left;
-
+            text-align: center;
             margin-bottom: 28px;
-
-            padding-bottom: 22px;
-
-            border-bottom: 1px solid var(--borda);
         }
 
         .cabecalho h1 {
-            margin: 0 0 7px;
+            margin: 0 0 8px;
 
-            color: var(--azul-escuro);
+            color: #d63384;
 
             font-size: 28px;
 
-            font-weight: 700;
-
-            letter-spacing: -0.5px;
+            font-weight: bold;
         }
 
         .cabecalho p {
             margin: 0;
 
-            color: var(--texto-secundario);
+            color: #e681a9;
 
             font-size: 14px;
         }
 
-
-        /* =========================
-           IDENTIFICAÇÃO
-        ========================= */
+        /* IDENTIFICAÇÃO */
 
         .identificacao {
             display: flex;
 
             align-items: center;
 
-            gap: 15px;
+            gap: 12px;
 
-            background: linear-gradient(
-                135deg,
-                var(--azul-claro),
-                #f3fbfd
-            );
+            background: #fff5fa;
 
-            border: 1px solid var(--azul-suave);
+            border: 2px solid #f5bfd6;
 
-            border-radius: 16px;
+            border-radius: 15px;
 
-            padding: 17px 20px;
+            padding: 14px 17px;
 
-            margin-bottom: 28px;
+            margin-bottom: 22px;
         }
 
         .identificacao-icone {
-            width: 46px;
-            height: 46px;
+            width: 43px;
+            height: 43px;
 
-            flex-shrink: 0;
+            border-radius: 50%;
 
-            border-radius: 14px;
-
-            background: var(--azul-principal);
+            background: #ffb2d2;
 
             display: flex;
 
@@ -156,161 +108,120 @@
             justify-content: center;
 
             font-size: 20px;
-
-            color: white;
-
-            box-shadow:
-                0 5px 12px
-                rgba(22, 125, 154, 0.18);
         }
 
         .identificacao h2 {
             margin: 0;
 
-            color: var(--azul-escuro);
+            color: #d63384;
 
             font-size: 17px;
-
-            font-weight: 700;
         }
 
         .identificacao p {
-            margin: 5px 0 0;
+            margin: 4px 0 0;
 
-            color: var(--texto-secundario);
+            color: #dc82a8;
 
-            font-size: 13px;
+            font-size: 12px;
         }
 
-
-        /* =========================
-           FORMULÁRIO
-        ========================= */
+        /* FORMULÁRIO */
 
         .formulario {
             display: grid;
 
             grid-template-columns: 1fr 1fr;
 
-            gap: 18px;
+            gap: 16px;
         }
-
-
-        /* =========================
-           SEÇÕES
-        ========================= */
 
         .secao {
             grid-column: 1 / -1;
 
-            margin-top: 15px;
+            margin-top: 7px;
 
-            color: var(--azul-escuro);
+            color: #d63384;
 
-            font-size: 15px;
+            font-size: 14px;
 
-            font-weight: 700;
+            font-weight: bold;
 
-            padding: 12px 0;
+            padding-bottom: 7px;
 
-            border-bottom: 2px solid var(--azul-suave);
+            border-bottom: 2px solid #f8d4e3;
         }
-
-
-        /* =========================
-           CAMPOS
-        ========================= */
 
         .campo {
             display: flex;
 
             flex-direction: column;
 
-            gap: 7px;
+            gap: 6px;
         }
 
         .campo-grande {
             grid-column: 1 / -1;
         }
 
-
-        /* =========================
-           LABELS
-        ========================= */
-
         .campo label {
-            color: #455a64;
+            color: #a95878;
 
-            font-size: 13px;
+            font-size: 12px;
 
-            font-weight: 600;
+            font-weight: bold;
         }
-
-
-        /* =========================
-           INPUTS
-        ========================= */
 
         .campo input,
         .campo select,
         .campo textarea {
             width: 100%;
 
-            padding: 13px 14px;
+            padding: 13px;
 
-            border-radius: 10px;
+            border-radius: 13px;
 
-            border: 1px solid var(--borda);
+            border: 2px solid #f5bfd6;
 
-            background: #fbfdfe;
+            background: #fff8fb;
 
             font-size: 14px;
 
-            color: var(--texto-principal);
+            color: #555;
 
             outline: none;
 
-            transition: 0.2s ease;
+            transition: 0.25s;
+        }
+
+        .campo textarea {
+            min-height: 90px;
+
+            resize: vertical;
         }
 
         .campo input::placeholder,
         .campo textarea::placeholder {
-            color: #9aa9b0;
+            color: #d696b2;
         }
 
         .campo input:focus,
         .campo select:focus,
         .campo textarea:focus {
-            border-color: var(--azul-principal);
+            border-color: #e96c9f;
 
-            background: var(--branco);
+            background: white;
 
             box-shadow:
-                0 0 0 3px
-                rgba(22, 125, 154, 0.10);
+                0 0 8px rgba(233, 108, 159, 0.25);
         }
 
-        .campo textarea {
-            min-height: 100px;
-
-            resize: vertical;
-        }
-
-        .campo select {
-            cursor: pointer;
-        }
-
-
-        /* =========================
-           TELEFONE
-        ========================= */
+        /* TELEFONE */
 
         .telefone-container {
             display: flex;
 
-            align-items: center;
-
-            gap: 10px;
+            gap: 8px;
         }
 
         .telefone-container select {
@@ -326,51 +237,30 @@
         }
 
         .codigo-pais {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-width: 55px;
-
-            height: 46px;
-
-            padding: 0 10px;
-
-            border-radius: 10px;
-
-            background: var(--azul-claro);
-
-            border: 1px solid var(--azul-suave);
-
-            color: var(--azul-escuro);
-
-            font-weight: 700;
+            color: #d63384;
+            font-weight: bold;
         }
 
-
-        /* =========================
-           AJUDA E ERROS
-        ========================= */
-
         .ajuda {
-            color: var(--texto-secundario);
+            color: #c27b99;
 
             font-size: 11px;
 
             margin-top: 2px;
         }
 
-        .campo-erro {
-            border-color: var(--erro) !important;
+        /* STATUS DE VALIDAÇÃO */
 
-            background: #fff8f8 !important;
+        .campo-erro {
+            border-color: #dc3545 !important;
+
+            background: #fff5f5 !important;
         }
 
         .mensagem-erro {
             display: none;
 
-            color: var(--erro);
+            color: #dc3545;
 
             font-size: 11px;
 
@@ -381,149 +271,109 @@
             display: block;
         }
 
-
-        /* =========================
-           FOTO
-        ========================= */
-
-        input[type="file"] {
-            padding: 11px !important;
-
-            cursor: pointer;
-
-            background: #f8fbfc !important;
-        }
-
-
-        /* =========================
-           AVISO
-        ========================= */
+        /* AVISO */
 
         .aviso {
             grid-column: 1 / -1;
 
             display: flex;
 
-            gap: 13px;
+            gap: 10px;
 
             align-items: flex-start;
 
-            background: #fff9e8;
+            background: #fff5fa;
 
-            border: 1px solid #f2df9a;
+            border: 2px solid #f5bfd6;
 
-            border-left: 4px solid #e7b93e;
+            border-radius: 13px;
 
-            border-radius: 12px;
+            padding: 13px;
 
-            padding: 16px;
+            color: #b45b7f;
 
-            color: #665326;
+            font-size: 12px;
 
-            font-size: 13px;
-
-            line-height: 1.5;
-
-            margin-top: 10px;
+            line-height: 1.4;
         }
 
         .aviso span {
             font-size: 20px;
         }
 
-
-        /* =========================
-           BOTÃO
-        ========================= */
+        /* BOTÃO */
 
         .acoes {
             grid-column: 1 / -1;
 
-            margin-top: 8px;
+            margin-top: 4px;
         }
 
         button {
             width: 100%;
 
-            padding: 15px;
+            padding: 14px;
 
             border: none;
 
-            border-radius: 11px;
+            border-radius: 13px;
 
             background: linear-gradient(
                 135deg,
-                var(--azul-principal),
-                var(--azul-escuro)
+                #f27aae,
+                #d63384
             );
 
             color: white;
 
-            font-size: 15px;
+            font-size: 16px;
 
-            font-weight: 700;
+            font-weight: bold;
 
             cursor: pointer;
 
-            letter-spacing: 0.2px;
-
             box-shadow:
-                0 6px 15px
-                rgba(15, 82, 104, 0.18);
+                0 5px 12px rgba(214, 51, 132, 0.25);
 
-            transition: 0.2s ease;
+            transition: 0.3s;
         }
 
         button:hover {
             transform: translateY(-2px);
 
-            box-shadow:
-                0 10px 20px
-                rgba(15, 82, 104, 0.22);
+            background: linear-gradient(
+                135deg,
+                #d63384,
+                #bd286e
+            );
         }
 
-        button:active {
-            transform: translateY(0);
-        }
-
-
-        /* =========================
-           RODAPÉ
-        ========================= */
+        /* RODAPÉ */
 
         .rodape {
             text-align: center;
 
-            margin-top: 24px;
+            margin-top: 20px;
 
-            padding-top: 18px;
-
-            border-top: 1px solid var(--borda);
-
-            color: var(--texto-secundario);
+            color: #dc82a8;
 
             font-size: 12px;
         }
 
-
-        /* =========================
-           RESPONSIVIDADE
-        ========================= */
+        /* RESPONSIVO */
 
         @media (max-width: 700px) {
 
             body {
-                padding: 20px 10px;
+                padding: 30px 10px;
             }
 
             .container {
                 width: 96%;
 
-                margin: 15px auto;
-
                 padding: 25px 18px;
 
-                border-radius: 16px;
+                border-radius: 25px;
             }
 
             .formulario {
@@ -542,19 +392,16 @@
             }
 
             .telefone-container {
-                flex-wrap: wrap;
+                flex-direction: column;
             }
 
-            .telefone-container input {
-                min-width: 150px;
-            }
-
-            .identificacao {
-                align-items: flex-start;
+            .telefone-container select {
+                width: 100%;
             }
         }
 
     </style>
+
 </head>
 
 
@@ -571,7 +418,7 @@
             </h1>
 
             <p>
-                Cadastro e informações para atendimento e triagem do paciente.
+                💗 Vamos cuidar de cada detalhe com carinho 💗
             </p>
 
         </div>
@@ -582,7 +429,7 @@
         <div class="identificacao">
 
             <div class="identificacao-icone">
-                🧸
+                💗
             </div>
 
             <div>
@@ -592,7 +439,7 @@
                 </h2>
 
                 <p>
-                    Preencha as informações necessárias para iniciar o atendimento.
+                    Preencha as informações para iniciar o atendimento.
                 </p>
 
             </div>
@@ -610,7 +457,7 @@
             <!-- DADOS PESSOAIS -->
 
             <div class="secao">
-                Informações pessoais
+                🌸 Informações pessoais
             </div>
 
 
@@ -722,7 +569,7 @@
             <!-- RESPONSÁVEL -->
 
             <div class="secao">
-                Responsável e vínculo familiar
+                👨‍👩‍👧 Responsável e vínculo familiar
             </div>
 
 
@@ -796,7 +643,7 @@
             <!-- DADOS PEDIÁTRICOS -->
 
             <div class="secao">
-                Informações pediátricas
+                🩺 Informações pediátricas
             </div>
 
 
@@ -943,7 +790,7 @@
             <!-- CONTATO -->
 
             <div class="secao">
-                Contato e endereço
+                💗 Contato e endereço
             </div>
 
 
@@ -971,55 +818,55 @@
                 <select id="paisTelefone">
 
                     <option value="55" data-digitos="11">
-                        Brasil (+55)
+                        🇧🇷 Brasil (+55)
                     </option>
 
                     <option value="1" data-digitos="10">
-                        Estados Unidos (+1)
+                        🇺🇸 Estados Unidos (+1)
                     </option>
 
                     <option value="1" data-digitos="10">
-                        Canadá (+1)
+                        🇨🇦 Canadá (+1)
                     </option>
 
                     <option value="351" data-digitos="9">
-                        Portugal (+351)
+                        🇵🇹 Portugal (+351)
                     </option>
 
                     <option value="34" data-digitos="9">
-                        Espanha (+34)
+                        🇪🇸 Espanha (+34)
                     </option>
 
                     <option value="33" data-digitos="9">
-                        França (+33)
+                        🇫🇷 França (+33)
                     </option>
 
                     <option value="44" data-digitos="10">
-                        Reino Unido (+44)
+                        🇬🇧 Reino Unido (+44)
                     </option>
 
                     <option value="49" data-digitos="10">
-                        Alemanha (+49)
+                        🇩🇪 Alemanha (+49)
                     </option>
 
                     <option value="39" data-digitos="10">
-                        Itália (+39)
+                        🇮🇹 Itália (+39)
                     </option>
 
                     <option value="81" data-digitos="10">
-                        Japão (+81)
+                        🇯🇵 Japão (+81)
                     </option>
 
                     <option value="82" data-digitos="10">
-                        Coreia do Sul (+82)
+                        🇰🇷 Coreia do Sul (+82)
                     </option>
 
                     <option value="86" data-digitos="11">
-                        China (+86)
+                        🇨🇳 China (+86)
                     </option>
 
                     <option value="91" data-digitos="10">
-                        Índia (+91)
+                        🇮🇳 Índia (+91)
                     </option>
 
                 </select>
@@ -1035,10 +882,7 @@
 
                 <div class="telefone-container">
 
-                    <div
-                        class="codigo-pais"
-                        id="codigoPais"
-                    >
+                    <div class="codigo-pais" id="codigoPais">
                         +55
                     </div>
 
@@ -1128,7 +972,7 @@
             <!-- COMPLEMENTARES -->
 
             <div class="secao">
-                Informações complementares
+                ⭐ Informações complementares
             </div>
 
 
@@ -1151,15 +995,15 @@
 
             <div class="aviso">
 
-                <span>⚠</span>
+                <span>
+                    💗
+                </span>
 
                 <div>
 
                     <strong>
                         Confira os dados antes de continuar.
                     </strong>
-
-                    <br>
 
                     As informações preenchidas serão encaminhadas
                     para a próxima etapa do atendimento e triagem.
@@ -1174,7 +1018,7 @@
             <div class="acoes">
 
                 <button type="submit">
-                    Enviar para triagem
+                    Enviar para triagem 💗
                 </button>
 
             </div>
@@ -1183,8 +1027,9 @@
 
 
         <p class="rodape">
-            Atendimento pediátrico com segurança e cuidado.
+            🌈 Cuidando dos pequenos com carinho e segurança 🌈
         </p>
+
 
     </div>
 
@@ -1204,36 +1049,44 @@
 
             numeros = numeros.substring(0, 11);
 
-            if (numeros.length > 9) {
+            if (numeros.length <= 11) {
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d{3})(\d{1})/,
-                    "$1.$2.$3-$4"
-                );
+                if (numeros.length > 9) {
 
-            } else if (numeros.length > 6) {
+                    this.value =
+                        numeros.replace(
+                            /(\d{3})(\d{3})(\d{3})(\d{1})/,
+                            "$1.$2.$3-$4"
+                        );
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d{3})(\d+)/,
-                    "$1.$2.$3"
-                );
+                } else if (numeros.length > 6) {
 
-            } else if (numeros.length > 3) {
+                    this.value =
+                        numeros.replace(
+                            /(\d{3})(\d{3})(\d+)/,
+                            "$1.$2.$3"
+                        );
 
-                this.value = numeros.replace(
-                    /(\d{3})(\d+)/,
-                    "$1.$2"
-                );
+                } else if (numeros.length > 3) {
 
-            } else {
+                    this.value =
+                        numeros.replace(
+                            /(\d{3})(\d+)/,
+                            "$1.$2"
+                        );
 
-                this.value = numeros;
+                } else {
+
+                    this.value = numeros;
+                }
             }
 
+            const quantidade =
+                numeros.length;
 
             if (
-                numeros.length > 0 &&
-                numeros.length !== 11
+                quantidade > 0 &&
+                quantidade !== 11
             ) {
 
                 cpf.classList.add("campo-erro");
@@ -1252,13 +1105,15 @@
            RG
         ========================= */
 
-        const rg = document.getElementById("rg");
+        const rg =
+            document.getElementById("rg");
 
         rg.addEventListener("input", function () {
 
-            this.value = this.value
-                .replace(/[^a-zA-Z0-9.-]/g, "")
-                .substring(0, 14);
+            this.value =
+                this.value
+                    .replace(/[^a-zA-Z0-9.-]/g, "")
+                    .substring(0, 14);
 
         });
 
@@ -1290,7 +1145,8 @@
                     paisTelefone.selectedIndex
                 ];
 
-            const codigo = opcao.value;
+            const codigo =
+                opcao.value;
 
             const digitos =
                 Number(opcao.dataset.digitos);
@@ -1346,7 +1202,6 @@
                     );
 
                 this.value = numeros;
-
 
                 if (
                     numeros.length > 0 &&
@@ -1561,7 +1416,6 @@
             .then(response => {
 
                 if (!response.ok) {
-
                     throw new Error(
                         "Erro no servidor"
                     );
@@ -1576,7 +1430,7 @@
                 console.log(data);
 
                 alert(
-                    "Paciente enviado para triagem!"
+                    "💗 Paciente enviado para triagem!"
                 );
 
             })
@@ -1589,7 +1443,7 @@
                 );
 
                 alert(
-                    "Não foi possível enviar o paciente. Verifique se o servidor está funcionando."
+                    "🌸 Não foi possível enviar o paciente. Verifique se o servidor está funcionando."
                 );
 
             });

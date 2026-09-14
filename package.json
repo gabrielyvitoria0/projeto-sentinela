@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "main": "api/index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node backend/server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.2.1"

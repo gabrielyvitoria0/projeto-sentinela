@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Internação</title>
+
+  <style>
+
+    /* ==============================
+       ESTILO GERAL
+    ============================== */
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* ==============================
+       CABEÇALHO
+    ============================== */
+
+    .cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 18px;
+    }
+
+
+    .cabecalho h2 {
+      margin: 0;
+      color: #1f2937;
+    }
+
+
+    .subtitulo {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+
+    /* ==============================
+       BOTÃO VOLTAR
+    ============================== */
+
+    .btn-voltar {
+      background: #6b7280;
+      color: white;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+    .btn-voltar:hover {
+      background: #4b5563;
+    }
+
+
+    /* ==============================
+       SEÇÕES
+    ============================== */
+
+    .secao {
+      margin-top: 25px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #fafafa;
+    }
+
+
+    .secao h3 {
+      margin-top: 0;
+      color: #374151;
+    }
+
+
+    /* ==============================
+       FORMULÁRIO
+    ============================== */
+
+    .campo {
+      margin-bottom: 16px;
+    }
+
+
+    .campo label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+    }
+
+
+    .campo textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+    }
+
+
+    /* ==============================
+       GRID
+    ============================== */
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+
+    /* ==============================
+       PACIENTE
+    ============================== */
+
+    .paciente-box {
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      padding: 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+
+    .paciente-box span {
+      display: block;
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+
+    .paciente-box strong {
+      font-size: 20px;
+      color: #5b21b6;
+    }
+
+
+    /* ==============================
+       BOTÕES
+    ============================== */
+
+    .acoes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+
+    .btn-salvar {
+      background: #7c3aed;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+    .btn-salvar:hover {
+      background: #6d28d9;
+    }
+
+
+    /* ==============================
+       RESPONSIVO
+    ============================== */
+
+    @media (max-width: 700px) {
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <!-- ==============================
+         CABEÇALHO
+    ============================== -->
+
+    <div class="cabecalho">
+
+      <div>
+
+        <h2>🏥 Internação</h2>
+
+        <div class="subtitulo">
+          Registro e encaminhamento do paciente para internação
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn-voltar"
+        onclick="voltarPainel()">
+
+        ← Voltar
+
+      </button>
+
+    </div>
+
+
+    <!-- ==============================
+         PACIENTE
+    ============================== -->
+
+    <div class="paciente-box">
+
+      <span>Paciente selecionado</span>
+
+      <strong id="nomePaciente">
+        Carregando...
+      </strong>
+
+    </div>
+
+
+    <!-- ==============================
+         DADOS DA INTERNAÇÃO
+    ============================== -->
+
+    <div class="secao">
+
+      <h3>Dados da Internação</h3>
+
+
+      <div class="grid">
+
+        <div class="campo">
+
+          <label for="leito">
+            Leito
+          </label>
+
+          <input
+            type="text"
+            id="leito"
+            placeholder="Ex.: 12">
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="setor">
+            Setor
+          </label>
+
+          <select id="setor">
+
+            <option value="">
+              Selecione o setor
+            </option>
+
+            <option value="Enfermaria">
+              Enfermaria
+            </option>
+
+            <option value="UTI">
+              UTI
+            </option>
+
+            <option value="Pediatria">
+              Pediatria
+            </option>
+
+            <option value="Observação">
+              Observação
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="tipoInternacao">
+            Tipo de Internação
+          </label>
+
+          <select id="tipoInternacao">
+
+            <option value="">
+              Selecione
+            </option>
+
+            <option value="Eletiva">
+              Eletiva
+            </option>
+
+            <option value="Urgência">
+              Urgência
+            </option>
+
+            <option value="Emergência">
+              Emergência
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="dataInternacao">
+            Data da Internação
+          </label>
+
+          <input
+            type="date"
+            id="dataInternacao">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==============================
+         MOTIVO
+    ============================== -->
+
+    <div class="secao">
+
+      <h3>Motivo da Internação</h3>
+
+
+      <div class="campo">
+
+        <label for="motivo">
+          Motivo / Diagnóstico
+        </label>
+
+        <textarea
+          id="motivo"
+          placeholder="Informe o motivo da internação e o diagnóstico..."></textarea>
+
+      </div>
+
+
+      <div class="campo">
+
+        <label for="observacoes">
+          Observações
+        </label>
+
+        <textarea
+          id="observacoes"
+          placeholder="Informações importantes para a equipe responsável..."></textarea>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==============================
+         AÇÕES
+    ============================== -->
+
+    <div class="acoes">
+
+      <button
+        class="btn-salvar"
+        onclick="salvarInternacao()">
+
+        💾 Registrar Internação
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* ==============================
+       CARREGAR PACIENTE
+    ============================== */
+
+    const paciente =
+      localStorage.getItem("pacienteInternacao");
+
+
+    if (paciente) {
+
+      document.getElementById("nomePaciente").textContent =
+        paciente;
+
+    } else {
+
+      document.getElementById("nomePaciente").textContent =
+        "Nenhum paciente selecionado";
+
+    }
+
+
+    /* ==============================
+       DATA ATUAL
+    ============================== */
+
+    const hoje =
+      new Date().toISOString().split("T")[0];
+
+    document.getElementById("dataInternacao").value =
+      hoje;
+
+
+    /* ==============================
+       SALVAR INTERNAÇÃO
+    ============================== */
+
+    function salvarInternacao() {
+
+      const paciente =
+        localStorage.getItem("pacienteInternacao");
+
+      const leito =
+        document.getElementById("leito").value;
+
+      const setor =
+        document.getElementById("setor").value;
+
+      const tipo =
+        document.getElementById("tipoInternacao").value;
+
+      const data =
+        document.getElementById("dataInternacao").value;
+
+      const motivo =
+        document.getElementById("motivo").value;
+
+      const observacoes =
+        document.getElementById("observacoes").value;
+
+
+      if (!paciente) {
+
+        alert(
+          "⚠️ Nenhum paciente foi selecionado."
+        );
+
+        return;
+
+      }
+
+
+      if (!leito) {
+
+        alert(
+          "⚠️ Informe o leito do paciente."
+        );
+
+        return;
+
+      }
+
+
+      if (!setor) {
+
+        alert(
+          "⚠️ Selecione o setor da internação."
+        );
+
+        return;
+
+      }
+
+
+      if (!tipo) {
+
+        alert(
+          "⚠️ Selecione o tipo de internação."
+        );
+
+        return;
+
+      }
+
+
+      /*
+       * Por enquanto os dados ficam
+       * registrados no navegador.
+       *
+       * Depois podemos conectar esta parte
+       * ao seu backend / db.json.
+       */
+
+      const internacao = {
+
+        paciente: paciente,
+
+        leito: leito,
+
+        setor: setor,
+
+        tipo: tipo,
+
+        data: data,
+
+        motivo: motivo,
+
+        observacoes: observacoes
+
+      };
+
+
+      localStorage.setItem(
+        "internacaoAtual",
+        JSON.stringify(internacao)
+      );
+
+
+      alert(
+        "✅ Internação registrada para " +
+        paciente +
+        "!\n\n" +
+        "Leito: " +
+        leito +
+        "\n" +
+        "Setor: " +
+        setor
+      );
+
+    }
+
+
+    /* ==============================
+       VOLTAR PARA O PAINEL
+    ============================== */
+
+    function voltarPainel() {
+
+      window.location.href =
+        "painel-medico.html";
+
+    }
+
+  </script>
+
+</body>
+
+</html>

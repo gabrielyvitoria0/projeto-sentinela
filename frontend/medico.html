@@ -184,7 +184,7 @@
     }
 
     /* ==============================
-       BOTÃO DE INTERNAÇÃO
+       BOTÃO INTERNAÇÃO
     ============================== */
 
     .btn-internacao {
@@ -278,7 +278,7 @@
     }
 
     /* ==============================
-       IMPRESSÃO / PDF
+       IMPRESSÃO
     ============================== */
 
     @media print {
@@ -321,9 +321,7 @@
 
   <div class="container">
 
-    <!-- ==============================
-         CABEÇALHO
-    ============================== -->
+    <!-- CABEÇALHO -->
 
     <div class="cabecalho">
 
@@ -348,9 +346,7 @@
     </div>
 
 
-    <!-- ==============================
-         CONSULTÓRIO
-    ============================== -->
+    <!-- CONSULTÓRIO -->
 
     <div class="consultorio-input">
 
@@ -368,18 +364,14 @@
     </div>
 
 
-    <!-- ==============================
-         LISTA DE TRIAGENS
-    ============================== -->
+    <!-- LISTA DE TRIAGENS -->
 
     <div id="triagens"></div>
 
     <hr>
 
 
-    <!-- ==============================
-         CONSULTA
-    ============================== -->
+    <!-- CONSULTA -->
 
     <div class="consulta">
 
@@ -407,9 +399,7 @@
         placeholder="Observações"></textarea>
 
 
-      <!-- ==============================
-           BOTÕES DA CONSULTA
-      ============================== -->
+      <!-- BOTÕES -->
 
       <div class="acoes-consulta">
 
@@ -438,10 +428,6 @@
   </div>
 
 
-  <!-- ==============================
-       JAVASCRIPT
-  ============================== -->
-
   <script>
 
     let triagensCarregadas = [];
@@ -461,7 +447,8 @@
 
           triagensCarregadas = data;
 
-          const div = document.getElementById("triagens");
+          const div =
+            document.getElementById("triagens");
 
           div.innerHTML = "";
 
@@ -534,7 +521,10 @@
 
         .catch(error => {
 
-          console.error("Erro ao carregar triagens:", error);
+          console.error(
+            "Erro ao carregar triagens:",
+            error
+          );
 
         });
 
@@ -594,7 +584,8 @@
 
     function selecionar(index) {
 
-      const t = triagensCarregadas[index];
+      const t =
+        triagensCarregadas[index];
 
 
       document.getElementById("paciente").value =
@@ -683,7 +674,6 @@
         );
 
         return;
-
       }
 
 
@@ -694,7 +684,6 @@
         );
 
         return;
-
       }
 
 
@@ -735,7 +724,7 @@
 
 
     /* ==============================
-       ENCAMINHAR PARA INTERNAÇÃO
+       INTERNAÇÃO
     ============================== */
 
     function encaminharInternacao() {
@@ -770,7 +759,7 @@
 
 
     /* ==============================
-       ENCAMINHAR PARA ALTA
+       ALTA
     ============================== */
 
     function encaminharAlta() {
@@ -786,7 +775,6 @@
         );
 
         return;
-
       }
 
 
@@ -808,10 +796,10 @@
     carregarMedicacoes();
 
 
-    /* Atualiza a lista automaticamente
-       a cada 10 segundos */
-
-    setInterval(carregar, 10000);
+    setInterval(
+      carregar,
+      10000
+    );
 
   </script>
 

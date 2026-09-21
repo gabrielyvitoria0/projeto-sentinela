@@ -184,6 +184,25 @@
     }
 
     /* ==============================
+       BOTÃO DE INTERNAÇÃO
+    ============================== */
+
+    .btn-internacao {
+      background: #7c3aed !important;
+      color: white;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .btn-internacao:hover {
+      background: #6d28d9 !important;
+    }
+
+    /* ==============================
        BOTÃO DE ALTA
     ============================== */
 
@@ -196,7 +215,6 @@
       cursor: pointer;
       font-size: 14px;
       font-weight: bold;
-      margin-left: 8px;
     }
 
     .btn-alta:hover {
@@ -279,6 +297,7 @@
       .botoes-cabecalho,
       .btn-tv,
       .btn-alta,
+      .btn-internacao,
       .acoes-consulta,
       .consultorio-input {
         display: none !important;
@@ -388,7 +407,9 @@
         placeholder="Observações"></textarea>
 
 
-      <!-- BOTÕES -->
+      <!-- ==============================
+           BOTÕES DA CONSULTA
+      ============================== -->
 
       <div class="acoes-consulta">
 
@@ -396,6 +417,12 @@
           class="btn-salvar"
           onclick="salvar()">
           💾 Salvar
+        </button>
+
+        <button
+          class="btn-internacao"
+          onclick="encaminharInternacao()">
+          🏥 Internação
         </button>
 
         <button
@@ -703,6 +730,41 @@
         document.getElementById("obs").value = "";
 
       });
+
+    }
+
+
+    /* ==============================
+       ENCAMINHAR PARA INTERNAÇÃO
+    ============================== */
+
+    function encaminharInternacao() {
+
+      const paciente =
+        document.getElementById("paciente").value;
+
+
+      if (!paciente) {
+
+        alert(
+          "⚠️ Selecione um paciente clicando em Atender."
+        );
+
+        return;
+
+      }
+
+
+      // Guarda o paciente selecionado
+      localStorage.setItem(
+        "pacienteInternacao",
+        paciente
+      );
+
+
+      // Abre a página de internação
+      window.location.href =
+        "internacao.html";
 
     }
 

@@ -13,10 +13,6 @@
 
   <style>
 
-    /* ==============================
-       ESTILO GERAL
-    ============================== */
-
     body {
       font-family: Arial, sans-serif;
       background: #f4f6f9;
@@ -25,49 +21,28 @@
       color: #333;
     }
 
-
     .container {
       max-width: 900px;
       margin: 0 auto;
       background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
-
-
-    /* ==============================
-       CABEÇALHO
-    ============================== */
 
     .cabecalho {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
       margin-bottom: 25px;
-      border-bottom: 1px solid #e5e7eb;
       padding-bottom: 18px;
+      border-bottom: 1px solid #e5e7eb;
     }
-
 
     .cabecalho h2 {
       margin: 0;
       color: #1f2937;
     }
-
-
-    .subtitulo {
-      color: #6b7280;
-      font-size: 14px;
-      margin-top: 6px;
-    }
-
-
-    /* ==============================
-       BOTÃO VOLTAR
-    ============================== */
 
     .btn-voltar {
       background: #6b7280;
@@ -76,19 +51,32 @@
       padding: 9px 16px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
       font-weight: bold;
     }
-
 
     .btn-voltar:hover {
       background: #4b5563;
     }
 
+    .paciente-box {
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      padding: 18px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
-    /* ==============================
-       SEÇÕES
-    ============================== */
+    .paciente-box span {
+      display: block;
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .paciente-box strong {
+      font-size: 20px;
+      color: #5b21b6;
+    }
 
     .secao {
       margin-top: 25px;
@@ -98,29 +86,26 @@
       background: #fafafa;
     }
 
-
     .secao h3 {
       margin-top: 0;
       color: #374151;
     }
 
-
-    /* ==============================
-       FORMULÁRIO
-    ============================== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
 
     .campo {
       margin-bottom: 16px;
     }
 
-
     .campo label {
       display: block;
       font-weight: bold;
       margin-bottom: 6px;
-      color: #374151;
     }
-
 
     .campo input,
     .campo select,
@@ -134,71 +119,14 @@
       background: white;
     }
 
-
     .campo textarea {
       min-height: 100px;
       resize: vertical;
     }
 
-
-    .campo input:focus,
-    .campo select:focus,
-    .campo textarea:focus {
-      outline: none;
-      border-color: #7c3aed;
-      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
-    }
-
-
-    /* ==============================
-       GRID
-    ============================== */
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-
-    /* ==============================
-       PACIENTE
-    ============================== */
-
-    .paciente-box {
-      background: #f5f3ff;
-      border: 1px solid #ddd6fe;
-      padding: 18px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-
-    .paciente-box span {
-      display: block;
-      color: #6b7280;
-      font-size: 13px;
-      margin-bottom: 5px;
-    }
-
-
-    .paciente-box strong {
-      font-size: 20px;
-      color: #5b21b6;
-    }
-
-
-    /* ==============================
-       BOTÕES
-    ============================== */
-
     .acoes {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
       margin-top: 25px;
     }
-
 
     .btn-salvar {
       background: #7c3aed;
@@ -211,15 +139,9 @@
       font-weight: bold;
     }
 
-
     .btn-salvar:hover {
       background: #6d28d9;
     }
-
-
-    /* ==============================
-       RESPONSIVO
-    ============================== */
 
     @media (max-width: 700px) {
 
@@ -231,48 +153,35 @@
         padding: 20px;
       }
 
+      .cabecalho {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
     }
 
   </style>
 
 </head>
 
-
 <body>
 
   <div class="container">
 
-    <!-- ==============================
-         CABEÇALHO
-    ============================== -->
-
     <div class="cabecalho">
 
-      <div>
-
-        <h2>🏥 Internação</h2>
-
-        <div class="subtitulo">
-          Registro e encaminhamento do paciente para internação
-        </div>
-
-      </div>
-
+      <h2>🏥 Internação</h2>
 
       <button
         class="btn-voltar"
         onclick="voltarPainel()">
-
         ← Voltar
-
       </button>
 
     </div>
 
 
-    <!-- ==============================
-         PACIENTE
-    ============================== -->
+    <!-- PACIENTE -->
 
     <div class="paciente-box">
 
@@ -285,14 +194,11 @@
     </div>
 
 
-    <!-- ==============================
-         DADOS DA INTERNAÇÃO
-    ============================== -->
+    <!-- DADOS DA INTERNAÇÃO -->
 
     <div class="secao">
 
       <h3>Dados da Internação</h3>
-
 
       <div class="grid">
 
@@ -389,14 +295,11 @@
     </div>
 
 
-    <!-- ==============================
-         MOTIVO
-    ============================== -->
+    <!-- MOTIVO -->
 
     <div class="secao">
 
       <h3>Motivo da Internação</h3>
-
 
       <div class="campo">
 
@@ -426,9 +329,7 @@
     </div>
 
 
-    <!-- ==============================
-         AÇÕES
-    ============================== -->
+    <!-- BOTÃO -->
 
     <div class="acoes">
 
@@ -448,7 +349,7 @@
   <script>
 
     /* ==============================
-       CARREGAR PACIENTE
+       PEGAR PACIENTE DO PAINEL
     ============================== */
 
     const paciente =
@@ -457,12 +358,15 @@
 
     if (paciente) {
 
-      document.getElementById("nomePaciente").textContent =
-        paciente;
+      document.getElementById(
+        "nomePaciente"
+      ).textContent = paciente;
 
     } else {
 
-      document.getElementById("nomePaciente").textContent =
+      document.getElementById(
+        "nomePaciente"
+      ).textContent =
         "Nenhum paciente selecionado";
 
     }
@@ -473,38 +377,55 @@
     ============================== */
 
     const hoje =
-      new Date().toISOString().split("T")[0];
+      new Date()
+        .toISOString()
+        .split("T")[0];
 
-    document.getElementById("dataInternacao").value =
-      hoje;
+    document.getElementById(
+      "dataInternacao"
+    ).value = hoje;
 
 
     /* ==============================
-       SALVAR INTERNAÇÃO
+       SALVAR
     ============================== */
 
     function salvarInternacao() {
 
       const paciente =
-        localStorage.getItem("pacienteInternacao");
+        localStorage.getItem(
+          "pacienteInternacao"
+        );
 
       const leito =
-        document.getElementById("leito").value;
+        document.getElementById(
+          "leito"
+        ).value;
 
       const setor =
-        document.getElementById("setor").value;
+        document.getElementById(
+          "setor"
+        ).value;
 
       const tipo =
-        document.getElementById("tipoInternacao").value;
+        document.getElementById(
+          "tipoInternacao"
+        ).value;
 
       const data =
-        document.getElementById("dataInternacao").value;
+        document.getElementById(
+          "dataInternacao"
+        ).value;
 
       const motivo =
-        document.getElementById("motivo").value;
+        document.getElementById(
+          "motivo"
+        ).value;
 
       const observacoes =
-        document.getElementById("observacoes").value;
+        document.getElementById(
+          "observacoes"
+        ).value;
 
 
       if (!paciente) {
@@ -514,7 +435,6 @@
         );
 
         return;
-
       }
 
 
@@ -525,7 +445,6 @@
         );
 
         return;
-
       }
 
 
@@ -536,7 +455,6 @@
         );
 
         return;
-
       }
 
 
@@ -547,32 +465,17 @@
         );
 
         return;
-
       }
 
-
-      /*
-       * Por enquanto os dados ficam
-       * registrados no navegador.
-       *
-       * Depois podemos conectar esta parte
-       * ao seu backend / db.json.
-       */
 
       const internacao = {
 
         paciente: paciente,
-
         leito: leito,
-
         setor: setor,
-
         tipo: tipo,
-
         data: data,
-
         motivo: motivo,
-
         observacoes: observacoes
 
       };
@@ -587,19 +490,14 @@
       alert(
         "✅ Internação registrada para " +
         paciente +
-        "!\n\n" +
-        "Leito: " +
-        leito +
-        "\n" +
-        "Setor: " +
-        setor
+        "!"
       );
 
     }
 
 
     /* ==============================
-       VOLTAR PARA O PAINEL
+       VOLTAR
     ============================== */
 
     function voltarPainel() {

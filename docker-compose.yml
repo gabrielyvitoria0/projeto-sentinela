@@ -1,0 +1,14 @@
+services:
+ 
+  app:
+    build: .
+    container_name: painel-acesso
+    ports:
+      - "3010:3002"
+    volumes:
+      - dados_painel:/app/backend/data
+ 
+volumes:
+ 
+  dados_painel:
+

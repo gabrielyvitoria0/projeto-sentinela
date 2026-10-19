@@ -4,315 +4,595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triagem Inteligente | Sentinela</title>
+<title>Triagem | Sentinela</title>
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  .btn-tv {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
+:root {
+  --primary: #c87596;
+  --primary-dark: #a95377;
+  --pink: #fff0f5;
+  --pink-soft: #fff8fa;
+  --border: #f0dce4;
+  --text: #40343a;
+  --muted: #897680;
+  --green: #25845b;
+  --yellow: #b78318;
+  --red: #cf4058;
+}
 
-  .btn-tv:hover { background: #1e7e34; }
+* { box-sizing: border-box; }
 
-  .btn-abrir-tv {
-    background: #17a2b8;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 5px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 26px 16px;
+  background: #fff8fa;
+  color: var(--text);
+  font-family: "Nunito Sans", sans-serif;
+}
 
-  .pacientes-fila {
-    margin-bottom: 30px;
-    background: #f0f4ff;
-    border-radius: 8px;
-    padding: 16px;
-    border: 1px solid #d0d8f0;
-  }
+button, input, select, textarea { font: inherit; }
 
-  .pacientes-fila h3 {
-    margin-top: 0;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+button { cursor: pointer; transition: .2s; }
 
-  .pacientes-fila h3 span {
-    font-size: 13px;
-    font-weight: normal;
-    color: #666;
-  }
+button:hover { filter: brightness(.97); }
 
-  .fila-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background: white;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin-bottom: 8px;
-    border: 1px solid #dce4ff;
-  }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 12px 38px #bd789414;
+}
 
-  .fila-item strong { font-size: 15px; }
-  .fila-item small { color: #666; font-size: 12px; }
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
 
-  .painel-ia {
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #d6e1ee;
-    border-radius: 12px;
-    background: #f7faff;
-  }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
 
-  .ia-cabecalho {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border-radius: 15px;
+  background: var(--pink);
+  color: var(--primary-dark);
+  font-size: 23px;
+}
 
-  .ia-icone {
-    background: #dceaff;
-    color: #164b91;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    font-size: 22px;
-  }
+.brand h1 {
+  margin: 0;
+  font: 700 25px "Quicksand", sans-serif;
+  color: var(--primary-dark);
+}
 
-  .ia-cabecalho h3 {
-    margin: 0;
-    color: #173b68;
-  }
+.brand p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
 
-  .ia-cabecalho p {
-    margin: 4px 0 0;
-    color: #596b80;
-    font-size: 13px;
-  }
+.btn-tv-page, .btn-primary, .btn-secondary {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 15px;
+  font-weight: 800;
+}
 
-  .risco-card {
-    margin-top: 15px;
-    padding: 16px;
-    border-radius: 8px;
-    background: white;
-    border: 1px solid #d9e0e8;
-  }
+.btn-tv-page, .btn-primary {
+  color: white;
+  background: var(--primary);
+}
 
-  .risco-card.verde { border-left: 6px solid #198754; }
-  .risco-card.amarelo { border-left: 6px solid #e0a800; }
-  .risco-card.vermelho { border-left: 6px solid #dc3545; }
+.btn-tv-page:hover, .btn-primary:hover {
+  background: var(--primary-dark);
+}
 
-  .risco-titulo {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
+.section-title {
+  margin: 0 0 7px;
+  font: 700 20px "Quicksand", sans-serif;
+  color: var(--primary-dark);
+}
 
-  .verde .risco-titulo { color: #198754; }
-  .amarelo .risco-titulo { color: #946c00; }
-  .vermelho .risco-titulo { color: #dc3545; }
+.section-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
 
-  .lista-motivos {
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
+.queue-section { margin: 25px 0 30px; }
 
-  .lista-motivos li { margin-bottom: 5px; }
+.queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
 
-  .aviso-ia {
-    margin-top: 14px;
-    padding: 12px;
-    border-radius: 7px;
-    background: #fff3cd;
-    color: #664d03;
-    font-size: 13px;
-    line-height: 1.5;
-  }
+.queue-count {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: var(--primary-dark);
+  background: var(--pink);
+  font-size: 12px;
+  font-weight: 800;
+}
 
-  .campo {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 8px 0 15px;
-    padding: 11px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-    background: white;
-  }
+.queue-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
 
-  .campo:focus {
-    outline: 2px solid #9bc5ff;
-    border-color: #4385d1;
-  }
+.fila-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #fffafb;
+}
 
-  .campo-label {
-    display: block;
-    font-weight: 600;
-    margin-top: 12px;
-  }
+.patient-name {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
 
-  .btn-salvar {
-    background: #174a82;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-  }
+.patient-info {
+  color: var(--muted);
+  font-size: 12px;
+}
 
-  .btn-salvar:hover { background: #10365f; }
+.btn-call {
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px 11px;
+  color: var(--primary-dark);
+  background: white;
+  font-size: 12px;
+  font-weight: 800;
+}
 
-  .mensagem {
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 6px;
-    display: none;
-  }
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
 
-  .mensagem.erro {
-    display: block;
-    background: #f8d7da;
-    color: #842029;
-  }
+.form-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+  align-items: start;
+  gap: 24px;
+  margin-top: 24px;
+}
 
-  .mensagem.sucesso {
-    display: block;
-    background: #d1e7dd;
-    color: #0f5132;
-  }
+.form-panel, .ai-panel {
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+}
 
-  .disclaimer {
-    color: #687385;
-    font-size: 12px;
-    line-height: 1.5;
-  }
+.form-panel { background: white; }
 
-  @media (max-width: 600px) {
-    .fila-item {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
+.ai-panel {
+  background: linear-gradient(145deg, #fff5f8, #fffafb);
+  position: sticky;
+  top: 15px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.panel-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  color: var(--primary-dark);
+  background: var(--pink);
+  font-weight: 800;
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font: 700 18px "Quicksand", sans-serif;
+  color: var(--primary-dark);
+}
+
+.panel-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.field { margin-bottom: 17px; }
+
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #6f5962;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.field input, .field select, .field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  color: var(--text);
+  background: #fffafb;
+  font-size: 14px;
+}
+
+.field textarea {
+  min-height: 105px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px #c875961a;
+  background: white;
+}
+
+.field input::placeholder, .field textarea::placeholder {
+  color: #b5a2aa;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.form-actions { margin-top: 22px; }
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+}
+
+.btn-primary:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.ai-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b8a8af;
+}
+
+.status-dot.active { background: var(--primary); }
+
+.risk-card {
+  padding: 19px;
+  border: 1px solid var(--border);
+  border-left: 5px solid #cbbbc2;
+  border-radius: 13px;
+  background: white;
+}
+
+.risk-card.verde { border-left-color: var(--green); }
+.risk-card.amarelo { border-left-color: var(--yellow); }
+.risk-card.vermelho { border-left-color: var(--red); }
+
+.risk-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.risk-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font: 700 25px "Quicksand", sans-serif;
+}
+
+.verde .risk-value { color: var(--green); }
+.amarelo .risk-value { color: var(--yellow); }
+.vermelho .risk-value { color: var(--red); }
+
+.risk-indicator {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.risk-summary {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.reason-title {
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lista-motivos {
+  padding-left: 18px;
+  margin: 10px 0 0;
+  color: #6f5962;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.lista-motivos li { margin-bottom: 6px; }
+
+.ai-placeholder {
+  padding: 22px 15px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  background: #ffffffa8;
+}
+
+.ai-placeholder strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-dark);
+}
+
+.ai-notice {
+  margin-top: 16px;
+  padding: 13px;
+  border: 1px solid #f0dfb4;
+  border-radius: 10px;
+  background: #fff9ed;
+  color: #786239;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.message {
+  display: none;
+  margin-top: 16px;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.message.erro {
+  display: block;
+  color: #a52c43;
+  background: #fff0f1;
+  border: 1px solid #f4c5cc;
+}
+
+.message.sucesso {
+  display: block;
+  color: #216a43;
+  background: #edf8f1;
+  border: 1px solid #c8e6d3;
+}
+
+@media (max-width: 850px) {
+  .form-layout { grid-template-columns: 1fr; }
+  .ai-panel { position: static; }
+}
+
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .container { padding: 18px; border-radius: 16px; }
+  .brand h1 { font-size: 21px; }
+  .topbar { align-items: flex-start; }
+  .btn-tv-page { width: 100%; }
+  .queue-list { grid-template-columns: 1fr; }
+  .fila-item { align-items: flex-start; }
+  .form-panel, .ai-panel { padding: 17px; }
+}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-  <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:20px;">
-    <h2 style="margin:0;">Triagem Hospitalar — Sentinela</h2>
-    <button class="btn-abrir-tv" onclick="window.open('tv.html','_blank')">
-      Abrir Tela da TV
-    </button>
-  </div>
-
-  <div class="pacientes-fila">
-    <h3>
-      Pacientes cadastrados no atendimento
-      <span>Chame o paciente para o guichê</span>
-    </h3>
-
-    <div id="fila-pacientes">
-      <p>Carregando pacientes...</p>
-    </div>
-
-    <button onclick="carregarPacientes()"
-      style="margin-top:8px; background:#6c757d; color:white; border:none; padding:8px 12px; border-radius:4px; cursor:pointer;">
-      Atualizar lista
-    </button>
-  </div>
-
-  <hr>
-
-  <h3>Formulário de triagem</h3>
-
-  <label class="campo-label" for="nome">Nome do paciente</label>
-  <input class="campo" id="nome" placeholder="Nome completo" required>
-
-  <label class="campo-label" for="sintoma">Principal sintoma</label>
-  <select class="campo" id="sintoma" required>
-    <option value="">Selecione o sintoma</option>
-    <option value="dor_leve">Dor leve</option>
-    <option value="resfriado">Resfriado</option>
-    <option value="coriza">Coriza</option>
-    <option value="tosse">Tosse</option>
-    <option value="febre">Febre</option>
-    <option value="vomito">Vômito</option>
-    <option value="diarreia">Diarreia</option>
-    <option value="falta_ar_moderada">Falta de ar moderada</option>
-    <option value="falta_ar_grave">Falta de ar grave</option>
-    <option value="infarto">Suspeita de infarto</option>
-    <option value="avc">Suspeita de AVC</option>
-    <option value="convulsao">Convulsão</option>
-    <option value="hemorragia">Hemorragia</option>
-    <option value="outro">Outro sintoma</option>
-  </select>
-
-  <label class="campo-label" for="temp">Temperatura corporal (°C)</label>
-  <input class="campo" id="temp" type="number" min="25" max="45"
-    step="0.1" placeholder="Ex.: 37.5">
-
-  <label class="campo-label" for="alergia">Alergias conhecidas</label>
-  <input class="campo" id="alergia"
-    placeholder="Informe as alergias ou escreva 'Não informado'">
-
-  <label class="campo-label" for="observacao">Sintomas e observações adicionais</label>
-  <textarea class="campo" id="observacao" rows="4"
-    placeholder="Descreva os sintomas, quando começaram e outros sinais observados..."></textarea>
-
-  <!-- Painel da IA -->
-  <section class="painel-ia">
-    <div class="ia-cabecalho">
-      <div class="ia-icone">IA</div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">+</div>
       <div>
-        <h3>Análise inteligente de risco</h3>
-        <p>Sentinela • Assistente de apoio à triagem</p>
+        <h1>Triagem</h1>
+        <p>Sentinela · Gestão hospitalar</p>
       </div>
     </div>
 
-    <p>
-      A análise considera o sintoma selecionado, a temperatura informada
-      e palavras-chave nas observações.
-    </p>
+    <button class="btn-tv-page" onclick="window.open('tv.html','_blank')">
+      Abrir tela da TV ↗
+    </button>
+  </header>
 
-    <div id="resultado-ia" aria-live="polite">
-      Preencha os sintomas para visualizar a análise.
+  <section class="queue-section">
+    <div class="queue-header">
+      <div>
+        <h2 class="section-title">Fila de atendimento</h2>
+        <p class="section-description">Pacientes aguardando a triagem.</p>
+      </div>
+      <span class="queue-count" id="queue-count">Carregando...</span>
     </div>
 
-    <div class="aviso-ia">
-      <strong>Atenção:</strong> esta é uma demonstração baseada em regras,
-      não uma IA clínica validada. A classificação é provisória e precisa
-      ser confirmada por um profissional de saúde. Em situações de possível
-      emergência, não aguarde a conclusão do formulário para buscar
-      atendimento imediato.
+    <div class="queue-list" id="fila-pacientes">
+      <div class="empty-state">Carregando pacientes...</div>
     </div>
   </section>
 
-  <button class="btn-salvar" id="btn-salvar" onclick="salvar()">
-    Salvar Triagem
-  </button>
+  <div>
+    <h2 class="section-title">Nova triagem</h2>
+    <p class="section-description">
+      Registre os dados do paciente e confira a análise preliminar.
+    </p>
+  </div>
 
-  <div id="mensagem" class="mensagem" role="status"></div>
+  <div class="form-layout">
 
+    <section class="form-panel">
+      <div class="panel-heading">
+        <div class="panel-icon">01</div>
+        <div>
+          <h2>Dados da triagem</h2>
+          <p>Preencha as informações disponíveis.</p>
+        </div>
+      </div>
+
+      <form id="form-triagem">
+        <div class="field">
+          <label for="nome">Nome do paciente *</label>
+          <input id="nome" placeholder="Nome completo" required>
+        </div>
+
+        <div class="field">
+          <label for="sintoma">Principal sintoma *</label>
+          <select id="sintoma" required>
+            <option value="">Selecione um sintoma</option>
+            <option value="dor_leve">Dor leve</option>
+            <option value="resfriado">Resfriado</option>
+            <option value="coriza">Coriza</option>
+            <option value="tosse">Tosse</option>
+            <option value="febre">Febre</option>
+            <option value="vomito">Vômito</option>
+            <option value="diarreia">Diarreia</option>
+            <option value="falta_ar_moderada">Falta de ar moderada</option>
+            <option value="falta_ar_grave">Falta de ar grave</option>
+            <option value="infarto">Suspeita de infarto</option>
+            <option value="avc">Suspeita de AVC</option>
+            <option value="convulsao">Convulsão</option>
+            <option value="hemorragia">Hemorragia</option>
+            <option value="outro">Outro sintoma</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="temp">Temperatura corporal (°C)</label>
+          <input id="temp" type="number" min="25" max="45" step="0.1"
+            placeholder="Ex.: 37.5">
+          <span class="field-hint">Campo opcional. Informe o valor medido.</span>
+        </div>
+
+        <div class="field">
+          <label for="alergia">Alergias conhecidas</label>
+          <input id="alergia" placeholder="Alergias ou não informado">
+        </div>
+
+        <div class="field">
+          <label for="observacao">Observações adicionais</label>
+          <textarea id="observacao"
+            placeholder="Descreva os sintomas, sua duração e outros sinais observados..."></textarea>
+          <span class="field-hint">
+            Informe apenas dados relevantes para a avaliação profissional.
+          </span>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-primary" type="submit" id="btn-salvar">
+            Salvar triagem
+          </button>
+        </div>
+      </form>
+
+      <div class="message" id="mensagem" role="status"></div>
+    </section>
+
+    <aside class="ai-panel">
+      <div class="panel-heading">
+        <div class="panel-icon">IA</div>
+        <div>
+          <h2>Análise de risco</h2>
+          <p>Assistente de apoio do Sentinela</p>
+        </div>
+      </div>
+
+      <div class="ai-status">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-ia">Aguardando informações</span>
+      </div>
+
+      <div id="resultado-ia" aria-live="polite">
+        <div class="ai-placeholder">
+          <strong>A análise aparecerá aqui</strong>
+          Selecione um sintoma para visualizar o resultado preliminar.
+        </div>
+      </div>
+
+      <div class="ai-notice">
+        <strong>Importante:</strong> esta demonstração utiliza regras
+        programadas, não uma IA clínica validada. O resultado não substitui
+        avaliação profissional. Suspeitas de emergência exigem atendimento
+        imediato, sem aguardar o preenchimento.
+      </div>
+    </aside>
+
+  </div>
 </div>
 
 <script>
@@ -324,10 +604,10 @@ const campoObservacao = document.getElementById("observacao");
 const resultadoIA = document.getElementById("resultado-ia");
 const mensagem = document.getElementById("mensagem");
 const botaoSalvar = document.getElementById("btn-salvar");
+const formTriagem = document.getElementById("form-triagem");
 
 let riscoAtual = null;
 
-// Normaliza acentos para facilitar a leitura de palavras-chave.
 function normalizar(texto) {
   return String(texto || "")
     .normalize("NFD")
@@ -335,45 +615,49 @@ function normalizar(texto) {
     .toLowerCase();
 }
 
-// Fila de pacientes aguardando triagem.
 async function carregarPacientes() {
   const div = document.getElementById("fila-pacientes");
-  div.textContent = "Carregando pacientes...";
+  const contador = document.getElementById("queue-count");
 
   try {
     const resposta = await fetch("/pacientes");
 
-    if (!resposta.ok) {
-      throw new Error("Não foi possível carregar os pacientes.");
-    }
+    if (!resposta.ok) throw new Error("Erro ao consultar pacientes");
 
     const pacientes = await resposta.json();
     const fila = pacientes.filter(p => p.status === "triagem");
 
     div.replaceChildren();
+    contador.textContent = fila.length +
+      (fila.length === 1 ? " paciente" : " pacientes");
 
-    if (fila.length === 0) {
-      div.textContent = "Nenhum paciente aguardando triagem.";
+    if (!fila.length) {
+      const vazio = document.createElement("div");
+      vazio.className = "empty-state";
+      vazio.textContent = "Nenhum paciente aguardando triagem.";
+      div.appendChild(vazio);
       return;
     }
 
     fila.forEach(p => {
-      const item = document.createElement("div");
+      const item = document.createElement("article");
       item.className = "fila-item";
 
       const dados = document.createElement("div");
-      const nome = document.createElement("strong");
-      const detalhes = document.createElement("small");
-      const quebra = document.createElement("br");
+      const nome = document.createElement("span");
+      const info = document.createElement("span");
 
+      nome.className = "patient-name";
       nome.textContent = p.nome || "Paciente sem nome";
-      detalhes.textContent =
-        "CPF: " + (p.cpf || "—") + " | Tipo: " + (p.tipo || "—");
 
-      dados.append(nome, quebra, detalhes);
+      info.className = "patient-info";
+      info.textContent = "CPF: " + (p.cpf || "—") +
+        " · Tipo: " + (p.tipo || "—");
+
+      dados.append(nome, info);
 
       const botao = document.createElement("button");
-      botao.className = "btn-tv";
+      botao.className = "btn-call";
       botao.textContent = "Chamar na TV";
       botao.addEventListener("click", () => chamarNaTV(p.nome));
 
@@ -381,11 +665,16 @@ async function carregarPacientes() {
       div.appendChild(item);
     });
   } catch (erro) {
-    div.textContent = "Erro ao carregar pacientes. Verifique o servidor.";
+    contador.textContent = "Indisponível";
+    div.replaceChildren();
+
+    const aviso = document.createElement("div");
+    aviso.className = "empty-state";
+    aviso.textContent = "Não foi possível carregar a fila. Verifique o servidor.";
+    div.appendChild(aviso);
   }
 }
 
-// Chama um paciente na TV.
 async function chamarNaTV(nome) {
   try {
     const resposta = await fetch("/tv/chamar", {
@@ -398,9 +687,7 @@ async function chamarNaTV(nome) {
       })
     });
 
-    if (!resposta.ok) {
-      throw new Error("Falha ao chamar paciente.");
-    }
+    if (!resposta.ok) throw new Error("Falha ao chamar");
 
     alert(nome + " foi chamado para o Guichê 01.");
   } catch (erro) {
@@ -408,230 +695,202 @@ async function chamarNaTV(nome) {
   }
 }
 
-/*
- * Motor demonstrativo de classificação.
- * As regras abaixo são exemplos de programação, não um protocolo
- * clínico validado para uso real.
- */
+// Demonstração por regras: não constitui protocolo clínico validado.
 function classificarRisco(sintoma, temperatura, observacao) {
   const texto = normalizar(observacao);
-
   const motivos = [];
   let risco = "verde";
 
-  const sinaisGraves = [
+  const graves = [
     "falta de ar grave",
     "dificuldade intensa para respirar",
     "nao consegue respirar",
     "dor no peito intensa",
+    "dor no peito",
     "suspeita de infarto",
     "suspeita de avc",
     "sinais de avc",
     "convulsao",
     "sangramento intenso",
     "hemorragia",
-    "desmaiou e nao acorda",
     "inconsciente",
     "nao responde",
-    "lábios roxos",
     "labios roxos"
   ];
 
-  const sinaisImportantes = [
+  const importantes = [
     "falta de ar",
     "dificuldade para respirar",
-    "dor no peito",
     "vomitos persistentes",
     "vomito persistente",
     "sangue nas fezes",
     "sangue no vomito",
     "confusao mental",
     "desidratacao",
-    "desidratacao intensa",
     "dor intensa",
     "piora rapida"
   ];
 
-  const sintomasVermelhos = [
-    "infarto",
-    "avc",
-    "convulsao",
-    "hemorragia",
-    "falta_ar_grave"
+  const vermelho = [
+    "infarto", "avc", "convulsao",
+    "hemorragia", "falta_ar_grave"
   ];
 
-  const sintomasAmarelos = [
-    "febre",
-    "vomito",
-    "diarreia",
-    "falta_ar_moderada"
+  const amarelo = [
+    "febre", "vomito", "diarreia", "falta_ar_moderada"
   ];
 
-  // 1. Sinais de possível emergência.
-  const encontrouSinalGrave = sinaisGraves.some(sinal =>
-    texto.includes(normalizar(sinal))
-  );
-
-  if (sintomasVermelhos.includes(sintoma) || encontrouSinalGrave) {
+  if (vermelho.includes(sintoma) ||
+      graves.some(s => texto.includes(normalizar(s)))) {
     risco = "vermelho";
-    motivos.push(
-      "Foi identificado um sintoma selecionado ou relato que pode indicar emergência."
-    );
+    motivos.push("Sintoma ou relato potencialmente grave identificado; requer avaliação imediata.");
   }
 
-  // 2. Temperatura muito elevada: sinal de alerta demonstrativo.
   if (temperatura !== null && temperatura >= 39) {
     risco = "vermelho";
-    motivos.push(
-      "Temperatura informada igual ou superior a 39 °C: requer avaliação profissional."
-    );
+    motivos.push("Temperatura informada igual ou superior a 39 °C; requer avaliação profissional.");
   }
 
-  // 3. Outros sinais que precisam de atenção.
-  const encontrouSinalImportante = sinaisImportantes.some(sinal =>
-    texto.includes(normalizar(sinal))
-  );
-
-  if (encontrouSinalImportante && risco !== "vermelho") {
+  if (risco !== "vermelho" &&
+      importantes.some(s => texto.includes(normalizar(s)))) {
     risco = "amarelo";
-    motivos.push(
-      "As observações contêm sinais que precisam de avaliação profissional."
-    );
+    motivos.push("As observações incluem sinais que necessitam de avaliação profissional.");
   }
 
-  // 4. Sintomas que precisam de avaliação, conforme o contexto.
-  if (sintomasAmarelos.includes(sintoma) && risco === "verde") {
+  if (risco === "verde" && amarelo.includes(sintoma)) {
     risco = "amarelo";
-    motivos.push(
-      "O sintoma selecionado exige avaliação conforme intensidade, duração e contexto."
-    );
+    motivos.push("O sintoma selecionado precisa ser avaliado conforme intensidade e contexto.");
   }
 
-  // 5. Temperatura acima da faixa usual.
-  if (
-    temperatura !== null &&
-    temperatura >= 38 &&
-    risco === "verde"
-  ) {
+  if (risco === "verde" && temperatura !== null && temperatura >= 38) {
     risco = "amarelo";
-    motivos.push(
-      "Temperatura informada igual ou superior a 38 °C: precisa de avaliação no contexto clínico."
-    );
+    motivos.push("Temperatura informada igual ou superior a 38 °C; considere o contexto clínico.");
   }
 
   if (risco === "verde") {
-    motivos.push(
-      "Nenhum dos critérios de alerta programados foi identificado. Isso não descarta riscos."
-    );
+    motivos.push("Nenhum alerta programado foi identificado. Isso não descarta riscos.");
   }
 
   return { risco, motivos };
 }
 
-// Atualiza a análise conforme o formulário é preenchido.
 function analisarTriagem() {
   const sintoma = campoSintoma.value;
-  const texto = campoObservacao.value;
-  const temperaturaTexto = campoTemp.value.trim();
-  const temperatura = temperaturaTexto === ""
-    ? null
-    : Number(temperaturaTexto);
+  const tempTexto = campoTemp.value.trim();
+  const temperatura = tempTexto === "" ? null : Number(tempTexto);
+
+  riscoAtual = null;
+  document.getElementById("status-dot").classList.remove("active");
 
   if (!sintoma) {
-    resultadoIA.textContent =
-      "Selecione um sintoma para iniciar a análise.";
-    riscoAtual = null;
+    document.getElementById("status-ia").textContent =
+      "Aguardando informações";
+
+    resultadoIA.innerHTML = `
+      <div class="ai-placeholder">
+        <strong>A análise aparecerá aqui</strong>
+        Selecione um sintoma para visualizar o resultado preliminar.
+      </div>`;
     return;
   }
 
-  if (
-    temperatura !== null &&
-    (!Number.isFinite(temperatura) || temperatura < 25 || temperatura > 45)
-  ) {
-    resultadoIA.textContent =
-      "Confira a temperatura informada. Utilize um valor entre 25 °C e 45 °C.";
-    riscoAtual = null;
+  if (temperatura !== null &&
+      (!Number.isFinite(temperatura) || temperatura < 25 || temperatura > 45)) {
+    document.getElementById("status-ia").textContent = "Verifique os dados";
+
+    resultadoIA.innerHTML = `
+      <div class="ai-placeholder">
+        <strong>Temperatura inválida</strong>
+        Informe um valor entre 25 °C e 45 °C ou deixe o campo vazio.
+      </div>`;
     return;
   }
 
-  const analise = classificarRisco(sintoma, temperatura, texto);
+  const analise = classificarRisco(
+    sintoma, temperatura, campoObservacao.value
+  );
+
   riscoAtual = analise.risco;
 
+  document.getElementById("status-dot").classList.add("active");
+  document.getElementById("status-ia").textContent =
+    "Análise preliminar disponível";
+
   const card = document.createElement("div");
-  card.className = "risco-card " + analise.risco;
+  card.className = "risk-card " + analise.risco;
+
+  const label = document.createElement("span");
+  label.className = "risk-label";
+  label.textContent = "Classificação sugerida";
 
   const titulo = document.createElement("div");
-  titulo.className = "risco-titulo";
-  titulo.textContent = "Risco sugerido: " + analise.risco.toUpperCase();
+  titulo.className = "risk-value";
 
-  const subtitulo = document.createElement("p");
-  subtitulo.textContent =
-    "Resultado preliminar gerado pelas regras do sistema.";
+  const indicador = document.createElement("span");
+  indicador.className = "risk-indicator";
+
+  const valor = document.createElement("span");
+  valor.textContent = analise.risco.toUpperCase();
+
+  titulo.append(indicador, valor);
+
+  const resumo = document.createElement("p");
+  resumo.className = "risk-summary";
+  resumo.textContent = "Resultado preliminar das regras programadas. Exige revisão profissional.";
+
+  const motivoTitulo = document.createElement("div");
+  motivoTitulo.className = "reason-title";
+  motivoTitulo.textContent = "Motivos identificados";
 
   const lista = document.createElement("ul");
   lista.className = "lista-motivos";
 
   analise.motivos.forEach(motivo => {
-    const item = document.createElement("li");
-    item.textContent = motivo;
-    lista.appendChild(item);
+    const li = document.createElement("li");
+    li.textContent = motivo;
+    lista.appendChild(li);
   });
 
-  card.append(titulo, subtitulo, lista);
+  card.append(label, titulo, resumo, motivoTitulo, lista);
   resultadoIA.replaceChildren(card);
 }
 
-// Analisa automaticamente quando os campos mudam.
 [campoSintoma, campoTemp, campoObservacao].forEach(campo => {
   campo.addEventListener("input", analisarTriagem);
   campo.addEventListener("change", analisarTriagem);
 });
 
-// Salva no backend existente.
-async function salvar() {
+formTriagem.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
   const nome = campoNome.value.trim();
   const sintoma = campoSintoma.value;
-  const temperaturaTexto = campoTemp.value.trim();
-  const temperatura = temperaturaTexto === ""
-    ? null
-    : Number(temperaturaTexto);
+  const tempTexto = campoTemp.value.trim();
+  const temperatura = tempTexto === "" ? null : Number(tempTexto);
   const alergia = campoAlergia.value.trim();
   const observacao = campoObservacao.value.trim();
 
-  mensagem.className = "mensagem";
+  mensagem.className = "message";
   mensagem.textContent = "";
 
   if (!nome || !sintoma) {
-    mensagem.className = "mensagem erro";
-    mensagem.textContent =
-      "Preencha o nome do paciente e selecione o sintoma.";
-    return;
-  }
-
-  if (
-    temperatura !== null &&
-    (!Number.isFinite(temperatura) || temperatura < 25 || temperatura > 45)
-  ) {
-    mensagem.className = "mensagem erro";
-    mensagem.textContent = "Confira a temperatura informada.";
+    mensagem.className = "message erro";
+    mensagem.textContent = "Preencha o nome e selecione o sintoma.";
     return;
   }
 
   analisarTriagem();
 
   if (!riscoAtual) {
-    mensagem.className = "mensagem erro";
+    mensagem.className = "message erro";
     mensagem.textContent = "Corrija os dados antes de salvar.";
     return;
   }
 
-  const confirmacao = confirm(
-    "A classificação sugerida é " + riscoAtual.toUpperCase() +
-    ". Ela precisa ser revisada por um profissional de saúde.\n\n" +
-    "Deseja salvar a triagem com essa classificação provisória?"
-  );
-
-  if (!confirmacao) return;
+  if (!confirm(
+    "Classificação provisória: " + riscoAtual.toUpperCase() +
+    ".\n\nA classificação precisa de revisão profissional. Deseja salvar?"
+  )) return;
 
   botaoSalvar.disabled = true;
   botaoSalvar.textContent = "Salvando...";
@@ -652,36 +911,28 @@ async function salvar() {
       })
     });
 
-    if (!resposta.ok) {
-      throw new Error("O servidor não conseguiu salvar a triagem.");
-    }
+    if (!resposta.ok) throw new Error("Falha ao salvar");
 
-    mensagem.className = "mensagem sucesso";
+    mensagem.className = "message sucesso";
     mensagem.textContent =
-      "Triagem salva. Classificação provisória: " +
+      "Triagem salva com sucesso. Classificação provisória: " +
       riscoAtual.toUpperCase() +
-      ". Confirme a classificação conforme o protocolo profissional.";
+      ". É necessária a revisão profissional.";
 
-    campoNome.value = "";
-    campoSintoma.value = "";
-    campoTemp.value = "";
-    campoAlergia.value = "";
-    campoObservacao.value = "";
-
+    formTriagem.reset();
     analisarTriagem();
     carregarPacientes();
 
   } catch (erro) {
-    mensagem.className = "mensagem erro";
+    mensagem.className = "message erro";
     mensagem.textContent =
-      "Erro ao salvar. Verifique se o backend está funcionando.";
+      "Não foi possível salvar a triagem. Verifique o backend e tente novamente.";
   } finally {
     botaoSalvar.disabled = false;
-    botaoSalvar.textContent = "Salvar Triagem";
+    botaoSalvar.textContent = "Salvar triagem";
   }
-}
+});
 
-// Inicialização.
 carregarPacientes();
 analisarTriagem();
 setInterval(carregarPacientes, 10000);
